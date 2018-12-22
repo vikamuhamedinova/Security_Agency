@@ -12,30 +12,15 @@ namespace Security_Agency
 {
     public partial class MainForm : Form
     {
-        
+        private Authorization _link;
         public MainForm()
         { 
             InitializeComponent();
         }
-        public static DBWork DBC { private set; get; }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            try
-            {
-                DBC = DBWork.CreateDBWork(
-                    "192.168.186.161",
-                    "5432",
-                    "bd_admin",
-                    "Qwerty12345",
-                    "testdb"
-                );
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка: " + ex.Message);
-                Environment.Exit(1);
-            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
