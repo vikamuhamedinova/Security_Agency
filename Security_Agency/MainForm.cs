@@ -13,7 +13,7 @@ namespace Security_Agency
     public partial class MainForm : Form
     {
         private Authorization _link;
-        public MainForm()
+        public MainForm(AccessRoles role, Authorization link)
         { 
             InitializeComponent();
         }

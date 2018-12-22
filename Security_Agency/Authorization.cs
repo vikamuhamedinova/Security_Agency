@@ -21,11 +21,11 @@ namespace Security_Agency
             try
             {
                 DBC = DBWork.CreateDBWork(
-                    "192.168.186.161",
-                    "5432",
-                    "bd_admin",
-                    "Qwerty12345",
-                    "testdb"
+                    host: Config.host,
+                    port: Config.port,
+                    username: Config.username,
+                    password: Config.password,
+                    database: Config.database
                 );
             }
             catch (Exception ex)
@@ -40,9 +40,52 @@ namespace Security_Agency
         {
             login = loginTextBox.Text;
             password = passwordTextBox.Text;
+            AccessRoles role;
 
+            // начальник отдела вневедомственной охраны
+            if (login == "director" && password == "12345")
+            {
+                role = AccessRoles.Director;
+            }
+            // сотрудник отдела по работе с клиентами
+            else if (login == "manager" && password == "12345")
+            {
+                role = AccessRoles.Manager;
+            }
+            // бухгалтер
+            else if (login == "accountant" && password == "12345")
+            {
+                role = AccessRoles.Accountant;
+            }
+            // руководитель выездной бригады
+            else if (login == "inspector" && password == "12345")
+            {
+                role = AccessRoles.Inspector;
+            }
+            // сотрудник отдела кадров
+            else if (login == "hrmanager" && password == "12345")
+            {
+                role = AccessRoles.HRManager;
+            }
+            // специалист по монтажу оборудования
+            else if (login == "adjuster" && password == "12345")
+            {
+                role = AccessRoles.Adjuster;
+            }
+            // дежурный
+            else if (login == "dispatcher" && password == "12345")
+            {
+                role = AccessRoles.Dispatcher;
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль");
+                return;
+            }
+            // вывести на экран форму и передать ей роль управления
+            // в соответствии с введенным логином и паролем
             Hide();
-            new MainForm().Show();
+            new MainForm(role, this).Show();
         }
         // Перезагрузка окна
         public void Reset()
