@@ -47,7 +47,7 @@
             // textBoxSurnameInput
             // 
             this.textBoxSurnameInput.Location = new System.Drawing.Point(53, 50);
-            this.textBoxSurnameInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSurnameInput.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSurnameInput.Name = "textBoxSurnameInput";
             this.textBoxSurnameInput.Size = new System.Drawing.Size(296, 22);
             this.textBoxSurnameInput.TabIndex = 0;
@@ -75,7 +75,7 @@
             // textBoxNameInput
             // 
             this.textBoxNameInput.Location = new System.Drawing.Point(53, 98);
-            this.textBoxNameInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNameInput.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNameInput.Name = "textBoxNameInput";
             this.textBoxNameInput.Size = new System.Drawing.Size(296, 22);
             this.textBoxNameInput.TabIndex = 3;
@@ -93,7 +93,7 @@
             // textBoxMiddleNameInput
             // 
             this.textBoxMiddleNameInput.Location = new System.Drawing.Point(53, 146);
-            this.textBoxMiddleNameInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxMiddleNameInput.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxMiddleNameInput.Name = "textBoxMiddleNameInput";
             this.textBoxMiddleNameInput.Size = new System.Drawing.Size(296, 22);
             this.textBoxMiddleNameInput.TabIndex = 5;
@@ -111,11 +111,10 @@
             // textBoxInputPassID
             // 
             this.textBoxInputPassID.Location = new System.Drawing.Point(53, 194);
-            this.textBoxInputPassID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxInputPassID.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxInputPassID.Name = "textBoxInputPassID";
             this.textBoxInputPassID.Size = new System.Drawing.Size(296, 22);
             this.textBoxInputPassID.TabIndex = 7;
-            this.textBoxInputPassID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxInputPassID_KeyDown);
             // 
             // labelInputAddress
             // 
@@ -130,7 +129,7 @@
             // textBoxInputAddress
             // 
             this.textBoxInputAddress.Location = new System.Drawing.Point(53, 242);
-            this.textBoxInputAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxInputAddress.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxInputAddress.Name = "textBoxInputAddress";
             this.textBoxInputAddress.Size = new System.Drawing.Size(296, 22);
             this.textBoxInputAddress.TabIndex = 9;
@@ -138,7 +137,7 @@
             // dateTimeInputDateBirth
             // 
             this.dateTimeInputDateBirth.Location = new System.Drawing.Point(53, 290);
-            this.dateTimeInputDateBirth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeInputDateBirth.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeInputDateBirth.Name = "dateTimeInputDateBirth";
             this.dateTimeInputDateBirth.Size = new System.Drawing.Size(296, 22);
             this.dateTimeInputDateBirth.TabIndex = 10;
@@ -156,7 +155,7 @@
             // buttonAddClient
             // 
             this.buttonAddClient.Location = new System.Drawing.Point(16, 359);
-            this.buttonAddClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddClient.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddClient.Name = "buttonAddClient";
             this.buttonAddClient.Size = new System.Drawing.Size(156, 47);
             this.buttonAddClient.TabIndex = 12;
@@ -167,7 +166,7 @@
             // buttonCancelAddClient
             // 
             this.buttonCancelAddClient.Location = new System.Drawing.Point(195, 359);
-            this.buttonCancelAddClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancelAddClient.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelAddClient.Name = "buttonCancelAddClient";
             this.buttonCancelAddClient.Size = new System.Drawing.Size(156, 47);
             this.buttonCancelAddClient.TabIndex = 13;
@@ -194,7 +193,7 @@
             this.Controls.Add(this.labelNameInput);
             this.Controls.Add(this.labelSurnameInput);
             this.Controls.Add(this.textBoxSurnameInput);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddClient";
             this.Text = "Добавить клиента";
             this.ResumeLayout(false);
