@@ -31,7 +31,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.DataGridView = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LabelQueryInfo = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.функционалToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.workWithClientsTSMI = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,14 +68,14 @@
             this.DataGridView.Size = new System.Drawing.Size(1131, 272);
             this.DataGridView.TabIndex = 0;
             // 
-            // label1
+            // LabelQueryInfo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.LabelQueryInfo.AutoSize = true;
+            this.LabelQueryInfo.Location = new System.Drawing.Point(27, 35);
+            this.LabelQueryInfo.Name = "LabelQueryInfo";
+            this.LabelQueryInfo.Size = new System.Drawing.Size(46, 17);
+            this.LabelQueryInfo.TabIndex = 1;
+            this.LabelQueryInfo.Text = "label1";
             // 
             // menuStrip1
             // 
@@ -118,7 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1275, 567);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LabelQueryInfo);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.DataGridView);
@@ -140,7 +140,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView DataGridView;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LabelQueryInfo;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem функционалToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem workWithClientsTSMI;

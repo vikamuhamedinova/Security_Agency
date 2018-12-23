@@ -28,14 +28,14 @@ namespace Security_Agency
         private void ClearForm()
         {
             textBoxSurnameInput.Text = "";
-            nameTextBox.Text = "";
-            otchTextBox.Text = "";
-            INNMTextBox.Text = "000000000000";
-            birthTextBox.Text = "01.01.2000";
-            addressTextBox.Text = "";
-            IDMTextBox.Text = "000000";
-            SMTextBox.Text = "0000";
+            textBoxNameInput.Text = "";
+            textBoxMiddleNameInput.Text = "";
+            dateTimeInputDateBirth.Text = "01.01.2000";
+            textBoxInputAddress.Text = "";
+            textBoxInputPassID.Text = "0000000000";
         }
+
+
 
         private void ButtonAddClient_Click(object sender, EventArgs e)
         {
@@ -44,7 +44,23 @@ namespace Security_Agency
 
         private void ButtonCancelAddClient_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Вы уверены, что хотите отменить добавление?", "Отмена добавления",
+                            MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Close();
+            }
+            
+        }
 
+
+
+        private void TextBoxInputPassID_KeyDown(object sender, KeyEventArgs e)
+        {
+            int number = e.KeyValue;
+            if (e.KeyValue <= 47 || e.KeyValue >= 58)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

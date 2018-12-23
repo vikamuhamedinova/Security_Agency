@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace Security_Agency
 {
@@ -45,7 +46,6 @@ namespace Security_Agency
             this.queryInfoLabel.Text = "Клиенты";
             ClientsList();*/
         }
-
 
       /*  /// <summary>
         /// Если condition false, показывает MessageBox с предупреждением
@@ -110,11 +110,6 @@ namespace Security_Agency
             }
             return no_access;
         }*/
-
-        // при закрытии формы, также выходим из приложения
-
-       
-
         // смена пользователя
        /* private void OnChangeUser(object sender, EventArgs e)
         {
@@ -616,17 +611,6 @@ namespace Security_Agency
             }
         }*/
 
-        //вызывает метод вида <tableName>List
-       /* private void ChangeCurrentContext(object sender, EventArgs e)
-        {
-            this.queryInfoLabel.Text = sender.ToString();
-
-            Type t = this.GetType();
-            MethodInfo method = t.GetMethod(Config.methodTranslate[sender.ToString()] + "List");
-            method.Invoke(this, null);
-        }*/
-
-
         
 
        /* private void ToogleRawEditSwitch(object sender, EventArgs e)
@@ -700,20 +684,25 @@ namespace Security_Agency
         {
             new Reports().Show();
         }*/
-        
+
+        //вызывает метод вида <tableName>List
+        private void ChangeCurrentContext(object sender, EventArgs e)
+        {
+            this.LabelQueryInfo.Text = sender.ToString();
+            Type t = this.GetType();
+            MethodInfo method = t.GetMethod(Config.methodTranslate[sender.ToString()] + "List");
+            method.Invoke(this, null);
+        }
         //вызывает форму вида Add<formName>
         private void callFormFromCurrentContext(object sender, EventArgs e)
         {
            // if (CheckNoAccess())
            //     return;
-
             string nameForm = "Add" + _current_table.Substring(1, _current_table.Length - 2);
-
             try
             {
-                var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm), this) as Form;
+                var form = Activator.CreateInstance(Type.GetType("Security_Agency." + nameForm), this) as Form;
                 form.Show();
-
             }
             catch (ArgumentNullException)
             {

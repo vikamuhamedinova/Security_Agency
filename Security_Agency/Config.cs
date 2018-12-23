@@ -13,6 +13,16 @@ namespace Security_Agency
         public const string username = "bd_admin";
         public const string password = "Qwerty12345";
         public const string database = "testdb";
-                 
+
+        public static Dictionary<string, string> methodTranslate = new Dictionary<string, string>()
+        {
+            ["Клиенты"] = "Clients",
+            ["Договоры"] = "Contracts",
+            ["Сотрудники"] = "Employees",
+            ["Платежи"] = "Payments",
+            ["Штрафы"] = "Fines",
+            ["Сигналы тревоги"] = "Calls",
+            ["Украденные вещи"] = "Stolen_stuffss"
+        };
     }
 }
