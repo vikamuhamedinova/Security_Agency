@@ -24,7 +24,21 @@ namespace Security_Agency
 
         private void ButtonCancelAddClient_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Отмена добавления", "Вы уверены, что хотите отменить добавление?",
+                            MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Close();
+            }
+            
+        }
 
+        private void TextBoxInputPassID_KeyDown(object sender, KeyEventArgs e)
+        {
+            int number = e.KeyValue;
+            if (e.KeyValue <= 47 || e.KeyValue >= 58)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

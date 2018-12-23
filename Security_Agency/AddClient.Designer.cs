@@ -35,9 +35,9 @@
             this.labelInputMiddlName = new System.Windows.Forms.Label();
             this.textBoxMiddleNameInput = new System.Windows.Forms.TextBox();
             this.labelInputPassID = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxInputPassID = new System.Windows.Forms.TextBox();
             this.labelInputAddress = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxInputAddress = new System.Windows.Forms.TextBox();
             this.dateTimeInputDateBirth = new System.Windows.Forms.DateTimePicker();
             this.labelInputDateBirth = new System.Windows.Forms.Label();
             this.buttonAddClient = new System.Windows.Forms.Button();
@@ -101,12 +101,13 @@
             this.labelInputPassID.TabIndex = 6;
             this.labelInputPassID.Text = "Номер паспорта";
             // 
-            // textBox1
+            // textBoxInputPassID
             // 
-            this.textBox1.Location = new System.Drawing.Point(40, 158);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(223, 20);
-            this.textBox1.TabIndex = 7;
+            this.textBoxInputPassID.Location = new System.Drawing.Point(40, 158);
+            this.textBoxInputPassID.Name = "textBoxInputPassID";
+            this.textBoxInputPassID.Size = new System.Drawing.Size(223, 20);
+            this.textBoxInputPassID.TabIndex = 7;
+            this.textBoxInputPassID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxInputPassID_KeyDown);
             // 
             // labelInputAddress
             // 
@@ -117,12 +118,12 @@
             this.labelInputAddress.TabIndex = 8;
             this.labelInputAddress.Text = "Адрес проживания";
             // 
-            // textBox2
+            // textBoxInputAddress
             // 
-            this.textBox2.Location = new System.Drawing.Point(40, 197);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(223, 20);
-            this.textBox2.TabIndex = 9;
+            this.textBoxInputAddress.Location = new System.Drawing.Point(40, 197);
+            this.textBoxInputAddress.Name = "textBoxInputAddress";
+            this.textBoxInputAddress.Size = new System.Drawing.Size(223, 20);
+            this.textBoxInputAddress.TabIndex = 9;
             // 
             // dateTimeInputDateBirth
             // 
@@ -169,9 +170,9 @@
             this.Controls.Add(this.buttonAddClient);
             this.Controls.Add(this.labelInputDateBirth);
             this.Controls.Add(this.dateTimeInputDateBirth);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxInputAddress);
             this.Controls.Add(this.labelInputAddress);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxInputPassID);
             this.Controls.Add(this.labelInputPassID);
             this.Controls.Add(this.textBoxMiddleNameInput);
             this.Controls.Add(this.labelInputMiddlName);
@@ -195,9 +196,9 @@
         private System.Windows.Forms.Label labelInputMiddlName;
         private System.Windows.Forms.TextBox textBoxMiddleNameInput;
         private System.Windows.Forms.Label labelInputPassID;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxInputPassID;
         private System.Windows.Forms.Label labelInputAddress;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxInputAddress;
         private System.Windows.Forms.DateTimePicker dateTimeInputDateBirth;
         private System.Windows.Forms.Label labelInputDateBirth;
         private System.Windows.Forms.Button buttonAddClient;
