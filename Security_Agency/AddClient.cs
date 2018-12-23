@@ -32,7 +32,7 @@ namespace Security_Agency
             textBoxMiddleNameInput.Text = "";
             dateTimeInputDateBirth.Text = "01.01.2000";
             textBoxInputAddress.Text = "";
-            textBoxInputPassID.Text = "0000000000";
+            maskedtextBoxInputPassID.Text = "0000000000";
         }
 
 
@@ -49,7 +49,7 @@ namespace Security_Agency
             {
                 Close();
             }
-            
+
         }
     }
 }
