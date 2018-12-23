@@ -153,18 +153,15 @@ namespace Security_Agency
         /// </summary>
         /// <param name="table">Таблица из которой удаляем</param>
         /// <param name="condition">Для конструкции вида: where Item1=Item2</param>
-      /*  public void Delete(string table, Tuple<string, string> condition)
+        public void Delete(string table, Tuple<string, string> condition)
         {
             string deleteString = "delete from " + table + " ";
-
             if (condition == null)
                 return;
-
             deleteString += String.Format("where {0}={1}", condition.Item1, condition.Item2);
-
             NpgsqlCommand command = new NpgsqlCommand(deleteString, _connection);
             command.ExecuteNonQuery();
-        }*/
+        }
 
 
 

@@ -114,6 +114,7 @@
             this.ButtonDelete.TabIndex = 4;
             this.ButtonDelete.Text = "Удалить";
             this.ButtonDelete.UseVisualStyleBackColor = true;
+            this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
             // 
             // TextBoxSearchPattern
             // 

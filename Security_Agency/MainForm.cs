@@ -141,9 +141,7 @@ namespace Security_Agency
                     break;
             }
             return no_access;
-        }*/
- 
-        
+        }*/   
 
         // поиск
        /* private void Search(object sender, EventArgs e)
@@ -170,63 +168,6 @@ namespace Security_Agency
                 return;
 
             new AddClient().Show();
-
-        }*/
-
-        /*private void DeleteEntry(object sendet, EventArgs e)
-        {
-            if (CheckNoAccess())
-                return;
-
-            if (MessageBox.Show("Вы точно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                return;
-            }
-            int index = GetSelectedRow();
-            if (index == -1 || _current_table == "")
-            {
-                MessageBox.Show("Необходимо выбрать строку.");
-                return;
-            }
-            try
-            {
-                string id = dataGridView["ID", index].Value.ToString();
-                switch (_current_table)
-                {
-                    case "\"Client\"":
-                        Authorization.ODBC.Delete("\"Client\"", new Tuple<string, string>("\"ID\"", id));
-                        ClientsList();
-                        break;
-                    case "\"Contract\"":
-                        Authorization.ODBC.Delete("\"Contract\"", new Tuple<string, string>("\"ID\"", id));
-                        ContractsList();
-                        break;
-                    case "\"Employee\"":
-                        Authorization.ODBC.Delete("\"Employee\"", new Tuple<string, string>("\"ID\"", id));
-                        EmployeesList();
-                        break;
-                    case "\"Payment\"":
-                        Authorization.ODBC.Delete("\"Payment\"", new Tuple<string, string>("\"ID\"", id));
-                        PaymentsList();
-                        break;
-                    case "\"Fine\"":
-                        Authorization.ODBC.Delete("\"Fine\"", new Tuple<string, string>("\"ID\"", id));
-                        FinesList();
-                        break;
-                    case "\"Call\"":
-                        Authorization.ODBC.Delete("\"Call\"", new Tuple<string, string>("\"ID\"", id));
-                        CallsList();
-                        break;
-                    default:
-                        throw new Exception("Неправильная указана текущая таблица: " + _current_table);
-                }
-                MessageBox.Show("Запись успешно удалена.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-                return;
-            }
 
         }*/
 
@@ -687,7 +628,58 @@ namespace Security_Agency
             }        
         }
         //
-
+        private void ButtonDelete_Click(object sendet, EventArgs e)
+        {
+            if (MessageBox.Show("Вы точно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+            int index = GetSelectedRow();
+            if (index == -1 || _current_table == "")
+            {
+                MessageBox.Show("Необходимо выбрать строку.");
+                return;
+            }
+            try
+            {
+                string id = DataGridView["ID", index].Value.ToString();
+                switch (_current_table)
+                {
+                    case "\"Client\"":
+                        Authorization.DBC.Delete("\"Client\"", new Tuple<string, string>("\"PK_Client\"", id));
+                        ClientsList();
+                        break;
+                   /* case "\"Contract\"":
+                        Authorization.DBC.Delete("\"Contract\"", new Tuple<string, string>("\"ID\"", id));
+                        ContractsList();
+                        break;
+                    case "\"Employee\"":
+                        Authorization.DBC.Delete("\"Employee\"", new Tuple<string, string>("\"ID\"", id));
+                        EmployeesList();
+                        break;
+                    case "\"Payment\"":
+                        Authorization.DBC.Delete("\"Payment\"", new Tuple<string, string>("\"ID\"", id));
+                        PaymentsList();
+                        break;
+                    case "\"Fine\"":
+                        Authorization.DBC.Delete("\"Fine\"", new Tuple<string, string>("\"ID\"", id));
+                        FinesList();
+                        break;
+                    case "\"Call\"":
+                        Authorization.DBC.Delete("\"Call\"", new Tuple<string, string>("\"ID\"", id));
+                        CallsList();
+                        break;*/
+                    default:
+                        throw new Exception("Неправильная указана текущая таблица: " + _current_table);
+                }
+                MessageBox.Show("Запись успешно удалена.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+                return;
+            }
+        }
         //
         private void ButtonUpdate_Click(object sender, EventArgs e)
         {
