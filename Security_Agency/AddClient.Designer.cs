@@ -35,13 +35,13 @@
             this.labelInputMiddlName = new System.Windows.Forms.Label();
             this.textBoxMiddleNameInput = new System.Windows.Forms.TextBox();
             this.labelInputPassID = new System.Windows.Forms.Label();
-            this.textBoxInputPassID = new System.Windows.Forms.TextBox();
             this.labelInputAddress = new System.Windows.Forms.Label();
             this.textBoxInputAddress = new System.Windows.Forms.TextBox();
             this.dateTimeInputDateBirth = new System.Windows.Forms.DateTimePicker();
             this.labelInputDateBirth = new System.Windows.Forms.Label();
             this.buttonAddClient = new System.Windows.Forms.Button();
             this.buttonCancelAddClient = new System.Windows.Forms.Button();
+            this.maskedtextBoxInputPassID = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // textBoxSurnameInput
@@ -101,14 +101,6 @@
             this.labelInputPassID.TabIndex = 6;
             this.labelInputPassID.Text = "Номер паспорта";
             // 
-            // textBoxInputPassID
-            // 
-            this.textBoxInputPassID.Location = new System.Drawing.Point(40, 158);
-            this.textBoxInputPassID.Name = "textBoxInputPassID";
-            this.textBoxInputPassID.Size = new System.Drawing.Size(223, 20);
-            this.textBoxInputPassID.TabIndex = 7;
-            this.textBoxInputPassID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxInputPassID_KeyDown);
-            // 
             // labelInputAddress
             // 
             this.labelInputAddress.AutoSize = true;
@@ -161,18 +153,26 @@
             this.buttonCancelAddClient.UseVisualStyleBackColor = true;
             this.buttonCancelAddClient.Click += new System.EventHandler(this.ButtonCancelAddClient_Click);
             // 
+            // maskedtextBoxInputPassID
+            // 
+            this.maskedtextBoxInputPassID.Location = new System.Drawing.Point(40, 158);
+            this.maskedtextBoxInputPassID.Mask = "0000000000";
+            this.maskedtextBoxInputPassID.Name = "maskedtextBoxInputPassID";
+            this.maskedtextBoxInputPassID.Size = new System.Drawing.Size(223, 20);
+            this.maskedtextBoxInputPassID.TabIndex = 14;
+            // 
             // AddClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(303, 345);
+            this.Controls.Add(this.maskedtextBoxInputPassID);
             this.Controls.Add(this.buttonCancelAddClient);
             this.Controls.Add(this.buttonAddClient);
             this.Controls.Add(this.labelInputDateBirth);
             this.Controls.Add(this.dateTimeInputDateBirth);
             this.Controls.Add(this.textBoxInputAddress);
             this.Controls.Add(this.labelInputAddress);
-            this.Controls.Add(this.textBoxInputPassID);
             this.Controls.Add(this.labelInputPassID);
             this.Controls.Add(this.textBoxMiddleNameInput);
             this.Controls.Add(this.labelInputMiddlName);
@@ -196,12 +196,12 @@
         private System.Windows.Forms.Label labelInputMiddlName;
         private System.Windows.Forms.TextBox textBoxMiddleNameInput;
         private System.Windows.Forms.Label labelInputPassID;
-        private System.Windows.Forms.TextBox textBoxInputPassID;
         private System.Windows.Forms.Label labelInputAddress;
         private System.Windows.Forms.TextBox textBoxInputAddress;
         private System.Windows.Forms.DateTimePicker dateTimeInputDateBirth;
         private System.Windows.Forms.Label labelInputDateBirth;
         private System.Windows.Forms.Button buttonAddClient;
         private System.Windows.Forms.Button buttonCancelAddClient;
+        private System.Windows.Forms.MaskedTextBox maskedtextBoxInputPassID;
     }
 }
