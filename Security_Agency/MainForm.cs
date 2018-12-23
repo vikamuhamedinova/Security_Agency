@@ -15,7 +15,7 @@ namespace Security_Agency
         private static bool itWasChangeUser = false;
         private AccessRoles _currentRole;           // уровень доступа
         private Authorization _link;
-        //private string _current_table = "";
+        private string _current_table = "";
         //private delegate void CurrentFunction(object sender, EventArgs e);
         //private CurrentFunction _currFunc = null;
         //private bool itWasReplaceFKtoName = false;
@@ -31,7 +31,7 @@ namespace Security_Agency
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
+            _current_table = "\"Client\"";
             //IntPtr hMenu = GetSystemMenu(Handle, false);
             //int menuItemCount = GetMenuItemCount(hMenu);
             //RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
@@ -627,25 +627,7 @@ namespace Security_Agency
         }*/
 
 
-        //вызывает форму вида Add<formName>
-       /* private void callFormFromCurrentContext(object sender, EventArgs e)
-        {
-            if (CheckNoAccess())
-                return;
-
-            string nameForm = "Add" + _current_table.Substring(1, _current_table.Length - 2);
-
-            try
-            {
-                var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm), this) as Form;
-                form.Show();
-
-            }
-            catch (ArgumentNullException)
-            {
-                MessageBox.Show("Форма для данного контекста еще не задана");
-            }
-        }*/
+        
 
        /* private void ToogleRawEditSwitch(object sender, EventArgs e)
         {
@@ -718,6 +700,26 @@ namespace Security_Agency
         {
             new Reports().Show();
         }*/
+        
+        //вызывает форму вида Add<formName>
+        private void callFormFromCurrentContext(object sender, EventArgs e)
+        {
+           // if (CheckNoAccess())
+           //     return;
+
+            string nameForm = "Add" + _current_table.Substring(1, _current_table.Length - 2);
+
+            try
+            {
+                var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm), this) as Form;
+                form.Show();
+
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Форма для данного контекста еще не задана");
+            }
+        }
 
         // Закрытие приложения
         private void OnClose(object sender, FormClosedEventArgs e)
