@@ -46,98 +46,114 @@
             // 
             // textBoxSurnameInput
             // 
-            this.textBoxSurnameInput.Location = new System.Drawing.Point(40, 41);
+            this.textBoxSurnameInput.Location = new System.Drawing.Point(53, 50);
+            this.textBoxSurnameInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxSurnameInput.Name = "textBoxSurnameInput";
-            this.textBoxSurnameInput.Size = new System.Drawing.Size(223, 20);
+            this.textBoxSurnameInput.Size = new System.Drawing.Size(296, 22);
             this.textBoxSurnameInput.TabIndex = 0;
             // 
             // labelSurnameInput
             // 
             this.labelSurnameInput.AutoSize = true;
-            this.labelSurnameInput.Location = new System.Drawing.Point(87, 25);
+            this.labelSurnameInput.Location = new System.Drawing.Point(116, 31);
+            this.labelSurnameInput.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSurnameInput.Name = "labelSurnameInput";
-            this.labelSurnameInput.Size = new System.Drawing.Size(56, 13);
+            this.labelSurnameInput.Size = new System.Drawing.Size(70, 17);
             this.labelSurnameInput.TabIndex = 1;
             this.labelSurnameInput.Text = "Фамилия";
             // 
             // labelNameInput
             // 
             this.labelNameInput.AutoSize = true;
-            this.labelNameInput.Location = new System.Drawing.Point(87, 64);
+            this.labelNameInput.Location = new System.Drawing.Point(116, 79);
+            this.labelNameInput.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNameInput.Name = "labelNameInput";
-            this.labelNameInput.Size = new System.Drawing.Size(29, 13);
+            this.labelNameInput.Size = new System.Drawing.Size(35, 17);
             this.labelNameInput.TabIndex = 2;
             this.labelNameInput.Text = "Имя";
             // 
             // textBoxNameInput
             // 
-            this.textBoxNameInput.Location = new System.Drawing.Point(40, 80);
+            this.textBoxNameInput.Location = new System.Drawing.Point(53, 98);
+            this.textBoxNameInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxNameInput.Name = "textBoxNameInput";
-            this.textBoxNameInput.Size = new System.Drawing.Size(223, 20);
+            this.textBoxNameInput.Size = new System.Drawing.Size(296, 22);
             this.textBoxNameInput.TabIndex = 3;
             // 
             // labelInputMiddlName
             // 
             this.labelInputMiddlName.AutoSize = true;
-            this.labelInputMiddlName.Location = new System.Drawing.Point(87, 103);
+            this.labelInputMiddlName.Location = new System.Drawing.Point(116, 127);
+            this.labelInputMiddlName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelInputMiddlName.Name = "labelInputMiddlName";
-            this.labelInputMiddlName.Size = new System.Drawing.Size(54, 13);
+            this.labelInputMiddlName.Size = new System.Drawing.Size(71, 17);
             this.labelInputMiddlName.TabIndex = 4;
             this.labelInputMiddlName.Text = "Отчество";
             // 
             // textBoxMiddleNameInput
             // 
-            this.textBoxMiddleNameInput.Location = new System.Drawing.Point(40, 119);
+            this.textBoxMiddleNameInput.Location = new System.Drawing.Point(53, 146);
+            this.textBoxMiddleNameInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxMiddleNameInput.Name = "textBoxMiddleNameInput";
-            this.textBoxMiddleNameInput.Size = new System.Drawing.Size(223, 20);
+            this.textBoxMiddleNameInput.Size = new System.Drawing.Size(296, 22);
             this.textBoxMiddleNameInput.TabIndex = 5;
             // 
             // labelInputPassID
             // 
             this.labelInputPassID.AutoSize = true;
-            this.labelInputPassID.Location = new System.Drawing.Point(87, 142);
+            this.labelInputPassID.Location = new System.Drawing.Point(116, 175);
+            this.labelInputPassID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelInputPassID.Name = "labelInputPassID";
-            this.labelInputPassID.Size = new System.Drawing.Size(91, 13);
+            this.labelInputPassID.Size = new System.Drawing.Size(117, 17);
             this.labelInputPassID.TabIndex = 6;
             this.labelInputPassID.Text = "Номер паспорта";
             // 
             // labelInputAddress
             // 
             this.labelInputAddress.AutoSize = true;
-            this.labelInputAddress.Location = new System.Drawing.Point(87, 181);
+            this.labelInputAddress.Location = new System.Drawing.Point(116, 223);
+            this.labelInputAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelInputAddress.Name = "labelInputAddress";
-            this.labelInputAddress.Size = new System.Drawing.Size(103, 13);
+            this.labelInputAddress.Size = new System.Drawing.Size(132, 17);
             this.labelInputAddress.TabIndex = 8;
             this.labelInputAddress.Text = "Адрес проживания";
             // 
             // textBoxInputAddress
             // 
-            this.textBoxInputAddress.Location = new System.Drawing.Point(40, 197);
+            this.textBoxInputAddress.Location = new System.Drawing.Point(53, 242);
+            this.textBoxInputAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxInputAddress.Name = "textBoxInputAddress";
-            this.textBoxInputAddress.Size = new System.Drawing.Size(223, 20);
+            this.textBoxInputAddress.Size = new System.Drawing.Size(296, 22);
             this.textBoxInputAddress.TabIndex = 9;
             // 
             // dateTimeInputDateBirth
             // 
-            this.dateTimeInputDateBirth.Location = new System.Drawing.Point(40, 236);
+            this.dateTimeInputDateBirth.CustomFormat = "00.00.0000";
+            this.dateTimeInputDateBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeInputDateBirth.Location = new System.Drawing.Point(53, 290);
+            this.dateTimeInputDateBirth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeInputDateBirth.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateTimeInputDateBirth.Name = "dateTimeInputDateBirth";
-            this.dateTimeInputDateBirth.Size = new System.Drawing.Size(223, 20);
+            this.dateTimeInputDateBirth.Size = new System.Drawing.Size(296, 22);
             this.dateTimeInputDateBirth.TabIndex = 10;
+            this.dateTimeInputDateBirth.Value = new System.DateTime(2018, 12, 24, 0, 0, 0, 0);
             // 
             // labelInputDateBirth
             // 
             this.labelInputDateBirth.AutoSize = true;
-            this.labelInputDateBirth.Location = new System.Drawing.Point(87, 220);
+            this.labelInputDateBirth.Location = new System.Drawing.Point(116, 271);
+            this.labelInputDateBirth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelInputDateBirth.Name = "labelInputDateBirth";
-            this.labelInputDateBirth.Size = new System.Drawing.Size(86, 13);
+            this.labelInputDateBirth.Size = new System.Drawing.Size(111, 17);
             this.labelInputDateBirth.TabIndex = 11;
             this.labelInputDateBirth.Text = "Дата рождения";
             // 
             // buttonAddClient
             // 
-            this.buttonAddClient.Location = new System.Drawing.Point(12, 292);
+            this.buttonAddClient.Location = new System.Drawing.Point(16, 359);
+            this.buttonAddClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAddClient.Name = "buttonAddClient";
-            this.buttonAddClient.Size = new System.Drawing.Size(117, 38);
+            this.buttonAddClient.Size = new System.Drawing.Size(156, 47);
             this.buttonAddClient.TabIndex = 12;
             this.buttonAddClient.Text = "Добавить клиента";
             this.buttonAddClient.UseVisualStyleBackColor = true;
@@ -145,9 +161,10 @@
             // 
             // buttonCancelAddClient
             // 
-            this.buttonCancelAddClient.Location = new System.Drawing.Point(146, 292);
+            this.buttonCancelAddClient.Location = new System.Drawing.Point(195, 359);
+            this.buttonCancelAddClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCancelAddClient.Name = "buttonCancelAddClient";
-            this.buttonCancelAddClient.Size = new System.Drawing.Size(117, 38);
+            this.buttonCancelAddClient.Size = new System.Drawing.Size(156, 47);
             this.buttonCancelAddClient.TabIndex = 13;
             this.buttonCancelAddClient.Text = "Отмена";
             this.buttonCancelAddClient.UseVisualStyleBackColor = true;
@@ -155,17 +172,18 @@
             // 
             // maskedtextBoxInputPassID
             // 
-            this.maskedtextBoxInputPassID.Location = new System.Drawing.Point(40, 158);
+            this.maskedtextBoxInputPassID.Location = new System.Drawing.Point(53, 194);
+            this.maskedtextBoxInputPassID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.maskedtextBoxInputPassID.Mask = "0000000000";
             this.maskedtextBoxInputPassID.Name = "maskedtextBoxInputPassID";
-            this.maskedtextBoxInputPassID.Size = new System.Drawing.Size(223, 20);
+            this.maskedtextBoxInputPassID.Size = new System.Drawing.Size(296, 22);
             this.maskedtextBoxInputPassID.TabIndex = 14;
             // 
             // AddClient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 345);
+            this.ClientSize = new System.Drawing.Size(404, 425);
             this.Controls.Add(this.maskedtextBoxInputPassID);
             this.Controls.Add(this.buttonCancelAddClient);
             this.Controls.Add(this.buttonAddClient);
@@ -180,8 +198,10 @@
             this.Controls.Add(this.labelNameInput);
             this.Controls.Add(this.labelSurnameInput);
             this.Controls.Add(this.textBoxSurnameInput);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddClient";
             this.Text = "Добавить клиента";
+            this.Load += new System.EventHandler(this.AddClient_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

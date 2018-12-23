@@ -16,7 +16,7 @@ namespace Security_Agency
 
         public static Dictionary<string, string> methodTranslate = new Dictionary<string, string>()
         {
-            ["Клиенты"] = "Clients",
+            ["Работа с клиентами"] = "Clients",
             ["Договоры"] = "Contracts",
             ["Сотрудники"] = "Employees",
             ["Платежи"] = "Payments",
@@ -24,5 +24,10 @@ namespace Security_Agency
             ["Сигналы тревоги"] = "Calls",
             ["Украденные вещи"] = "Stolen_stuffss"
         };
+
+        public static Dictionary<string, string> valueFromTableForEdit = new Dictionary<string, string>();
+
+        public static int CurrentIndex;
+
     }
 }

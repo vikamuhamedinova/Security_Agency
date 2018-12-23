@@ -20,19 +20,22 @@ namespace Security_Agency
         //private delegate void CurrentFunction(object sender, EventArgs e);
         //private CurrentFunction _currFunc = null;
         //private bool itWasReplaceFKtoName = false;
-        //List<string> itemsForAutoComplete;
+        List<string> itemsForAutoComplete;
 
         public MainForm(AccessRoles role, Authorization link)
         { 
             InitializeComponent();
             _currentRole = role;
             _link = link;
-            //itemsForAutoComplete = new List<string>();
+            itemsForAutoComplete = new List<string>();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _current_table = "\"Client\"";
+            this.ButtonAdd.Enabled = false;
+            this.ButtonEdit.Enabled = false;
+            this.ButtonDelete.Enabled = false;
+            this.ButtonUpdate.Enabled = false;
             //IntPtr hMenu = GetSystemMenu(Handle, false);
             //int menuItemCount = GetMenuItemCount(hMenu);
             //RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
@@ -46,6 +49,35 @@ namespace Security_Agency
             this.queryInfoLabel.Text = "Клиенты";
             ClientsList();*/
         }
+
+        
+        // список клиентов
+        public void ClientsList()
+        {
+            // select из таблицы Client 
+            try
+            {
+                Authorization.DBC.Select("\"Client\"", tableView: DataGridView,
+                values: new Dictionary<string, string>()
+                {
+                    ["\"PK_Client\""] = "\"ID\"",
+                    ["\"Surname\""] = "\"Фамилия\"",
+                    ["\"Name\""] = "\"Имя\"",
+                    ["\"Middle_Name\""] = "\"Отчество\"",
+                    ["\"Passport_ID\""] = "\"Номер паспорта\"",
+                    ["\"Date_Birth\""] = "\"Дата рождения\"",
+                    ["\"Resident_Address\""] = "\"Адрес проживания\""
+                }
+                );
+                _current_table = "\"Client\"";
+                //FillValuesToAutocomplete();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
 
       /*  /// <summary>
         /// Если condition false, показывает MessageBox с предупреждением
@@ -110,28 +142,8 @@ namespace Security_Agency
             }
             return no_access;
         }*/
-        // смена пользователя
-       /* private void OnChangeUser(object sender, EventArgs e)
-        {
-            itWasChangeUser = true;
-            _link.Reset();
-            Close();
-            itWasChangeUser = false;
-        }*/
-
-        /*private int GetSelectedRow()
-        {
-            int index;
-            try
-            {
-                index = dataGridView.CurrentCell.RowIndex;
-            }
-            catch (Exception)
-            {
-                index = -1;
-            }
-            return index;
-        }*/
+ 
+        
 
         // поиск
        /* private void Search(object sender, EventArgs e)
@@ -144,42 +156,6 @@ namespace Security_Agency
             SearchResult search = new SearchResult();
             search.Show();
             search.MakeSearch(searchPatternTextBox.Text, dataGridView);
-        }*/
-
-        // список клиентов
-       /* public void ClientsList()
-        {
-            // select из таблицы Client 
-            // TODO: Надо бы склеить серию и номер паспорта
-            try
-            {
-                Authorization.ODBC.Select("\"Client\"", tableView: dataGridView,
-                values: new Dictionary<string, string>()
-                {
-                    ["\"ID\""] = "\"ID\"",
-                    ["\"Name\""] = "\"Имя\"",
-                    ["\"Surname\""] = "\"Фамилия\"",
-                    ["\"Otch\""] = "\"Отчество\"",
-                    ["\"Passport_series\""] = "\"Серия паспорта\"",
-                    ["\"Passport_ID\""] = "\"Номер\"",
-                    ["\"Date_of_Birth\""] = "\"Дата рождения\"",
-                    ["\"Home_address\""] = "\"Домашний адрес\"",
-                    ["\"INN\""] = "\"ИНН\""
-                }
-                );
-
-                _current_table = "\"Client\"";
-
-
-                FillValuesToAutocomplete();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-
-
         }*/
 
         // добавить клиента
@@ -206,8 +182,6 @@ namespace Security_Agency
             {
                 return;
             }
-
-
             int index = GetSelectedRow();
             if (index == -1 || _current_table == "")
             {
@@ -289,26 +263,24 @@ namespace Security_Agency
             return names;
         }*/
 
-      /*  private void FillValuesToAutocomplete()
+        //??????????
+        private void FillValuesToAutocomplete()
         {
             itemsForAutoComplete.Clear();
 
-            foreach (DataGridViewRow row in dataGridView.Rows)
+            foreach (DataGridViewRow row in DataGridView.Rows)
             {
                 foreach (DataGridViewCell cell in row.Cells)
                 {
                     itemsForAutoComplete.Add(cell.Value.ToString());
                 }
             }
-
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
             collection.AddRange(itemsForAutoComplete.ToArray());
-
-            this.searchPatternTextBox.AutoCompleteCustomSource = collection;
-        }*/
+            this.TextBoxSearchPattern.AutoCompleteCustomSource = collection;
+        }
 
         //Обновление записи в таблице через DataGridView
-
        /* private void UpdateEntry()
         {
             if (CheckNoAccess())
@@ -611,13 +583,10 @@ namespace Security_Agency
             }
         }*/
 
-        
-
        /* private void ToogleRawEditSwitch(object sender, EventArgs e)
         {
             this.dataGridView.ReadOnly = !this.dataGridView.ReadOnly;
         }*/
-
 
        /* private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -626,78 +595,59 @@ namespace Security_Agency
         }*/
 
 
-        //вызывает форму вида Add<formName> для редактирования
-       /* private void EditButton_Click(object sender, EventArgs e)
+        //
+        private int GetSelectedRow()
         {
-            if (CheckNoAccess())
-                return;
-
-            int curRow = GetSelectedRow();
-
-            if (curRow == -1)
-            {
-                MessageBox.Show("Сначала выберите запись для рекдатирования.");
-                return;
-            }
-
-            Config.valueFromTableForEdit.Clear();
-
-
-            foreach (DataGridViewCell cell in dataGridView.Rows[curRow].Cells)
-            {
-                Config.valueFromTableForEdit.Add(cell.OwningColumn.Name, cell.Value.ToString());
-            }
-
-            string nameForm = "Add" + _current_table.Substring(1, _current_table.Length - 2);
-
+            int index;
             try
             {
-                Config.CurrentIndex = Convert.ToInt32(dataGridView["ID", curRow].Value.ToString());
-                var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm), this) as Form;
-                form.Text = "Редактирование";
-                form.Show();
+                index = DataGridView.CurrentCell.RowIndex;
             }
-            catch (ArgumentNullException)
+            catch (Exception)
             {
-                MessageBox.Show("Форма для данного контекста еще не задана");
+                index = -1;
             }
-
-        
-        }*/
-
+            return index;
+        }
         //Обновляем текущую таблицу
-       /* private void UpdateTable()
+        private void UpdateTable()
         {
             Type t = this.GetType();
             string str = _current_table.Substring(1, _current_table.Length - 2) + "sList";
             MethodInfo method = t.GetMethod(str);
             method.Invoke(this, null);
-        }*/
-
-
-       /* private void UpdateButton_Click(object sender, EventArgs e)
-        {
-            UpdateTable();
-        }*/
-
-       /* private void отчетыToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new Reports().Show();
-        }*/
+        }
+        
 
         //вызывает метод вида <tableName>List
         private void ChangeCurrentContext(object sender, EventArgs e)
         {
+            this.ButtonAdd.Enabled = true;
+            this.ButtonEdit.Enabled = true;
+            this.ButtonDelete.Enabled = true;
+            this.ButtonUpdate.Enabled = true;
             this.LabelQueryInfo.Text = sender.ToString();
             Type t = this.GetType();
             MethodInfo method = t.GetMethod(Config.methodTranslate[sender.ToString()] + "List");
             method.Invoke(this, null);
         }
-        //вызывает форму вида Add<formName>
-        private void callFormFromCurrentContext(object sender, EventArgs e)
+
+        /*private void отчетыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // if (CheckNoAccess())
-           //     return;
+            new Reports().Show();
+        }*/
+        // смена пользователя
+        /*private void OnChangeUser(object sender, EventArgs e)
+        {
+            itWasChangeUser = true;
+            _link.Reset();
+            Close();
+            itWasChangeUser = false;
+        }*/
+
+        //вызывает форму вида Add<formName>
+        private void ButtonAdd_Click(object sender, EventArgs e)
+        {
             string nameForm = "Add" + _current_table.Substring(1, _current_table.Length - 2);
             try
             {
@@ -709,17 +659,45 @@ namespace Security_Agency
                 MessageBox.Show("Форма для данного контекста еще не задана");
             }
         }
+        //вызывает форму вида Add<formName> для редактирования
+        private void ButtonEdit_Click(object sender, EventArgs e)
+        {
+            int curRow = GetSelectedRow();
+            if (curRow == -1)
+            {
+                MessageBox.Show("Сначала выберите запись для рекдатирования.");
+                return;
+            }
+            Config.valueFromTableForEdit.Clear();
+            foreach (DataGridViewCell cell in DataGridView.Rows[curRow].Cells)
+            {
+                Config.valueFromTableForEdit.Add(cell.OwningColumn.Name, cell.Value.ToString());
+            }
+            string nameForm = "Add" + _current_table.Substring(1, _current_table.Length - 2);
+            try
+            {
+                Config.CurrentIndex = Convert.ToInt32(DataGridView["ID", curRow].Value.ToString());
+                var form = Activator.CreateInstance(Type.GetType("Security_Agency." + nameForm), this) as Form;
+                form.Text = "Редактирование";
+                form.Show();
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Форма для данного контекста еще не задана");
+            }        
+        }
+        //
 
+        //
+        private void ButtonUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateTable();
+        }
         // Закрытие приложения
         private void OnClose(object sender, FormClosedEventArgs e)
         {
             if (!itWasChangeUser)
                 _link.Close();
-        }
-
-        private void workWithClientsTSMI_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

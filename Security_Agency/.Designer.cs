@@ -28,54 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ButtonEdit = new System.Windows.Forms.Button();
+            this.ButtonAdd = new System.Windows.Forms.Button();
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.LabelQueryInfo = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.функционалToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.workWithClientsTSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ButtonDelete = new System.Windows.Forms.Button();
+            this.TextBoxSearchPattern = new System.Windows.Forms.TextBox();
+            this.ButtonUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button2
+            // ButtonEdit
             // 
-            this.button2.Location = new System.Drawing.Point(559, 410);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ButtonEdit.Location = new System.Drawing.Point(701, 479);
+            this.ButtonEdit.Name = "ButtonEdit";
+            this.ButtonEdit.Size = new System.Drawing.Size(134, 54);
+            this.ButtonEdit.TabIndex = 2;
+            this.ButtonEdit.Text = "Редактировать";
+            this.ButtonEdit.UseVisualStyleBackColor = true;
+            this.ButtonEdit.Click += new System.EventHandler(this.ButtonEdit_Click);
             // 
-            // button1
+            // ButtonAdd
             // 
-            this.button1.Location = new System.Drawing.Point(439, 401);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 40);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.callFormFromCurrentContext);
+            this.ButtonAdd.Location = new System.Drawing.Point(545, 479);
+            this.ButtonAdd.Name = "ButtonAdd";
+            this.ButtonAdd.Size = new System.Drawing.Size(134, 54);
+            this.ButtonAdd.TabIndex = 1;
+            this.ButtonAdd.Text = "Добавить";
+            this.ButtonAdd.UseVisualStyleBackColor = true;
+            this.ButtonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // DataGridView
             // 
             this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView.Location = new System.Drawing.Point(30, 80);
+            this.DataGridView.Location = new System.Drawing.Point(12, 76);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.RowTemplate.Height = 24;
-            this.DataGridView.Size = new System.Drawing.Size(1131, 272);
+            this.DataGridView.Size = new System.Drawing.Size(1228, 365);
             this.DataGridView.TabIndex = 0;
             // 
             // LabelQueryInfo
             // 
             this.LabelQueryInfo.AutoSize = true;
-            this.LabelQueryInfo.Location = new System.Drawing.Point(27, 35);
+            this.LabelQueryInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelQueryInfo.Location = new System.Drawing.Point(9, 39);
             this.LabelQueryInfo.Name = "LabelQueryInfo";
-            this.LabelQueryInfo.Size = new System.Drawing.Size(46, 17);
+            this.LabelQueryInfo.Size = new System.Drawing.Size(0, 18);
             this.LabelQueryInfo.TabIndex = 1;
-            this.LabelQueryInfo.Text = "label1";
             // 
             // menuStrip1
             // 
@@ -101,26 +104,45 @@
             this.workWithClientsTSMI.Name = "workWithClientsTSMI";
             this.workWithClientsTSMI.Size = new System.Drawing.Size(222, 26);
             this.workWithClientsTSMI.Text = "Работа с клиентами";
-            this.workWithClientsTSMI.Click += new System.EventHandler(this.workWithClientsTSMI_Click);
+            this.workWithClientsTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
-            // button3
+            // ButtonDelete
             // 
-            this.button3.Location = new System.Drawing.Point(656, 409);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ButtonDelete.Location = new System.Drawing.Point(858, 479);
+            this.ButtonDelete.Name = "ButtonDelete";
+            this.ButtonDelete.Size = new System.Drawing.Size(134, 54);
+            this.ButtonDelete.TabIndex = 4;
+            this.ButtonDelete.Text = "Удалить";
+            this.ButtonDelete.UseVisualStyleBackColor = true;
+            // 
+            // TextBoxSearchPattern
+            // 
+            this.TextBoxSearchPattern.Location = new System.Drawing.Point(12, 511);
+            this.TextBoxSearchPattern.Name = "TextBoxSearchPattern";
+            this.TextBoxSearchPattern.Size = new System.Drawing.Size(250, 22);
+            this.TextBoxSearchPattern.TabIndex = 5;
+            // 
+            // ButtonUpdate
+            // 
+            this.ButtonUpdate.Location = new System.Drawing.Point(1012, 479);
+            this.ButtonUpdate.Name = "ButtonUpdate";
+            this.ButtonUpdate.Size = new System.Drawing.Size(134, 54);
+            this.ButtonUpdate.TabIndex = 6;
+            this.ButtonUpdate.Text = "Обновить";
+            this.ButtonUpdate.UseVisualStyleBackColor = true;
+            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1275, 567);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.ButtonUpdate);
+            this.Controls.Add(this.TextBoxSearchPattern);
+            this.Controls.Add(this.ButtonDelete);
             this.Controls.Add(this.LabelQueryInfo);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ButtonEdit);
+            this.Controls.Add(this.ButtonAdd);
             this.Controls.Add(this.DataGridView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -137,14 +159,16 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ButtonEdit;
+        private System.Windows.Forms.Button ButtonAdd;
         private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.Label LabelQueryInfo;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem функционалToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem workWithClientsTSMI;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ButtonDelete;
+        private System.Windows.Forms.TextBox TextBoxSearchPattern;
+        private System.Windows.Forms.Button ButtonUpdate;
     }
 }
 
