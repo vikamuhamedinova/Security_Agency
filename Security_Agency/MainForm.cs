@@ -725,5 +725,10 @@ namespace Security_Agency
             if (!itWasChangeUser)
                 _link.Close();
         }
+
+        private void workWithClientsTSMI_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
