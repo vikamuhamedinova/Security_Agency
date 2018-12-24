@@ -81,7 +81,6 @@ namespace Security_Agency
             if (Text == "Редактирование")
             {
                 this.buttonAddClient.Text = "Сохранить";
-
                 textBoxSurnameInput.Text = Config.valueFromTableForEdit["Фамилия"];
                 textBoxNameInput.Text = Config.valueFromTableForEdit["Имя"];
                 textBoxMiddleNameInput.Text = Config.valueFromTableForEdit["Отчество"];
