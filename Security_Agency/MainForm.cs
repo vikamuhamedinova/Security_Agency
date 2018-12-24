@@ -19,7 +19,7 @@ namespace Security_Agency
         private string _current_table = "";
         //private delegate void CurrentFunction(object sender, EventArgs e);
         //private CurrentFunction _currFunc = null;
-        //private bool itWasReplaceFKtoName = false;
+        private bool itWasReplaceFKtoName = false;
         List<string> itemsForAutoComplete;
 
         public MainForm(AccessRoles role, Authorization link)
@@ -57,7 +57,8 @@ namespace Security_Agency
             // select из таблицы Client 
             try
             {
-                Authorization.DBC.Select("\"Client\"", tableView: DataGridView,
+                string currentTable = "\"Client\"";
+                Authorization.DBC.Select(currentTable, tableView: DataGridView,
                 values: new Dictionary<string, string>()
                 {
                     ["\"PK_Client\""] = "\"ID\"",
@@ -69,11 +70,80 @@ namespace Security_Agency
                     ["\"Resident_Address\""] = "\"Адрес проживания\""
                 }
                 );
-                _current_table = "\"Client\"";
+                _current_table = currentTable;
                 //FillValuesToAutocomplete();
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+        // список договоров
+        public void ContractsList()
+        {
+            try
+            {
+                string currentTable = "\"Contract\"";
+                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                values: new Dictionary<string, string>()
+                {
+                    ["\"PK_Contract\""] = "\"ID\"",
+                    ["\"Contract_ID\""] = "\"Номер контракта\"",
+                    ["\"Date_Contract\""] = "\"Дата заключения\"",
+                    ["\"PK_Client\""] = "\"Клиент\"",
+                    ["\"PK_Apartment\""] = "\"Квартира\"",
+                    ["\"PK_Employee\""] = "\"Сотрудник\""
+                }
+                );
+                itWasReplaceFKtoName = true;
+                for(int i = 0; i < DataGridView.Rows.Count-1; i++)
+                {
+                    DataGridViewRow row = DataGridView.Rows[i];
+                    row.Cells["Клиент"].Value = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Client\"", row.Cells["Клиент"].Value.ToString());
+                    row.Cells["Квартира"].Value = Authorization.DBC.GetNameByFK("\"Address\"", "\"Apartment\"", row.Cells["Квартира"].Value.ToString());
+                    row.Cells["Сотрудник"].Value = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+                }
+                itWasReplaceFKtoName = false;
+                _current_table = currentTable;
+                //FillValuesToAutocomplete();
+            }
+            catch (Exception ex)
+            {
+                itWasReplaceFKtoName = false;
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+        //
+        public void EmployeesList()
+        {
+            try
+            {
+                string currentTable = "\"Employee\"";
+                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                values: new Dictionary<string, string>()
+                {
+                    ["\"PK_Employee\""] = "\"ID\"",
+                    ["\"Surname\""] = "\"Фамилия\"",
+                    ["\"Name\""] = "\"Имя\"",
+                    ["\"Middle_Name\""] = "\"Отчество\"",
+                    ["\"Pasport_ID\""] = "\"Номер паспорта\"",
+                    ["\"INN\""] = "\"ИНН\"",
+                    ["\"PK_Position\""] = "\"Должность\""
+                }
+                );
+                itWasReplaceFKtoName = true;
+                for (int i = 0; i < DataGridView.Rows.Count - 1; i++)
+                {
+                    DataGridViewRow row = DataGridView.Rows[i];
+                    row.Cells["Должность"].Value = Authorization.DBC.GetNameByFK("\"Position_Title\"", "\"Position\"", row.Cells["Должность"].Value.ToString());
+                }
+                itWasReplaceFKtoName = false;
+                _current_table = currentTable;
+               // FillValuesToAutocomplete();
+            }
+            catch (Exception ex)
+            {
+                itWasReplaceFKtoName = false;
                 MessageBox.Show(ex.Message.ToString());
             }
         }
@@ -265,88 +335,9 @@ namespace Security_Agency
             new AddContract().Show();
         }*/
 
-        /*public void ContractsList()
-        {
-            try
-            {
-                string currentTable = "\"Contract\"";
-                Authorization.ODBC.Select(currentTable, tableView: dataGridView,
-                values: new Dictionary<string, string>()
-                {
-                    ["\"ID\""] = "\"ID\"",
-                    ["\"Date\""] = "\"Дата\"",
-                    ["\"ID_client\""] = "\"Клиент\"",
-                    ["\"Apartment_ID\""] = "\"Квартира\"",
-                    ["\"Subscription_fee\""] = "\"Цена договора\"",
-                    ["\"ID_employee_client\""] = "\"Сотрудник\""
-                }
-                );
+        
 
-                //Для договора можно оставить первичный ключ
-
-                dataGridView.Columns["ID"].Visible = true;
-
-                itWasReplaceFKtoName = true;
-
-                foreach (DataGridViewRow row in dataGridView.Rows)
-                {
-                    row.Cells["Клиент"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", row.Cells["Клиент"].Value.ToString());
-                    row.Cells["Квартира"].Value = Authorization.ODBC.getNameByFK("\"Address\"", "\"Apartment\"", row.Cells["Квартира"].Value.ToString());
-                    row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
-                    row.Cells["Цена договора"].Value = Convert.ToDouble(row.Cells["Цена договора"].Value.ToString()).ToString();
-                }
-
-                itWasReplaceFKtoName = false;
-
-                _current_table = currentTable;
-
-                FillValuesToAutocomplete();
-            }
-            catch (Exception ex)
-            {
-                itWasReplaceFKtoName = false;
-                MessageBox.Show(ex.Message.ToString());
-            }
-
-
-        }*/
-
-       /*public void EmployeesList()
-        {
-            try
-            {
-                string currentTable = "\"Employee\"";
-                Authorization.ODBC.Select(currentTable, tableView: dataGridView,
-                values: new Dictionary<string, string>()
-                {
-                    ["\"ID\""] = "\"ID\"",
-                    ["\"Surname\""] = "\"Фамилия\"",
-                    ["\"Name\""] = "\"Имя\"",
-                    ["\"Otch\""] = "\"Отчество\"",
-                    ["\"ID_position\""] = "\"Должность\""
-                }
-                );
-
-                itWasReplaceFKtoName = true;
-
-                foreach (DataGridViewRow row in dataGridView.Rows)
-                {
-                    row.Cells["Должность"].Value = Authorization.ODBC.getNameByFK("\"Name\"", "\"Position\"", row.Cells["Должность"].Value.ToString());
-                }
-
-                itWasReplaceFKtoName = false;
-
-
-                _current_table = currentTable;
-
-                FillValuesToAutocomplete();
-            }
-            catch (Exception ex)
-            {
-                itWasReplaceFKtoName = false;
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }*/
+       
 
        /* public void PaymentsList()
         {
@@ -578,13 +569,13 @@ namespace Security_Agency
             new Reports().Show();
         }*/
         // смена пользователя
-        /*private void OnChangeUser(object sender, EventArgs e)
+        private void ChangeUser(object sender, EventArgs e)
         {
             itWasChangeUser = true;
             _link.Reset();
             Close();
             itWasChangeUser = false;
-        }*/
+        }
 
         //вызывает форму вида Add<formName>
         private void ButtonAdd_Click(object sender, EventArgs e)
@@ -649,15 +640,15 @@ namespace Security_Agency
                         Authorization.DBC.Delete("\"Client\"", new Tuple<string, string>("\"PK_Client\"", id));
                         ClientsList();
                         break;
-                   /* case "\"Contract\"":
-                        Authorization.DBC.Delete("\"Contract\"", new Tuple<string, string>("\"ID\"", id));
+                    case "\"Contract\"":
+                        Authorization.DBC.Delete("\"Contract\"", new Tuple<string, string>("\"PK_Contract\"", id));
                         ContractsList();
                         break;
                     case "\"Employee\"":
-                        Authorization.DBC.Delete("\"Employee\"", new Tuple<string, string>("\"ID\"", id));
+                        Authorization.DBC.Delete("\"Employee\"", new Tuple<string, string>("\"PK_Employee\"", id));
                         EmployeesList();
                         break;
-                    case "\"Payment\"":
+                    /*case "\"Payment\"":
                         Authorization.DBC.Delete("\"Payment\"", new Tuple<string, string>("\"ID\"", id));
                         PaymentsList();
                         break;

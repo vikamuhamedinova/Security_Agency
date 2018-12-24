@@ -21,7 +21,7 @@ namespace Security_Agency
         public AddClient(MainForm form)
         {
             InitializeComponent();
-            //ClearForm();
+            ClearForm();
             mainForm = form;
         }
         //
