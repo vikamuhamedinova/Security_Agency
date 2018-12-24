@@ -515,7 +515,8 @@ namespace Security_Agency
             try
             {
                 var form = Activator.CreateInstance(Type.GetType("Security_Agency." + nameForm), this) as Form;
-                form.Show();
+                form.ShowDialog();
+                UpdateTable();
             }
             catch (ArgumentNullException)
             {
@@ -542,7 +543,8 @@ namespace Security_Agency
                 Config.CurrentIndex = Convert.ToInt32(DataGridView["ID", curRow].Value.ToString());
                 var form = Activator.CreateInstance(Type.GetType("Security_Agency." + nameForm), this) as Form;
                 form.Text = "Редактирование";
-                form.Show();
+                form.ShowDialog();
+                UpdateTable();
             }
             catch (ArgumentNullException)
             {

@@ -37,48 +37,56 @@
             // labelSurnameInput
             // 
             this.labelSurnameInput.AutoSize = true;
-            this.labelSurnameInput.Location = new System.Drawing.Point(77, 9);
+            this.labelSurnameInput.Location = new System.Drawing.Point(103, 11);
+            this.labelSurnameInput.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSurnameInput.Name = "labelSurnameInput";
-            this.labelSurnameInput.Size = new System.Drawing.Size(96, 13);
+            this.labelSurnameInput.Size = new System.Drawing.Size(122, 17);
             this.labelSurnameInput.TabIndex = 35;
             this.labelSurnameInput.Text = "Адресс квартиры";
             // 
             // textBoxApartmentAdressInput
             // 
-            this.textBoxApartmentAdressInput.Location = new System.Drawing.Point(13, 25);
+            this.textBoxApartmentAdressInput.Location = new System.Drawing.Point(17, 31);
+            this.textBoxApartmentAdressInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxApartmentAdressInput.Name = "textBoxApartmentAdressInput";
-            this.textBoxApartmentAdressInput.Size = new System.Drawing.Size(227, 20);
+            this.textBoxApartmentAdressInput.Size = new System.Drawing.Size(301, 22);
             this.textBoxApartmentAdressInput.TabIndex = 34;
             // 
             // buttonCancelAddClient
             // 
-            this.buttonCancelAddClient.Location = new System.Drawing.Point(136, 68);
+            this.buttonCancelAddClient.Location = new System.Drawing.Point(181, 84);
+            this.buttonCancelAddClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCancelAddClient.Name = "buttonCancelAddClient";
-            this.buttonCancelAddClient.Size = new System.Drawing.Size(117, 38);
+            this.buttonCancelAddClient.Size = new System.Drawing.Size(156, 47);
             this.buttonCancelAddClient.TabIndex = 33;
             this.buttonCancelAddClient.Text = "Отмена";
             this.buttonCancelAddClient.UseVisualStyleBackColor = true;
+            this.buttonCancelAddClient.Click += new System.EventHandler(this.ButtonCancelAddApartmentClick);
             // 
             // buttonAddApartment
             // 
-            this.buttonAddApartment.Location = new System.Drawing.Point(13, 68);
+            this.buttonAddApartment.Location = new System.Drawing.Point(17, 84);
+            this.buttonAddApartment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAddApartment.Name = "buttonAddApartment";
-            this.buttonAddApartment.Size = new System.Drawing.Size(117, 38);
+            this.buttonAddApartment.Size = new System.Drawing.Size(156, 47);
             this.buttonAddApartment.TabIndex = 32;
             this.buttonAddApartment.Text = "Добавить квартиру";
             this.buttonAddApartment.UseVisualStyleBackColor = true;
+            this.buttonAddApartment.Click += new System.EventHandler(this.ButtonAddApartment_Click);
             // 
             // AddApartment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(263, 121);
+            this.ClientSize = new System.Drawing.Size(351, 149);
             this.Controls.Add(this.labelSurnameInput);
             this.Controls.Add(this.textBoxApartmentAdressInput);
             this.Controls.Add(this.buttonCancelAddClient);
             this.Controls.Add(this.buttonAddApartment);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddApartment";
             this.Text = "Добавление квартиры";
+            this.Load += new System.EventHandler(this.AddApartment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

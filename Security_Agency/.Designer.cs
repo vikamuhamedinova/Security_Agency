@@ -44,6 +44,7 @@
             this.ButtonDelete = new System.Windows.Forms.Button();
             this.TextBoxSearchPattern = new System.Windows.Forms.TextBox();
             this.ButtonUpdate = new System.Windows.Forms.Button();
+            this.вызовыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -105,7 +106,8 @@
             this.функционалToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.workWithClientsTSMI,
             this.workWithСontractsTSMI,
-            this.WorkWithEmployeeTSMI});
+            this.WorkWithEmployeeTSMI,
+            this.вызовыToolStripMenuItem});
             this.функционалToolStripMenuItem.Name = "функционалToolStripMenuItem";
             this.функционалToolStripMenuItem.Size = new System.Drawing.Size(107, 24);
             this.функционалToolStripMenuItem.Text = "Функционал";
@@ -185,6 +187,12 @@
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
+            // вызовыToolStripMenuItem
+            // 
+            this.вызовыToolStripMenuItem.Name = "вызовыToolStripMenuItem";
+            this.вызовыToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.вызовыToolStripMenuItem.Text = "Сигналы тревоги";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -228,6 +236,7 @@
         private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ChangeUserTSMI;
+        private System.Windows.Forms.ToolStripMenuItem вызовыToolStripMenuItem;
     }
 }
 
