@@ -35,15 +35,15 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.функционалToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.workWithClientsTSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.ButtonDelete = new System.Windows.Forms.Button();
-            this.TextBoxSearchPattern = new System.Windows.Forms.TextBox();
-            this.ButtonUpdate = new System.Windows.Forms.Button();
             this.workWithСontractsTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.WorkWithEmployeeTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ChangeUserTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.ButtonDelete = new System.Windows.Forms.Button();
+            this.TextBoxSearchPattern = new System.Windows.Forms.TextBox();
+            this.ButtonUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -117,33 +117,6 @@
             this.workWithClientsTSMI.Text = "Работа с клиентами";
             this.workWithClientsTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
-            // ButtonDelete
-            // 
-            this.ButtonDelete.Location = new System.Drawing.Point(858, 479);
-            this.ButtonDelete.Name = "ButtonDelete";
-            this.ButtonDelete.Size = new System.Drawing.Size(134, 54);
-            this.ButtonDelete.TabIndex = 4;
-            this.ButtonDelete.Text = "Удалить";
-            this.ButtonDelete.UseVisualStyleBackColor = true;
-            this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
-            // 
-            // TextBoxSearchPattern
-            // 
-            this.TextBoxSearchPattern.Location = new System.Drawing.Point(12, 511);
-            this.TextBoxSearchPattern.Name = "TextBoxSearchPattern";
-            this.TextBoxSearchPattern.Size = new System.Drawing.Size(250, 22);
-            this.TextBoxSearchPattern.TabIndex = 5;
-            // 
-            // ButtonUpdate
-            // 
-            this.ButtonUpdate.Location = new System.Drawing.Point(1012, 479);
-            this.ButtonUpdate.Name = "ButtonUpdate";
-            this.ButtonUpdate.Size = new System.Drawing.Size(134, 54);
-            this.ButtonUpdate.TabIndex = 6;
-            this.ButtonUpdate.Text = "Обновить";
-            this.ButtonUpdate.UseVisualStyleBackColor = true;
-            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
-            // 
             // workWithСontractsTSMI
             // 
             this.workWithСontractsTSMI.Name = "workWithСontractsTSMI";
@@ -184,6 +157,33 @@
             this.ChangeUserTSMI.Size = new System.Drawing.Size(244, 26);
             this.ChangeUserTSMI.Text = "Сменить пользователя";
             this.ChangeUserTSMI.Click += new System.EventHandler(this.ChangeUser);
+            // 
+            // ButtonDelete
+            // 
+            this.ButtonDelete.Location = new System.Drawing.Point(858, 479);
+            this.ButtonDelete.Name = "ButtonDelete";
+            this.ButtonDelete.Size = new System.Drawing.Size(134, 54);
+            this.ButtonDelete.TabIndex = 4;
+            this.ButtonDelete.Text = "Удалить";
+            this.ButtonDelete.UseVisualStyleBackColor = true;
+            this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
+            // 
+            // TextBoxSearchPattern
+            // 
+            this.TextBoxSearchPattern.Location = new System.Drawing.Point(12, 511);
+            this.TextBoxSearchPattern.Name = "TextBoxSearchPattern";
+            this.TextBoxSearchPattern.Size = new System.Drawing.Size(250, 22);
+            this.TextBoxSearchPattern.TabIndex = 5;
+            // 
+            // ButtonUpdate
+            // 
+            this.ButtonUpdate.Location = new System.Drawing.Point(1012, 479);
+            this.ButtonUpdate.Name = "ButtonUpdate";
+            this.ButtonUpdate.Size = new System.Drawing.Size(134, 54);
+            this.ButtonUpdate.TabIndex = 6;
+            this.ButtonUpdate.Text = "Обновить";
+            this.ButtonUpdate.UseVisualStyleBackColor = true;
+            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
             // MainForm
             // 

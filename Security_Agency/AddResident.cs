@@ -12,9 +12,18 @@ namespace Security_Agency
 {
     public partial class AddResident : Form
     {
+        private MainForm mainForm;
+
         public AddResident()
         {
             InitializeComponent();
+        }
+        //
+        public AddResident(MainForm form)
+        {
+            InitializeComponent();
+            ClearForm();
+            mainForm = form;
         }
         //
         private void ClearForm()
@@ -67,12 +76,11 @@ namespace Security_Agency
             return newDict;
         }
         //
-        private void AddClient_Load(object sender, EventArgs e)
+        private void AddResident_Load(object sender, EventArgs e)
         {
             if (Text == "Редактирование")
             {
                 this.buttonAddResident.Text = "Сохранить";
-
                 textBoxSurnameInput.Text = Config.valueFromTableForEdit["Фамилия"];
                 textBoxNameInput.Text = Config.valueFromTableForEdit["Имя"];
                 textBoxMiddleNameInput.Text = Config.valueFromTableForEdit["Отчество"];
