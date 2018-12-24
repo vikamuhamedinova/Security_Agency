@@ -38,6 +38,12 @@
             this.ButtonDelete = new System.Windows.Forms.Button();
             this.TextBoxSearchPattern = new System.Windows.Forms.TextBox();
             this.ButtonUpdate = new System.Windows.Forms.Button();
+            this.workWithСontractsTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.WorkWithEmployeeTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ChangeUserTSMI = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +90,10 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.функционалToolStripMenuItem});
+            this.функционалToolStripMenuItem,
+            this.справочникиToolStripMenuItem,
+            this.отчетыToolStripMenuItem,
+            this.настройкиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1275, 28);
@@ -94,7 +103,9 @@
             // функционалToolStripMenuItem
             // 
             this.функционалToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.workWithClientsTSMI});
+            this.workWithClientsTSMI,
+            this.workWithСontractsTSMI,
+            this.WorkWithEmployeeTSMI});
             this.функционалToolStripMenuItem.Name = "функционалToolStripMenuItem";
             this.функционалToolStripMenuItem.Size = new System.Drawing.Size(107, 24);
             this.функционалToolStripMenuItem.Text = "Функционал";
@@ -102,7 +113,7 @@
             // workWithClientsTSMI
             // 
             this.workWithClientsTSMI.Name = "workWithClientsTSMI";
-            this.workWithClientsTSMI.Size = new System.Drawing.Size(222, 26);
+            this.workWithClientsTSMI.Size = new System.Drawing.Size(246, 26);
             this.workWithClientsTSMI.Text = "Работа с клиентами";
             this.workWithClientsTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
@@ -132,6 +143,47 @@
             this.ButtonUpdate.Text = "Обновить";
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
+            // 
+            // workWithСontractsTSMI
+            // 
+            this.workWithСontractsTSMI.Name = "workWithСontractsTSMI";
+            this.workWithСontractsTSMI.Size = new System.Drawing.Size(246, 26);
+            this.workWithСontractsTSMI.Text = "Работа с договорами";
+            this.workWithСontractsTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
+            // 
+            // WorkWithEmployeeTSMI
+            // 
+            this.WorkWithEmployeeTSMI.Name = "WorkWithEmployeeTSMI";
+            this.WorkWithEmployeeTSMI.Size = new System.Drawing.Size(246, 26);
+            this.WorkWithEmployeeTSMI.Text = "Работа с сотрудниками";
+            this.WorkWithEmployeeTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
+            // 
+            // справочникиToolStripMenuItem
+            // 
+            this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
+            this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(115, 24);
+            this.справочникиToolStripMenuItem.Text = "Справочники";
+            // 
+            // отчетыToolStripMenuItem
+            // 
+            this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
+            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
+            this.отчетыToolStripMenuItem.Text = "Отчеты";
+            // 
+            // настройкиToolStripMenuItem
+            // 
+            this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ChangeUserTSMI});
+            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
+            this.настройкиToolStripMenuItem.Text = "Настройки";
+            // 
+            // ChangeUserTSMI
+            // 
+            this.ChangeUserTSMI.Name = "ChangeUserTSMI";
+            this.ChangeUserTSMI.Size = new System.Drawing.Size(244, 26);
+            this.ChangeUserTSMI.Text = "Сменить пользователя";
+            this.ChangeUserTSMI.Click += new System.EventHandler(this.ChangeUser);
             // 
             // MainForm
             // 
@@ -170,6 +222,12 @@
         private System.Windows.Forms.Button ButtonDelete;
         private System.Windows.Forms.TextBox TextBoxSearchPattern;
         private System.Windows.Forms.Button ButtonUpdate;
+        private System.Windows.Forms.ToolStripMenuItem workWithСontractsTSMI;
+        private System.Windows.Forms.ToolStripMenuItem WorkWithEmployeeTSMI;
+        private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ChangeUserTSMI;
     }
 }
 

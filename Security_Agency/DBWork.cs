@@ -81,25 +81,6 @@ namespace Security_Agency
             return adapter;
         }
 
-        /*public string getNameByFK(string what, string table, string id)
-        {
-            string selectString = String.Format("select {0} from {1} where \"ID\" = {2}", what, table, id);
-
-            NpgsqlCommand command = new NpgsqlCommand(selectString, _connection);
-            NpgsqlDataReader reader = command.ExecuteReader();
-            string ret = "";
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    ret = reader.GetString(0);
-                }
-            }
-            reader.Close();
-            return ret;
-        }*/
-
-
         /// <summary>
         /// Вставляет в таблицу table значения из словаря vals
         /// </summary>
@@ -141,8 +122,8 @@ namespace Security_Agency
                 updateString += k + " = " + dict[k] + " ,";
             }
             updateString = updateString.Substring(0, updateString.Length - 2);
-            string newTable = table.Substring(1, table.Length - 2);
-            updateString += String.Format(" where \"PK_{0}\" = {1}", newTable, idEntry);
+            string nameTable = table.Substring(1, table.Length - 2);
+            updateString += String.Format(" where \"PK_{0}\" = {1}", nameTable, idEntry);
             //MessageBox.Show(updateString);
             NpgsqlCommand command = new NpgsqlCommand(updateString, _connection);
             command.ExecuteNonQuery();
@@ -163,8 +144,24 @@ namespace Security_Agency
             command.ExecuteNonQuery();
         }
 
-
-
+        // 
+        public string GetNameByFK(string what, string table, string id)
+        {
+            string nameTable = table.Substring(1, table.Length - 2);
+            string selectString = String.Format("select {0} from {1} where \"PK_{2}\" = {3}", what, table, nameTable, id);
+            NpgsqlCommand command = new NpgsqlCommand(selectString, _connection);
+            NpgsqlDataReader reader = command.ExecuteReader();
+            string ret = "";
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    ret = reader.GetString(0);
+                }
+            }
+            reader.Close();
+            return ret;
+        }
         /// <summary>
         /// Обновление записи в таблице.
         /// </summary>
