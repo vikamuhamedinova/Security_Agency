@@ -113,7 +113,7 @@ namespace Security_Agency
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-        //
+        // список сотрудников
         public void EmployeesList()
         {
             try
@@ -226,21 +226,6 @@ namespace Security_Agency
             search.MakeSearch(searchPatternTextBox.Text, dataGridView);
         }*/
 
-        // добавить клиента
-        /*private void AddClient(object sender, EventArgs e)
-        {
-            // добавлять клиентов могут только директор и 
-            // сотрудник отдела по работе с клиентами
-            if (NoAccessMessageBox(
-                _currentRole == AccessRoles.Director
-                || _currentRole == AccessRoles.Manager)
-            )
-                return;
-
-            new AddClient().Show();
-
-        }*/
-
         /*private void topLevelExit_Click(object sender, EventArgs e)
         {
             _link.Close();
@@ -249,12 +234,10 @@ namespace Security_Agency
        /* private List<string> GetRowValues(int id)
         {
             List<string> values = new List<string>();
-
             foreach (DataGridViewCell cell in dataGridView.Rows[id].Cells)
             {
                 values.Add(cell.Value.ToString());
             }
-
             return values;
         }*/
 
@@ -262,7 +245,6 @@ namespace Security_Agency
        /* public List<string> GetTableColumnsName(string table)
         {
             List<string> names = new List<string>();
-
             foreach (DataGridViewColumn column in dataGridView.Columns)
             {
                 if (_current_table == "\"Client\"") //TODO: Добавить русские названия
@@ -270,7 +252,6 @@ namespace Security_Agency
                 else
                     names.Add(column.Name);
             }
-
             return names;
         }*/
 
@@ -278,7 +259,6 @@ namespace Security_Agency
         private void FillValuesToAutocomplete()
         {
             itemsForAutoComplete.Clear();
-
             foreach (DataGridViewRow row in DataGridView.Rows)
             {
                 foreach (DataGridViewCell cell in row.Cells)
@@ -296,9 +276,7 @@ namespace Security_Agency
         {
             if (CheckNoAccess())
                 return;
-
             int index = GetSelectedRow();
-
             if (index == -1 || _current_table == "")
             {
                 MessageBox.Show("Необходимо выбрать запись.");
@@ -307,11 +285,9 @@ namespace Security_Agency
             try
             {
                 string id = dataGridView["ID", index].Value.ToString();
-
                 //TODO: Можно объединить в словарь
                 List<string> columnNames = GetTableColumnsName(_current_table);
                 List<string> columnValues = GetRowValues(index);
-
                 Authorization.ODBC.Update(_current_table, id, columnNames, columnValues);
                 // _currFunc(null, null);
                 MessageBox.Show("Запись успешно обновлена.");
@@ -321,23 +297,6 @@ namespace Security_Agency
                 MessageBox.Show(ex.Message.ToString());
             }
         }*/
-
-       /* private void добавитьToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            // добавлять клиентов могут только директор и 
-            // сотрудник отдела по работе с клиентами
-            if (NoAccessMessageBox(
-                _currentRole == AccessRoles.Director
-                || _currentRole == AccessRoles.Manager)
-            )
-                return;
-
-            new AddContract().Show();
-        }*/
-
-        
-
-       
 
        /* public void PaymentsList()
         {
@@ -355,9 +314,7 @@ namespace Security_Agency
                     ["\"ID_accountant\""] = "\"Сотрудник\""
                 }
                 );
-               
                 itWasReplaceFKtoName = true;
-
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
                     row.Cells["Тип платежа"].Value = Authorization.ODBC.getNameByFK("\"Name\"", "\"InvoiceType\"", row.Cells["Тип платежа"].Value.ToString());
@@ -365,12 +322,8 @@ namespace Security_Agency
                     string id_client = Authorization.ODBC.getNameByFK("\"ID_client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
                     row.Cells["Договор"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", id_client);
                 }
-
                 itWasReplaceFKtoName = false;
-
-
                 _current_table = currentTable;
-
                 FillValuesToAutocomplete();
             }
             catch (Exception ex)
@@ -395,9 +348,7 @@ namespace Security_Agency
                     ["\"ID_accountant\""] = "\"Сотрудник\""
                 }
                 );
-
                 itWasReplaceFKtoName = true;
-
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
                     row.Cells["Тип"].Value = Authorization.ODBC.getNameByFK("\"Name\"", "\"FineType\"", row.Cells["Тип"].Value.ToString());
@@ -405,14 +356,9 @@ namespace Security_Agency
                     string id_client = Authorization.ODBC.getNameByFK("\"ID_client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
                     row.Cells["Договор"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", id_client);
                 }
-
                 itWasReplaceFKtoName = false;
-
                 _current_table = currentTable;
-
                 FillValuesToAutocomplete();
-
-
             }
             catch (Exception ex)
             {
@@ -439,9 +385,7 @@ namespace Security_Agency
                     ["\"ID_dispatcher_thiscall\""] = "\"Диспетчер\""
                 }
                 );
-
                 itWasReplaceFKtoName = true;
-
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
                     string idDisp = Authorization.ODBC.getNameByFK("\"ID_dispatcher\"", "\"DispatcherThisCall\"", row.Cells["Диспетчер"].Value.ToString());
@@ -456,13 +400,9 @@ namespace Security_Agency
                     string id_client = Authorization.ODBC.getNameByFK("\"ID_client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
                     row.Cells["Договор"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", id_client);
                 }
-
                 itWasReplaceFKtoName = false;
-
                 _current_table = currentTable;
-
                 FillValuesToAutocomplete();
-
             }
             catch (Exception ex)
             {
@@ -486,28 +426,19 @@ namespace Security_Agency
                     ["\"Call_ID\""] = "\"Сигнал тревоги\""
                 }
                 );
-
                 itWasReplaceFKtoName = true;
-
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
                     string contract_id_time = Authorization.ODBC.getNameByFK("\"Contract_ID\" || '_' || TO_CHAR(\"Date\", 'DD.MM.YYYY')", "\"Call\"", row.Cells["Сигнал тревоги"].Value.ToString());
                     string contract_id = contract_id_time.Split('_')[0];
                     string time = contract_id_time.Split('_')[1];
-
                     string client_id = Authorization.ODBC.getNameByFK("\"ID_client\"", "\"Contract\"", contract_id);
                     string fio = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", client_id);
-
                     row.Cells["Сигнал тревоги"].Value = fio + " " + time;
-      
                 }
-
                 itWasReplaceFKtoName = false;
-
                 _current_table = currentTable;
-
                 FillValuesToAutocomplete();
-
             }
             catch (Exception ex)
             {
