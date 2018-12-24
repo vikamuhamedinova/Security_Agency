@@ -58,6 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessRoles.cs" />
+    <Compile Include="AddApartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddApartment.Designer.cs">
+      <DependentUpon>AddApartment.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddApartment.resx">
+      <DependentUpon>AddApartment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddPosition.resx">
       <DependentUpon>AddPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddProperty.resx">
+      <DependentUpon>AddProperty.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddResident.resx">
       <DependentUpon>AddResident.cs</DependentUpon>
