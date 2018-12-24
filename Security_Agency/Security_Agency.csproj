@@ -76,17 +76,35 @@
     <Compile Include="AddContract.Designer.cs">
       <DependentUpon>AddContract.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddDetainedPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDetainedPerson.Designer.cs">
+      <DependentUpon>AddDetainedPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddForfeitType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForfeitType.Designer.cs">
+      <DependentUpon>AddForfeitType.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddInvoice.Designer.cs">
       <DependentUpon>AddInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPaymentType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPaymentType.Designer.cs">
+      <DependentUpon>AddPaymentType.cs</DependentUpon>
     </Compile>
     <Compile Include="AddPosition.cs">
       <SubType>Form</SubType>
@@ -105,6 +123,12 @@
     </Compile>
     <Compile Include="AddResident.Designer.cs">
       <DependentUpon>AddResident.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddStolenObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddStolenObject.Designer.cs">
+      <DependentUpon>AddStolenObject.cs</DependentUpon>
     </Compile>
     <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
@@ -129,8 +153,17 @@
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddDetainedPerson.resx">
+      <DependentUpon>AddDetainedPerson.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForfeitType.resx">
+      <DependentUpon>AddForfeitType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPaymentType.resx">
+      <DependentUpon>AddPaymentType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddPosition.resx">
       <DependentUpon>AddPosition.cs</DependentUpon>
@@ -140,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddResident.resx">
       <DependentUpon>AddResident.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddStolenObject.resx">
+      <DependentUpon>AddStolenObject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
