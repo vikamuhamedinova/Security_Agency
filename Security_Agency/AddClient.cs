@@ -13,6 +13,7 @@ namespace Security_Agency
     public partial class AddClient : Form
     {
         private MainForm mainForm;
+
         public AddClient()
         {
             InitializeComponent();

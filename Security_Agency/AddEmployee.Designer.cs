@@ -47,7 +47,7 @@
             // maskedtextBoxInputPassID
             // 
             this.maskedtextBoxInputPassID.Location = new System.Drawing.Point(16, 187);
-            this.maskedtextBoxInputPassID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.maskedtextBoxInputPassID.Margin = new System.Windows.Forms.Padding(4);
             this.maskedtextBoxInputPassID.Mask = "0000000000";
             this.maskedtextBoxInputPassID.Name = "maskedtextBoxInputPassID";
             this.maskedtextBoxInputPassID.Size = new System.Drawing.Size(301, 22);
@@ -56,7 +56,7 @@
             // buttonCancelAddEmployee
             // 
             this.buttonCancelAddEmployee.Location = new System.Drawing.Point(180, 320);
-            this.buttonCancelAddEmployee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancelAddEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelAddEmployee.Name = "buttonCancelAddEmployee";
             this.buttonCancelAddEmployee.Size = new System.Drawing.Size(156, 47);
             this.buttonCancelAddEmployee.TabIndex = 27;
@@ -67,7 +67,7 @@
             // buttonAddEmployee
             // 
             this.buttonAddEmployee.Location = new System.Drawing.Point(16, 320);
-            this.buttonAddEmployee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddEmployee.Name = "buttonAddEmployee";
             this.buttonAddEmployee.Size = new System.Drawing.Size(156, 47);
             this.buttonAddEmployee.TabIndex = 26;
@@ -88,7 +88,7 @@
             // textBoxMiddleNameInput
             // 
             this.textBoxMiddleNameInput.Location = new System.Drawing.Point(16, 139);
-            this.textBoxMiddleNameInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxMiddleNameInput.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxMiddleNameInput.Name = "textBoxMiddleNameInput";
             this.textBoxMiddleNameInput.Size = new System.Drawing.Size(301, 22);
             this.textBoxMiddleNameInput.TabIndex = 20;
@@ -106,7 +106,7 @@
             // textBoxNameInput
             // 
             this.textBoxNameInput.Location = new System.Drawing.Point(16, 91);
-            this.textBoxNameInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNameInput.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNameInput.Name = "textBoxNameInput";
             this.textBoxNameInput.Size = new System.Drawing.Size(301, 22);
             this.textBoxNameInput.TabIndex = 18;
@@ -134,7 +134,7 @@
             // textBoxSurnameInput
             // 
             this.textBoxSurnameInput.Location = new System.Drawing.Point(16, 43);
-            this.textBoxSurnameInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSurnameInput.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSurnameInput.Name = "textBoxSurnameInput";
             this.textBoxSurnameInput.Size = new System.Drawing.Size(301, 22);
             this.textBoxSurnameInput.TabIndex = 15;
@@ -142,7 +142,7 @@
             // maskedTextBoxInputINN
             // 
             this.maskedTextBoxInputINN.Location = new System.Drawing.Point(16, 238);
-            this.maskedTextBoxInputINN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.maskedTextBoxInputINN.Margin = new System.Windows.Forms.Padding(4);
             this.maskedTextBoxInputINN.Mask = "000000000000";
             this.maskedTextBoxInputINN.Name = "maskedTextBoxInputINN";
             this.maskedTextBoxInputINN.Size = new System.Drawing.Size(301, 22);
@@ -162,7 +162,7 @@
             // 
             this.comboBoxInputPosition.FormattingEnabled = true;
             this.comboBoxInputPosition.Location = new System.Drawing.Point(16, 287);
-            this.comboBoxInputPosition.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxInputPosition.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxInputPosition.Name = "comboBoxInputPosition";
             this.comboBoxInputPosition.Size = new System.Drawing.Size(301, 24);
             this.comboBoxInputPosition.TabIndex = 31;
@@ -196,9 +196,10 @@
             this.Controls.Add(this.labelNameInput);
             this.Controls.Add(this.labelSurnameInput);
             this.Controls.Add(this.textBoxSurnameInput);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddEmployee";
             this.Text = "Добавление сотрудника";
+            this.Load += new System.EventHandler(this.AddEmployee_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

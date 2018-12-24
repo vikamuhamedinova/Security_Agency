@@ -20,3 +20,4 @@ F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Sec
 F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddClient.resources
 F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddEmployee.resources
 F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddPosition.resources
+F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddResident.resources
