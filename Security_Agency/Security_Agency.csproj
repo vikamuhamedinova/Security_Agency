@@ -165,6 +165,9 @@
     <EmbeddedResource Include="AddForfeitType.resx">
       <DependentUpon>AddForfeitType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddInvoice.resx">
+      <DependentUpon>AddInvoice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddPaymentType.resx">
       <DependentUpon>AddPaymentType.cs</DependentUpon>
     </EmbeddedResource>
