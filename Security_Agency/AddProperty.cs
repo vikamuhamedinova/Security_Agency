@@ -28,13 +28,15 @@ namespace Security_Agency
         //
         private void ClearForm()
         {
-            textBoxPropertyInput.Text = "";
+            textBoxPropertyNameInput.Text = "";
+            maskedTextBoxPropertyCostInput.Text = "00000000.00";
         }
         // преобразование к строке
         private string ConvertToStringDB(string text)
         {
             return "'" + text + "'";
         }
+
         // убирает все пустые значения, выполняет преобразования к строке или к дате
         private Dictionary<string, string> PrepareData(Dictionary<string, string> vals)
         {
@@ -61,7 +63,8 @@ namespace Security_Agency
             if (Text == "Редактирование")
             {
                 this.buttonAddProperty.Text = "Сохранить";
-                textBoxApartmentAdressInput.Text = Config.valueFromTableForEdit["Адрес"];
+                textBoxPropertyNameInput.Text = Config.valueFromTableForEdit["Наименование"];
+                maskedTextBoxPropertyCostInput.Text = Config.valueFromTableForEdit["Стоимость"];
             }
             else
                 ClearForm();
@@ -69,7 +72,7 @@ namespace Security_Agency
         // 
         private void ButtonAddProperty_Click(object sender, EventArgs e)
         {
-            if (textBoxApartmentAdressInput.Text == "")
+            if (textBoxPropertyNameInput.Text == "" || maskedTextBoxPropertyCostInput.Text == "")
             {
                 MessageBox.Show("Не заполнено одно из обязательных полей");
             }
@@ -77,7 +80,8 @@ namespace Security_Agency
             {
                 Dictionary<string, string> vals = new Dictionary<string, string>()
                 {
-                    ["\"Address\""] = textBoxApartmentAdressInput.Text
+                    ["\"Property_Name\""] = textBoxPropertyNameInput.Text,
+                    ["\"Property_Cost\""] = maskedTextBoxPropertyCostInput.Text
                 };
                 vals = PrepareData(vals);
                 try

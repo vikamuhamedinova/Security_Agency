@@ -153,6 +153,9 @@
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddContract.resx">
+      <DependentUpon>AddContract.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddDetainedPerson.resx">
       <DependentUpon>AddDetainedPerson.cs</DependentUpon>
     </EmbeddedResource>
