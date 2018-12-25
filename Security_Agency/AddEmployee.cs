@@ -31,6 +31,7 @@ namespace Security_Agency
         // Заполнение формы при старте
         private void FillForm()
         {
+            ClearForm();
             UpdateComboBoxies();
         }
         // Обновление комбоБоксов при страте и добавлении квартир, сотрудников, клиентов

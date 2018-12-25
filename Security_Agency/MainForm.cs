@@ -88,7 +88,7 @@ namespace Security_Agency
                 values: new Dictionary<string, string>()
                 {
                     ["\"PK_Contract\""] = "\"ID\"",
-                    ["\"Contract_ID\""] = "\"Номер контракта\"",
+                    ["\"Contract_ID\""] = "\"Номер договора\"",
                     ["\"Date_Contract\""] = "\"Дата заключения\"",
                     ["\"PK_Client\""] = "\"Клиент\"",
                     ["\"PK_Apartment\""] = "\"Квартира\"",

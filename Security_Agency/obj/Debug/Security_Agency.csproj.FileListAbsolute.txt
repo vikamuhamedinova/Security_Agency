@@ -23,3 +23,9 @@ F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Sec
 F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddResident.resources
 F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddApartment.resources
 F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddProperty.resources
+F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddContract.resources
+F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddDetainedPerson.resources
+F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddForfeitType.resources
+F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddInvoice.resources
+F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddPaymentType.resources
+F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddStolenObject.resources
