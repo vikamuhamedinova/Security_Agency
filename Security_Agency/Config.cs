@@ -25,6 +25,12 @@ namespace Security_Agency
             ["Украденные вещи"] = "Stolen_stuffss"
         };
 
+        public static Dictionary<string, string> TrueFalse = new Dictionary<string, string>()
+        {
+            ["True"] = "Да",
+            ["False"] = "Нет"
+        };
+
         public static Dictionary<string, string> valueFromTableForEdit = new Dictionary<string, string>();
 
         public static int CurrentIndex;

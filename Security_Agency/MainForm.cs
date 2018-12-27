@@ -147,7 +147,43 @@ namespace Security_Agency
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-
+        // список вызовов
+        public void CallsList()
+        {
+            try
+            {
+                string currentTable = "\"Call\"";
+                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                values: new Dictionary<string, string>()
+                {
+                    ["\"PK_Call\""] = "\"ID\"",
+                    ["\"Call_Date\""] = "\"Дата вызова\"",
+                    ["\"Time_Call\""] = "\"Время вызова\"",
+                    ["\"Time_Arrive\""] = "\"Время прибытия экипажа\"",
+                    ["\"False_Sign\""] = "\"Ложный вызов\"",
+                    ["\"Hack_Sign\""] = "\"Был взлом\"",
+                    ["\"PK_Apartment\""] = "\"Квартира\"",
+                    ["\"PK_Employee\""] = "\"Сотрудник\""
+                }
+                );
+                itWasReplaceFKtoName = true;
+                for (int i = 0; i < DataGridView.Rows.Count - 1; i++)
+                {
+                    DataGridViewRow row = DataGridView.Rows[i];
+                    row.Cells["Был взлом"].Value = Config.TrueFalse[row.Cells["Был взлом"].Value.ToString()];
+                    row.Cells["Ложный вызов"].Value = Config.TrueFalse[row.Cells["Ложный вызов"].Value.ToString()];
+                    row.Cells["Квартира"].Value = Authorization.DBC.GetNameByFK("\"Address\"", "\"Apartment\"", row.Cells["Квартира"].Value.ToString());
+                    row.Cells["Сотрудник"].Value = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+                }
+                itWasReplaceFKtoName = false;
+                _current_table = currentTable;
+                //FillValuesToAutocomplete();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
 
       /*  /// <summary>
         /// Если condition false, показывает MessageBox с предупреждением
@@ -366,49 +402,7 @@ namespace Security_Agency
             }
         }*/
 
-       /* public void CallsList()
-        {
-            try
-            {
-                string currentTable = "\"Call\"";
-                Authorization.ODBC.Select(currentTable, tableView: dataGridView,
-                values: new Dictionary<string, string>()
-                {
-                    ["\"ID\""] = "\"ID\"",
-                    ["\"Date\""] = "\"Дата\"",
-                    ["\"Call_time\""] = "\"Время\"",
-                    ["\"Arrival_time\""] = "\"Время прибытия экипажа\"",
-                    ["\"Is_false_call\""] = "\"Ложный вызов\"",
-                    ["\"Is_hacked\""] = "\"Был взлом\"",
-                    ["\"Contract_ID\""] = "\"Договор\"",
-                    ["\"ID_bossfight_thiscall\""] = "\"Начальник наряда\"",
-                    ["\"ID_dispatcher_thiscall\""] = "\"Диспетчер\""
-                }
-                );
-                itWasReplaceFKtoName = true;
-                foreach (DataGridViewRow row in dataGridView.Rows)
-                {
-                    string idDisp = Authorization.ODBC.getNameByFK("\"ID_dispatcher\"", "\"DispatcherThisCall\"", row.Cells["Диспетчер"].Value.ToString());
-                    string idBoss = Authorization.ODBC.getNameByFK("\"ID_bossfight\"", "\"BossFightThisCall\"", row.Cells["Начальник наряда"].Value.ToString());
-
-                    row.Cells["Начальник наряда"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", idBoss);
-                    row.Cells["Диспетчер"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", idDisp);
-
-
-                    row.Cells["Был взлом"].Value = Config.TrueFalse[row.Cells["Был взлом"].Value.ToString()];
-                    row.Cells["Ложный вызов"].Value = Config.TrueFalse[row.Cells["Ложный вызов"].Value.ToString()];
-                    string id_client = Authorization.ODBC.getNameByFK("\"ID_client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
-                    row.Cells["Договор"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", id_client);
-                }
-                itWasReplaceFKtoName = false;
-                _current_table = currentTable;
-                FillValuesToAutocomplete();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }*/
+      
 
         // украденные вещи
        /* public void Stolen_stuffssList()

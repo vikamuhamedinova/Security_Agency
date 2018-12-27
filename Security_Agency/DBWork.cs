@@ -126,6 +126,7 @@ namespace Security_Agency
             }
             return adapter;
         }
+        //
         public NpgsqlDataAdapter SelectPKResident(string table, string where, Dictionary<string, string> values = null,
             DataGridView tableView = null)
         {
@@ -220,7 +221,7 @@ namespace Security_Agency
             return adapter;
         }
         //
-        public NpgsqlDataAdapter Select(List<string> tables,string where, Dictionary<string, string> values = null,
+        public NpgsqlDataAdapter Select(List<string> tables, string where, Dictionary<string, string> values = null,
             DataGridView tableView = null)
         {
             string selectString = "select ";
@@ -246,6 +247,57 @@ namespace Security_Agency
             string nameTable1 = tables[0].Substring(1, tables[0].Length - 2);
             selectString += String.Format("where {0}.\"PK_{1}\"={2}.\"PK_{1}\"", tables[0], nameTable1, tables[1]);
             selectString += String.Format("and {0}.\"PK_Apartment\"={1}", tables[1], where);
+            NpgsqlCommand command = new NpgsqlCommand(selectString, _connection);
+            NpgsqlDataAdapter adapter = new NpgsqlDataAdapter();
+            adapter.SelectCommand = command;
+            // если DataGridView не null, загрузим выборку в нее
+            if (tableView != null)
+            {
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                //Сделаем все клетки типа string
+                DataTable dtStringed = dataTable.Clone();
+                foreach (DataColumn column in dtStringed.Columns)
+                {
+                    column.DataType = typeof(string);
+                }
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    dtStringed.ImportRow(row);
+                }
+                tableView.DataSource = dtStringed;
+                tableView.Columns["ID"].Visible = false;
+            }
+            return adapter;
+        }
+        //
+        public NpgsqlDataAdapter SelectDetainedPerson(List<string> tables, string pkApartmen, string pkCall, Dictionary<string, string> values = null,
+            DataGridView tableView = null)
+        {
+            string selectString = "select ";
+            if (values == null)
+            {
+                selectString += "* ";
+            }
+            else
+            {
+                foreach (KeyValuePair<string, string> pair in values)
+                {
+                    selectString += String.Format("{0} as {1}, ", pair.Key, pair.Value);
+                }
+                // убираем запятую в конце
+                selectString = selectString.Substring(0, selectString.Length - 2) + " ";
+            }
+            selectString += "from ";
+            foreach (string table in tables)
+            {
+                selectString += String.Format("{0},", table);
+            }
+            selectString = selectString.Substring(0, selectString.Length - 1) + " ";
+            string nameTable = tables[0].Substring(1, tables[0].Length - 2);
+            selectString += String.Format("where {0}.\"PK_{1}\"={2}.\"PK_{1}\"", tables[0], nameTable, tables[1]);
+            selectString += String.Format("and {0}.\"PK_Apartment\"={1}", tables[1], pkApartmen);
+            selectString += String.Format("and {0}.\"PK_{1}\"={2}", tables[0], nameTable, pkCall);
             NpgsqlCommand command = new NpgsqlCommand(selectString, _connection);
             NpgsqlDataAdapter adapter = new NpgsqlDataAdapter();
             adapter.SelectCommand = command;

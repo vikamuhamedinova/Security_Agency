@@ -37,6 +37,7 @@
             this.workWithClientsTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.workWithСontractsTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.WorkWithEmployeeTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.вызовыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +45,6 @@
             this.ButtonDelete = new System.Windows.Forms.Button();
             this.TextBoxSearchPattern = new System.Windows.Forms.TextBox();
             this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.вызовыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -133,6 +133,13 @@
             this.WorkWithEmployeeTSMI.Text = "Работа с сотрудниками";
             this.WorkWithEmployeeTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
+            // вызовыToolStripMenuItem
+            // 
+            this.вызовыToolStripMenuItem.Name = "вызовыToolStripMenuItem";
+            this.вызовыToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.вызовыToolStripMenuItem.Text = "Сигналы тревоги";
+            this.вызовыToolStripMenuItem.Click += new System.EventHandler(this.ChangeCurrentContext);
+            // 
             // справочникиToolStripMenuItem
             // 
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
@@ -186,12 +193,6 @@
             this.ButtonUpdate.Text = "Обновить";
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
-            // 
-            // вызовыToolStripMenuItem
-            // 
-            this.вызовыToolStripMenuItem.Name = "вызовыToolStripMenuItem";
-            this.вызовыToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.вызовыToolStripMenuItem.Text = "Сигналы тревоги";
             // 
             // MainForm
             // 
