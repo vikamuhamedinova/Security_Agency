@@ -113,6 +113,7 @@
             this.buttonCancelAddDetainedPerson.TabIndex = 38;
             this.buttonCancelAddDetainedPerson.Text = "Отмена";
             this.buttonCancelAddDetainedPerson.UseVisualStyleBackColor = true;
+            this.buttonCancelAddDetainedPerson.Click += new System.EventHandler(this.ButtonCancelAddDetainedPerson_Click);
             // 
             // buttonAddDetainedPerson
             // 
@@ -122,6 +123,7 @@
             this.buttonAddDetainedPerson.TabIndex = 37;
             this.buttonAddDetainedPerson.Text = "Добавить задержанного";
             this.buttonAddDetainedPerson.UseVisualStyleBackColor = true;
+            this.buttonAddDetainedPerson.Click += new System.EventHandler(this.ButtonAddEmployee_Click);
             // 
             // AddDetainedPerson
             // 
