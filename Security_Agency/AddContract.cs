@@ -302,12 +302,12 @@ namespace Security_Agency
                     if (Text == "Редактирование")
                     {
                         Authorization.DBC.Update("\"Contract\"", Config.valueFromTableForEdit["ID"], vals);
-                        MessageBox.Show("Карточка сотрудника была обновлена.");
+                        MessageBox.Show("Договор была обновлена.");
                     }
                     else
                     {
                         Authorization.DBC.Insert("\"Contract\"", vals);
-                        MessageBox.Show("Сотрудник добавлен.");
+                        MessageBox.Show("Договор добавлен.");
                     }
                 }
                 catch (Exception ex)
