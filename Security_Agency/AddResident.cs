@@ -12,18 +12,20 @@ namespace Security_Agency
 {
     public partial class AddResident : Form
     {
-        private MainForm mainForm;
+        private AddContract mainForm;
+        private string pkApartmen;
 
         public AddResident()
         {
             InitializeComponent();
         }
         //
-        public AddResident(MainForm form)
+        public AddResident(AddContract form, string _pkApartmen)
         {
             InitializeComponent();
             ClearForm();
             mainForm = form;
+            pkApartmen = _pkApartmen;
         }
         //
         private void ClearForm()
@@ -120,6 +122,23 @@ namespace Security_Agency
                     else
                     {
                         Authorization.DBC.Insert("\"Resident\"", vals);
+                        DataTable dataTable = new DataTable();
+                        string where = ConvertToStringDB(maskedtextBoxInputPassID.Text);
+                        var adapter = Authorization.DBC.SelectPKResident("\"Resident\"", where,
+                                                                new Dictionary<string, string>()
+                                                                {
+                                                                    ["\"PK_Resident\""] = "ID"
+                                                                });
+                        adapter.Fill(dataTable);
+                        string pkProperty;
+                        DataRow row = dataTable.Rows[0];
+                        pkProperty = row["ID"].ToString();
+                        Dictionary<string, string> vals1 = new Dictionary<string, string>()
+                        {
+                            ["\"PK_Apartment\""] = pkApartmen,
+                            ["\"PK_Resident\""] = pkProperty
+                        };
+                        Authorization.DBC.Insert("\"List_Resident\"", vals1);
                         MessageBox.Show("Клиент добавлен.");
                         ClearForm();
                     }
@@ -139,6 +158,6 @@ namespace Security_Agency
             {
                 Close();
             }
-        }
+        }             
     }
 }

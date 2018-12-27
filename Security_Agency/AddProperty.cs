@@ -12,31 +12,38 @@ namespace Security_Agency
 {
     public partial class AddProperty : Form
     {
-        private MainForm mainForm;
+        private AddContract mainForm;
+        private string pkApartmen;
 
         public AddProperty()
         {
             InitializeComponent();
         }
         //
-        public AddProperty(MainForm form)
+        public AddProperty(AddContract form, string _pkApartmen)
         {
             InitializeComponent();
             ClearForm();
             mainForm = form;
+            pkApartmen = _pkApartmen;
         }
         //
         private void ClearForm()
         {
             textBoxPropertyNameInput.Text = "";
-            maskedTextBoxPropertyCostInput.Text = "00000000.00";
+            textBoxPropertyCostInput.Text = "00000000,00";
         }
         // преобразование к строке
         private string ConvertToStringDB(string text)
         {
             return "'" + text + "'";
         }
-
+        //
+        private string ConvertFromRoubleToDoubleDB(string text)
+        {
+            text = text.Replace(',', '.');
+            return text;
+        }
         // убирает все пустые значения, выполняет преобразования к строке или к дате
         private Dictionary<string, string> PrepareData(Dictionary<string, string> vals)
         {
@@ -53,7 +60,14 @@ namespace Security_Agency
             var newDict = new Dictionary<string, string>();
             foreach (var key in vals.Keys)
             {
-                newDict.Add(key, ConvertToStringDB(vals[key]));
+                if (key.ToLower().Contains("property_cost"))
+                {
+                    newDict.Add(key, ConvertFromRoubleToDoubleDB(vals[key]));
+                }
+                else
+                {
+                    newDict.Add(key, ConvertToStringDB(vals[key]));
+                }  
             }
             return newDict;
         }
@@ -64,7 +78,7 @@ namespace Security_Agency
             {
                 this.buttonAddProperty.Text = "Сохранить";
                 textBoxPropertyNameInput.Text = Config.valueFromTableForEdit["Наименование"];
-                maskedTextBoxPropertyCostInput.Text = Config.valueFromTableForEdit["Стоимость"];
+                textBoxPropertyCostInput.Text = Config.valueFromTableForEdit["Стоимость"];
             }
             else
                 ClearForm();
@@ -72,7 +86,7 @@ namespace Security_Agency
         // 
         private void ButtonAddProperty_Click(object sender, EventArgs e)
         {
-            if (textBoxPropertyNameInput.Text == "" || maskedTextBoxPropertyCostInput.Text == "")
+            if (textBoxPropertyNameInput.Text == "" || textBoxPropertyCostInput.Text == "00000000,00")
             {
                 MessageBox.Show("Не заполнено одно из обязательных полей");
             }
@@ -81,7 +95,7 @@ namespace Security_Agency
                 Dictionary<string, string> vals = new Dictionary<string, string>()
                 {
                     ["\"Property_Name\""] = textBoxPropertyNameInput.Text,
-                    ["\"Property_Cost\""] = maskedTextBoxPropertyCostInput.Text
+                    ["\"Property_Cost\""] = textBoxPropertyCostInput.Text
                 };
                 vals = PrepareData(vals);
                 try
@@ -95,6 +109,23 @@ namespace Security_Agency
                     else
                     {
                         Authorization.DBC.Insert("\"Property\"", vals);
+                        DataTable dataTable = new DataTable();
+                        string where = ConvertToStringDB(textBoxPropertyNameInput.Text);
+                        var adapter = Authorization.DBC.SelectPKProperty("\"Property\"", where,
+                                                                new Dictionary<string, string>()
+                                                                {
+                                                                    ["\"PK_Property\""] = "ID"
+                                                                });
+                        adapter.Fill(dataTable);
+                        string pkProperty;
+                        DataRow row = dataTable.Rows[0];
+                        pkProperty =  row["ID"].ToString();
+                        Dictionary<string, string> vals1 = new Dictionary<string, string>()
+                        {
+                                ["\"PK_Apartment\""] = pkApartmen,
+                                ["\"PK_Property\""] = pkProperty
+                        };                       
+                        Authorization.DBC.Insert("\"Property_List\"", vals1);
                         MessageBox.Show("Клиент добавлен.");
                         ClearForm();
                     }

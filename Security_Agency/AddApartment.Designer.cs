@@ -47,15 +47,15 @@
             // textBoxApartmentAdressInput
             // 
             this.textBoxApartmentAdressInput.Location = new System.Drawing.Point(17, 31);
-            this.textBoxApartmentAdressInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxApartmentAdressInput.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxApartmentAdressInput.Name = "textBoxApartmentAdressInput";
             this.textBoxApartmentAdressInput.Size = new System.Drawing.Size(301, 22);
             this.textBoxApartmentAdressInput.TabIndex = 34;
             // 
             // buttonCancelAddClient
             // 
-            this.buttonCancelAddClient.Location = new System.Drawing.Point(181, 84);
-            this.buttonCancelAddClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancelAddClient.Location = new System.Drawing.Point(181, 90);
+            this.buttonCancelAddClient.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelAddClient.Name = "buttonCancelAddClient";
             this.buttonCancelAddClient.Size = new System.Drawing.Size(156, 47);
             this.buttonCancelAddClient.TabIndex = 33;
@@ -65,8 +65,8 @@
             // 
             // buttonAddApartment
             // 
-            this.buttonAddApartment.Location = new System.Drawing.Point(17, 84);
-            this.buttonAddApartment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddApartment.Location = new System.Drawing.Point(17, 90);
+            this.buttonAddApartment.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddApartment.Name = "buttonAddApartment";
             this.buttonAddApartment.Size = new System.Drawing.Size(156, 47);
             this.buttonAddApartment.TabIndex = 32;
@@ -78,12 +78,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 149);
+            this.ClientSize = new System.Drawing.Size(373, 175);
             this.Controls.Add(this.labelSurnameInput);
             this.Controls.Add(this.textBoxApartmentAdressInput);
             this.Controls.Add(this.buttonCancelAddClient);
             this.Controls.Add(this.buttonAddApartment);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddApartment";
             this.Text = "Добавление квартиры";
             this.Load += new System.EventHandler(this.AddApartment_Load);

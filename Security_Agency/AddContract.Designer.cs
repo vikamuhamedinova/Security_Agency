@@ -41,12 +41,28 @@
             this.dateTimeInputContract = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonAddApartment = new System.Windows.Forms.Button();
+            this.dataGridViewProperty = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridViewResident = new System.Windows.Forms.DataGridView();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProperty)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResident)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAddContract
             // 
-            this.buttonAddContract.Location = new System.Drawing.Point(16, 265);
-            this.buttonAddContract.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddContract.Location = new System.Drawing.Point(605, 639);
+            this.buttonAddContract.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddContract.Name = "buttonAddContract";
             this.buttonAddContract.Size = new System.Drawing.Size(109, 42);
             this.buttonAddContract.TabIndex = 0;
@@ -56,8 +72,8 @@
             // 
             // buttonCancelAddContract
             // 
-            this.buttonCancelAddContract.Location = new System.Drawing.Point(147, 265);
-            this.buttonCancelAddContract.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancelAddContract.Location = new System.Drawing.Point(722, 639);
+            this.buttonCancelAddContract.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelAddContract.Name = "buttonCancelAddContract";
             this.buttonCancelAddContract.Size = new System.Drawing.Size(105, 42);
             this.buttonCancelAddContract.TabIndex = 1;
@@ -79,7 +95,7 @@
             // 
             this.comboBoxAddClient.FormattingEnabled = true;
             this.comboBoxAddClient.Location = new System.Drawing.Point(17, 124);
-            this.comboBoxAddClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxAddClient.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxAddClient.Name = "comboBoxAddClient";
             this.comboBoxAddClient.Size = new System.Drawing.Size(235, 24);
             this.comboBoxAddClient.TabIndex = 4;
@@ -87,7 +103,7 @@
             // maskedTextBoxContractIdInput
             // 
             this.maskedTextBoxContractIdInput.Location = new System.Drawing.Point(16, 31);
-            this.maskedTextBoxContractIdInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.maskedTextBoxContractIdInput.Margin = new System.Windows.Forms.Padding(4);
             this.maskedTextBoxContractIdInput.Mask = "00000";
             this.maskedTextBoxContractIdInput.Name = "maskedTextBoxContractIdInput";
             this.maskedTextBoxContractIdInput.Size = new System.Drawing.Size(235, 22);
@@ -117,7 +133,7 @@
             // 
             this.comboBoxAddApartment.FormattingEnabled = true;
             this.comboBoxAddApartment.Location = new System.Drawing.Point(17, 173);
-            this.comboBoxAddApartment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxAddApartment.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxAddApartment.Name = "comboBoxAddApartment";
             this.comboBoxAddApartment.Size = new System.Drawing.Size(235, 24);
             this.comboBoxAddApartment.TabIndex = 8;
@@ -136,7 +152,7 @@
             // 
             this.comboBoxAddEmployee.FormattingEnabled = true;
             this.comboBoxAddEmployee.Location = new System.Drawing.Point(17, 222);
-            this.comboBoxAddEmployee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxAddEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxAddEmployee.Name = "comboBoxAddEmployee";
             this.comboBoxAddEmployee.Size = new System.Drawing.Size(235, 24);
             this.comboBoxAddEmployee.TabIndex = 10;
@@ -146,7 +162,7 @@
             this.dateTimeInputContract.CustomFormat = "00.00.0000";
             this.dateTimeInputContract.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimeInputContract.Location = new System.Drawing.Point(17, 78);
-            this.dateTimeInputContract.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeInputContract.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeInputContract.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateTimeInputContract.Name = "dateTimeInputContract";
             this.dateTimeInputContract.Size = new System.Drawing.Size(235, 22);
@@ -173,11 +189,129 @@
             this.buttonAddApartment.UseVisualStyleBackColor = true;
             this.buttonAddApartment.Click += new System.EventHandler(this.ButtonAddApartment_Click);
             // 
+            // dataGridViewProperty
+            // 
+            this.dataGridViewProperty.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewProperty.Location = new System.Drawing.Point(8, 6);
+            this.dataGridViewProperty.Name = "dataGridViewProperty";
+            this.dataGridViewProperty.RowTemplate.Height = 24;
+            this.dataGridViewProperty.Size = new System.Drawing.Size(789, 249);
+            this.dataGridViewProperty.TabIndex = 37;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(294, 261);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(138, 42);
+            this.button1.TabIndex = 40;
+            this.button1.Text = "Удалить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.ButtonDeleteProperty_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(6, 261);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(138, 42);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "Добавить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.ButtonAddProperty_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(150, 261);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(138, 42);
+            this.button3.TabIndex = 39;
+            this.button3.Text = "Редактировать";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.ButtonEditProperty_Click);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dataGridViewProperty);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(803, 318);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Имущество";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewResident
+            // 
+            this.dataGridViewResident.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewResident.Location = new System.Drawing.Point(7, 11);
+            this.dataGridViewResident.Name = "dataGridViewResident";
+            this.dataGridViewResident.RowTemplate.Height = 24;
+            this.dataGridViewResident.Size = new System.Drawing.Size(789, 249);
+            this.dataGridViewResident.TabIndex = 41;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(279, 266);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(130, 42);
+            this.button4.TabIndex = 44;
+            this.button4.Text = "Удалить";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.ButtonDeleteResident_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(7, 266);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(130, 42);
+            this.button5.TabIndex = 42;
+            this.button5.Text = "Добавить";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.ButtonAddResident_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(143, 266);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(130, 42);
+            this.button6.TabIndex = 43;
+            this.button6.Text = "Редактировать";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.ButtonEditResident_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridViewResident);
+            this.tabPage2.Controls.Add(this.button4);
+            this.tabPage2.Controls.Add(this.button5);
+            this.tabPage2.Controls.Add(this.button6);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(803, 318);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Проживающие";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Visible = false;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(16, 263);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(811, 347);
+            this.tabControl1.TabIndex = 43;
+            // 
             // AddContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 347);
+            this.ClientSize = new System.Drawing.Size(842, 694);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.buttonAddApartment);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dateTimeInputContract);
@@ -191,10 +325,15 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonCancelAddContract);
             this.Controls.Add(this.buttonAddContract);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddContract";
             this.Text = "Добавить договор";
             this.Load += new System.EventHandler(this.AddContract_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProperty)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResident)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +354,16 @@
         private System.Windows.Forms.DateTimePicker dateTimeInputContract;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button buttonAddApartment;
+        private System.Windows.Forms.DataGridView dataGridViewProperty;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.DataGridView dataGridViewResident;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl tabControl1;
     }
 }

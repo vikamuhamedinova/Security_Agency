@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace Security_Agency
 {
@@ -91,7 +92,7 @@ namespace Security_Agency
                     else
                     {
                         Authorization.DBC.Insert("\"Apartment\"", vals);
-                        MessageBox.Show("Клиент добавлен.");
+                        MessageBox.Show("Квартира добавлена.");
                         ClearForm();
                     }
                 }

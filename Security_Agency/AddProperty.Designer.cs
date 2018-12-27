@@ -33,7 +33,7 @@
             this.buttonCancelAddProperty = new System.Windows.Forms.Button();
             this.buttonAddProperty = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBoxPropertyCostInput = new System.Windows.Forms.MaskedTextBox();
+            this.textBoxPropertyCostInput = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelSurnameInput
@@ -49,7 +49,7 @@
             // textBoxPropertyNameInput
             // 
             this.textBoxPropertyNameInput.Location = new System.Drawing.Point(16, 54);
-            this.textBoxPropertyNameInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPropertyNameInput.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPropertyNameInput.Name = "textBoxPropertyNameInput";
             this.textBoxPropertyNameInput.Size = new System.Drawing.Size(301, 22);
             this.textBoxPropertyNameInput.TabIndex = 38;
@@ -57,22 +57,24 @@
             // buttonCancelAddProperty
             // 
             this.buttonCancelAddProperty.Location = new System.Drawing.Point(180, 134);
-            this.buttonCancelAddProperty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancelAddProperty.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelAddProperty.Name = "buttonCancelAddProperty";
             this.buttonCancelAddProperty.Size = new System.Drawing.Size(156, 47);
             this.buttonCancelAddProperty.TabIndex = 37;
             this.buttonCancelAddProperty.Text = "Отмена";
             this.buttonCancelAddProperty.UseVisualStyleBackColor = true;
+            this.buttonCancelAddProperty.Click += new System.EventHandler(this.ButtonCancelAddPropertyClick);
             // 
             // buttonAddProperty
             // 
             this.buttonAddProperty.Location = new System.Drawing.Point(16, 134);
-            this.buttonAddProperty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddProperty.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddProperty.Name = "buttonAddProperty";
             this.buttonAddProperty.Size = new System.Drawing.Size(156, 47);
             this.buttonAddProperty.TabIndex = 36;
             this.buttonAddProperty.Text = "Добавить имущество";
             this.buttonAddProperty.UseVisualStyleBackColor = true;
+            this.buttonAddProperty.Click += new System.EventHandler(this.ButtonAddProperty_Click);
             // 
             // label1
             // 
@@ -84,28 +86,28 @@
             this.label1.TabIndex = 41;
             this.label1.Text = "Стоимость имущества";
             // 
-            // maskedTextBoxPropertyCostInput
+            // textBoxPropertyCostInput
             // 
-            this.maskedTextBoxPropertyCostInput.Location = new System.Drawing.Point(16, 105);
-            this.maskedTextBoxPropertyCostInput.Mask = "000000000.00";
-            this.maskedTextBoxPropertyCostInput.Name = "maskedTextBoxPropertyCostInput";
-            this.maskedTextBoxPropertyCostInput.Size = new System.Drawing.Size(301, 22);
-            this.maskedTextBoxPropertyCostInput.TabIndex = 42;
+            this.textBoxPropertyCostInput.Location = new System.Drawing.Point(16, 105);
+            this.textBoxPropertyCostInput.Name = "textBoxPropertyCostInput";
+            this.textBoxPropertyCostInput.Size = new System.Drawing.Size(301, 22);
+            this.textBoxPropertyCostInput.TabIndex = 42;
             // 
             // AddProperty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(356, 193);
-            this.Controls.Add(this.maskedTextBoxPropertyCostInput);
+            this.Controls.Add(this.textBoxPropertyCostInput);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelSurnameInput);
             this.Controls.Add(this.textBoxPropertyNameInput);
             this.Controls.Add(this.buttonCancelAddProperty);
             this.Controls.Add(this.buttonAddProperty);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddProperty";
             this.Text = "AddProperty";
+            this.Load += new System.EventHandler(this.AddProperty_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,6 +120,6 @@
         private System.Windows.Forms.Button buttonCancelAddProperty;
         private System.Windows.Forms.Button buttonAddProperty;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxPropertyCostInput;
+        private System.Windows.Forms.TextBox textBoxPropertyCostInput;
     }
 }
