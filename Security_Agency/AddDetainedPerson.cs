@@ -13,17 +13,25 @@ namespace Security_Agency
     public partial class AddDetainedPerson : Form
     {
         private AddCall mainForm;
+        private string pkCall,
+                       pkApartment,
+                       pkDetainedPerson;
+
         public AddDetainedPerson()
         {
             InitializeComponent();
-            FillForm();
-        }
-        // Заполнение формы при старте
-        private void FillForm()
-        {
             ClearForm();
         }
         //
+        public AddDetainedPerson(AddCall mainForm, string pkCall, string pkApartment)
+        {
+            InitializeComponent();
+            ClearForm();
+            this.mainForm = mainForm;
+            this.pkApartment = pkApartment;
+            this.pkCall = pkCall;
+        }
+        // Заполнение формы при старте
         private void ClearForm()
         {
             textBoxSurnameInput.Text = "";
@@ -51,28 +59,38 @@ namespace Security_Agency
             }
             var newDict = new Dictionary<string, string>();
             foreach (var key in vals.Keys)
-                newDict.Add(key, ConvertToStringDB(vals[key]));
+            {
+                if(key.ToLower().Contains("pk"))
+                {
+                    newDict.Add(key, vals[key]);
+                }
+                else
+                {
+                    newDict.Add(key, ConvertToStringDB(vals[key]));
+                }
+            }
             return newDict;
         }
         //
-        private void AddEmployee_Load(object sender, EventArgs e)
+        private void AddDetainedPerson_Load(object sender, EventArgs e)
         {
             if (Text == "Редактирование")
             {
                 this.buttonAddDetainedPerson.Text = "Сохранить";
+                pkDetainedPerson = Config.valueFromTableForEdit["ID"];
                 textBoxSurnameInput.Text = Config.valueFromTableForEdit["Фамилия"];
                 textBoxNameInput.Text = Config.valueFromTableForEdit["Имя"];
                 textBoxMiddleNameInput.Text = Config.valueFromTableForEdit["Отчество"];
                 maskedtextBoxInputPassID.Text = Config.valueFromTableForEdit["Номер паспорта"];
+
             }
             else
             {
                 ClearForm();
-                FillForm();
             }
         }
         //
-        private void ButtonAddEmployee_Click(object sender, EventArgs e)
+        private void ButtonAddDetainedPerson_Click(object sender, EventArgs e)
         {
             if (textBoxSurnameInput.Text == "" || textBoxNameInput.Text == ""
                || maskedtextBoxInputPassID.Text == "")
@@ -86,14 +104,16 @@ namespace Security_Agency
                     ["\"Surname\""] = textBoxSurnameInput.Text,
                     ["\"Name\""] = textBoxNameInput.Text,
                     ["\"Middle_Name\""] = textBoxMiddleNameInput.Text,
-                    ["\"Passport_ID\""] = maskedtextBoxInputPassID.Text
+                    ["\"Passport_ID\""] = maskedtextBoxInputPassID.Text,
+                    ["\"PK_Apartment\""] = pkApartment,
+                    ["\"PK_Call\""] = pkCall
                 };
                 vals = PrepareData(vals);
                 try
                 {
                     if (Text == "Редактирование")
                     {
-                        Authorization.DBC.Update("\"Detained_person\"", Config.valueFromTableForEdit["ID"], vals);
+                        Authorization.DBC.Update("\"Detained_Person\"", Config.valueFromTableForEdit["ID"], vals);
                         MessageBox.Show("Запись о задержанном лице была обновлена.");
                     }
                     else

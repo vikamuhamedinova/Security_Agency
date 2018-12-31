@@ -13,16 +13,23 @@ namespace Security_Agency
     public partial class AddStolenObject : Form
     {
         private AddCall mainForm;
+        private string pkCall,
+                       pkApartment,
+                       pkStolenObject;
+
         public AddStolenObject()
         {
             InitializeComponent();
         }
         //
-        public AddStolenObject(AddCall form)
+        public AddStolenObject(AddCall mainForm, string pkCall, string pkApartment)
         {
             InitializeComponent();
             ClearForm();
-            mainForm = form;
+            mainForm = mainForm;
+            this.mainForm = mainForm;
+            this.pkApartment = pkApartment;
+            this.pkCall = pkCall;
         }
         //
         private void ClearForm()
@@ -51,16 +58,25 @@ namespace Security_Agency
             var newDict = new Dictionary<string, string>();
             foreach (var key in vals.Keys)
             {
-                newDict.Add(key, ConvertToStringDB(vals[key]));
+                if(key.ToLower().Contains("name"))
+                {
+                    newDict.Add(key, ConvertToStringDB(vals[key]));
+                }
+                else
+                {
+                    newDict.Add(key, vals[key]);
+                }
+                
             }
             return newDict;
         }
         //
-        private void AddApartment_Load(object sender, EventArgs e)
+        private void AddStolenObject_Load(object sender, EventArgs e)
         {
             if (Text == "Редактирование")
             {
                 this.buttonAddStolenProperty.Text = "Сохранить";
+                pkStolenObject = Config.valueFromTableForEdit["ID"];
                 textBoxPropertyNameInput.Text = Config.valueFromTableForEdit["Наименование имущества"];
                 textBoxPropertyNameInput.Text = Config.valueFromTableForEdit["Количество"];
             }
@@ -68,9 +84,9 @@ namespace Security_Agency
                 ClearForm();
         }
         // 
-        private void ButtonAddApartment_Click(object sender, EventArgs e)
+        private void ButtonAddStolenObject_Click(object sender, EventArgs e)
         {
-            if (textBoxPropertyNameInput.Text == ""|| textBoxPropertyAmmountInput.Text == "")
+            if (textBoxPropertyNameInput.Text == "" || textBoxPropertyAmmountInput.Text == "")
             {
                 MessageBox.Show("Не заполнено одно из обязательных полей");
             }
@@ -79,7 +95,9 @@ namespace Security_Agency
                 Dictionary<string, string> vals = new Dictionary<string, string>()
                 {
                     ["\"Name\""] = textBoxPropertyNameInput.Text,
-                    ["\"Amount\""] = textBoxPropertyAmmountInput.Text 
+                    ["\"Amount\""] = textBoxPropertyAmmountInput.Text,
+                    ["\"PK_Apartment\""] = pkApartment,
+                    ["\"PK_Call\""] = pkCall
                 };
                 vals = PrepareData(vals);
                 try
@@ -105,7 +123,7 @@ namespace Security_Agency
             }
         }
         // 
-        private void ButtonCancelAddApartmentClick(object sender, EventArgs e)
+        private void ButtonCancelAddStolenObject_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Вы уверены, что хотите отменить добавление?", "Отмена добавления",
                             MessageBoxButtons.YesNo) == DialogResult.Yes)

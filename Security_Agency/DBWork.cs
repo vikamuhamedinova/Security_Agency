@@ -271,7 +271,7 @@ namespace Security_Agency
             return adapter;
         }
         //
-        public NpgsqlDataAdapter SelectDetainedPerson(List<string> tables, string pkApartmen, string pkCall, Dictionary<string, string> values = null,
+        public NpgsqlDataAdapter Select(List<string> tables, string pkApartmen, string pkCall, Dictionary<string, string> values = null,
             DataGridView tableView = null)
         {
             string selectString = "select ";
