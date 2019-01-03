@@ -403,7 +403,7 @@ namespace Security_Agency
         }
 
         //
-       /* public string GetCostByFK(string what, string table, string id)
+        public string GetPKByFK(string what, string table, string id)
         {
             string nameTable = table.Substring(1, table.Length - 2);
             string selectString = String.Format("select {0} from {1} where \"PK_{2}\" = {3}", what, table, nameTable, id);
@@ -419,7 +419,7 @@ namespace Security_Agency
             }
             reader.Close();
             return ret;
-        }*/
+        }
         /// <summary>
         /// Обновление записи в таблице.
         /// </summary>

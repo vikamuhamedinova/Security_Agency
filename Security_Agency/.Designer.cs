@@ -37,7 +37,7 @@
             this.workWithClientsTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.workWithСontractsTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.WorkWithEmployeeTSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.вызовыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.WorkWithCallTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +45,7 @@
             this.ButtonDelete = new System.Windows.Forms.Button();
             this.TextBoxSearchPattern = new System.Windows.Forms.TextBox();
             this.ButtonUpdate = new System.Windows.Forms.Button();
+            this.WorkWithInvoicesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -107,7 +108,8 @@
             this.workWithClientsTSMI,
             this.workWithСontractsTSMI,
             this.WorkWithEmployeeTSMI,
-            this.вызовыToolStripMenuItem});
+            this.WorkWithCallTSMI,
+            this.WorkWithInvoicesTSMI});
             this.функционалToolStripMenuItem.Name = "функционалToolStripMenuItem";
             this.функционалToolStripMenuItem.Size = new System.Drawing.Size(107, 24);
             this.функционалToolStripMenuItem.Text = "Функционал";
@@ -133,12 +135,12 @@
             this.WorkWithEmployeeTSMI.Text = "Работа с сотрудниками";
             this.WorkWithEmployeeTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
-            // вызовыToolStripMenuItem
+            // WorkWithCallTSMI
             // 
-            this.вызовыToolStripMenuItem.Name = "вызовыToolStripMenuItem";
-            this.вызовыToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.вызовыToolStripMenuItem.Text = "Сигналы тревоги";
-            this.вызовыToolStripMenuItem.Click += new System.EventHandler(this.ChangeCurrentContext);
+            this.WorkWithCallTSMI.Name = "WorkWithCallTSMI";
+            this.WorkWithCallTSMI.Size = new System.Drawing.Size(246, 26);
+            this.WorkWithCallTSMI.Text = "Сигналы тревоги";
+            this.WorkWithCallTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
             // справочникиToolStripMenuItem
             // 
@@ -194,6 +196,13 @@
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
+            // WorkWithInvoicesTSMI
+            // 
+            this.WorkWithInvoicesTSMI.Name = "WorkWithInvoicesTSMI";
+            this.WorkWithInvoicesTSMI.Size = new System.Drawing.Size(246, 26);
+            this.WorkWithInvoicesTSMI.Text = "Работа со счетами";
+            this.WorkWithInvoicesTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -237,7 +246,8 @@
         private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ChangeUserTSMI;
-        private System.Windows.Forms.ToolStripMenuItem вызовыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem WorkWithCallTSMI;
+        private System.Windows.Forms.ToolStripMenuItem WorkWithInvoicesTSMI;
     }
 }
 

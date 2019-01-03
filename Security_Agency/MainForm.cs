@@ -184,6 +184,44 @@ namespace Security_Agency
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+        //
+        public void InvoicesList()
+        {
+            try
+            {
+                string currentTable = "\"Invoice\"";
+                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                values: new Dictionary<string, string>()
+                {
+                    ["\"PK_Invoice\""] = "\"ID\"",
+                    ["\"Invoice_ID\""] = "\"Номер счета\"",
+                    ["\"Date_Formation\""] = "\"Дата формирования\"",
+                    ["\"Payment_State\""] = "\"Статус\"",
+                    ["\"Payment_Period\""] = "\"Период\"",
+                    ["\"PK_Contract\""] = "\"Договор\"",
+                    ["\"PK_Employee\""] = "\"Сотрудник\""
+                }
+                );
+                itWasReplaceFKtoName = true;
+                for (int i = 0; i < DataGridView.Rows.Count - 1; i++)
+                {
+                    DataGridViewRow row = DataGridView.Rows[i];
+                    row.Cells["Статус"].Value = Config.TrueFalse[row.Cells["Статус"].Value.ToString()];
+                    string idClient = Authorization.DBC.GetPKByFK("\"PK_Client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
+                    string contractID = Authorization.DBC.GetPKByFK("\"Contract_ID\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
+                    string client = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Client\"", idClient);
+                    row.Cells["Договор"].Value = contractID + " " + client;
+                    row.Cells["Сотрудник"].Value = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+                }
+                itWasReplaceFKtoName = false;
+                _current_table = currentTable;
+                //FillValuesToAutocomplete();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
 
       /*  /// <summary>
         /// Если condition false, показывает MessageBox с предупреждением
@@ -334,39 +372,7 @@ namespace Security_Agency
             }
         }*/
 
-       /* public void PaymentsList()
-        {
-            try
-            {
-                string currentTable = "\"Payment\"";
-                Authorization.ODBC.Select(currentTable, tableView: dataGridView,
-                values: new Dictionary<string, string>()
-                {
-                    ["\"ID\""] = "\"ID\"",
-                    ["\"Payment_date\""] = "\"Дата\"",
-                    ["\"Payment_sum\""] = "\"Сумма\"",
-                    ["\"ID_invoice_type\""] = "\"Тип платежа\"",
-                    ["\"Contract_ID\""] = "\"Договор\"",
-                    ["\"ID_accountant\""] = "\"Сотрудник\""
-                }
-                );
-                itWasReplaceFKtoName = true;
-                foreach (DataGridViewRow row in dataGridView.Rows)
-                {
-                    row.Cells["Тип платежа"].Value = Authorization.ODBC.getNameByFK("\"Name\"", "\"InvoiceType\"", row.Cells["Тип платежа"].Value.ToString());
-                    row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
-                    string id_client = Authorization.ODBC.getNameByFK("\"ID_client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
-                    row.Cells["Договор"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", id_client);
-                }
-                itWasReplaceFKtoName = false;
-                _current_table = currentTable;
-                FillValuesToAutocomplete();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }*/
+       
 
        /* public void FinesList()
         {
