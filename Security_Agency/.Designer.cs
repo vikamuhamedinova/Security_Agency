@@ -38,6 +38,7 @@
             this.workWithСontractsTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.WorkWithEmployeeTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.WorkWithCallTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.WorkWithInvoicesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +46,9 @@
             this.ButtonDelete = new System.Windows.Forms.Button();
             this.TextBoxSearchPattern = new System.Windows.Forms.TextBox();
             this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.WorkWithInvoicesTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.positionsTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.forfeitTypeTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.paymentTypeTSMI = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,12 +75,20 @@
             // 
             // DataGridView
             // 
+            this.DataGridView.AllowUserToAddRows = false;
+            this.DataGridView.AllowUserToDeleteRows = false;
+            this.DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView.Location = new System.Drawing.Point(12, 76);
+            this.DataGridView.MultiSelect = false;
             this.DataGridView.Name = "DataGridView";
-            this.DataGridView.RowTemplate.Height = 24;
+            this.DataGridView.ReadOnly = true;
+            this.DataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
+            this.DataGridView.RowTemplate.Height = 26;
+            this.DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DataGridView.Size = new System.Drawing.Size(1228, 365);
-            this.DataGridView.TabIndex = 0;
+            this.DataGridView.TabIndex = 1;
             // 
             // LabelQueryInfo
             // 
@@ -142,8 +153,19 @@
             this.WorkWithCallTSMI.Text = "Сигналы тревоги";
             this.WorkWithCallTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
+            // WorkWithInvoicesTSMI
+            // 
+            this.WorkWithInvoicesTSMI.Name = "WorkWithInvoicesTSMI";
+            this.WorkWithInvoicesTSMI.Size = new System.Drawing.Size(246, 26);
+            this.WorkWithInvoicesTSMI.Text = "Работа со счетами";
+            this.WorkWithInvoicesTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
+            // 
             // справочникиToolStripMenuItem
             // 
+            this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.positionsTSMI,
+            this.forfeitTypeTSMI,
+            this.paymentTypeTSMI});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(115, 24);
             this.справочникиToolStripMenuItem.Text = "Справочники";
@@ -181,10 +203,12 @@
             // 
             // TextBoxSearchPattern
             // 
+            this.TextBoxSearchPattern.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.TextBoxSearchPattern.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.TextBoxSearchPattern.Location = new System.Drawing.Point(12, 511);
             this.TextBoxSearchPattern.Name = "TextBoxSearchPattern";
             this.TextBoxSearchPattern.Size = new System.Drawing.Size(250, 22);
-            this.TextBoxSearchPattern.TabIndex = 5;
+            this.TextBoxSearchPattern.TabIndex = 3;
             // 
             // ButtonUpdate
             // 
@@ -196,12 +220,26 @@
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
-            // WorkWithInvoicesTSMI
+            // positionsTSMI
             // 
-            this.WorkWithInvoicesTSMI.Name = "WorkWithInvoicesTSMI";
-            this.WorkWithInvoicesTSMI.Size = new System.Drawing.Size(246, 26);
-            this.WorkWithInvoicesTSMI.Text = "Работа со счетами";
-            this.WorkWithInvoicesTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
+            this.positionsTSMI.Name = "positionsTSMI";
+            this.positionsTSMI.Size = new System.Drawing.Size(192, 26);
+            this.positionsTSMI.Text = "Должности";
+            this.positionsTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
+            // 
+            // forfeitTypeTSMI
+            // 
+            this.forfeitTypeTSMI.Name = "forfeitTypeTSMI";
+            this.forfeitTypeTSMI.Size = new System.Drawing.Size(192, 26);
+            this.forfeitTypeTSMI.Text = "Типы штрафов";
+            this.forfeitTypeTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
+            // 
+            // paymentTypeTSMI
+            // 
+            this.paymentTypeTSMI.Name = "paymentTypeTSMI";
+            this.paymentTypeTSMI.Size = new System.Drawing.Size(192, 26);
+            this.paymentTypeTSMI.Text = "Типы платежей";
+            this.paymentTypeTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
             // MainForm
             // 
@@ -248,6 +286,9 @@
         private System.Windows.Forms.ToolStripMenuItem ChangeUserTSMI;
         private System.Windows.Forms.ToolStripMenuItem WorkWithCallTSMI;
         private System.Windows.Forms.ToolStripMenuItem WorkWithInvoicesTSMI;
+        private System.Windows.Forms.ToolStripMenuItem positionsTSMI;
+        private System.Windows.Forms.ToolStripMenuItem forfeitTypeTSMI;
+        private System.Windows.Forms.ToolStripMenuItem paymentTypeTSMI;
     }
 }
 

@@ -20,7 +20,10 @@ namespace Security_Agency
             ["Работа с договорами"] = "Contracts",
             ["Работа с сотрудниками"] = "Employees",
             ["Работа со счетами"] = "Invoices",
-            ["Сигналы тревоги"] = "Calls"
+            ["Сигналы тревоги"] = "Calls",
+            ["Должности"] = "Positions",
+            ["Типы штрафов"] = "Forfeit_Types",
+            ["Типы платежей"] = "Payment_Types"
         };
 
         public static Dictionary<string, string> TrueFalse = new Dictionary<string, string>()

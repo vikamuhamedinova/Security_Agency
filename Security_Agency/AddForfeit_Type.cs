@@ -10,18 +10,16 @@ using System.Windows.Forms;
 
 namespace Security_Agency
 {
-    public partial class AddPosition : Form
+    public partial class AddForfeit_Type : Form
     {
-        
         private MainForm mainForm;
 
-        //
-        public AddPosition()
+        public AddForfeit_Type()
         {
             InitializeComponent();
         }
         //
-        public AddPosition(MainForm form)
+        public AddForfeit_Type(MainForm form)
         {
             InitializeComponent();
             ClearForm();
@@ -30,12 +28,19 @@ namespace Security_Agency
         //
         private void ClearForm()
         {
-            textBoxPositionTitleInput.Text = "";
+            textBoxForfeitNameInput.Text = "";
+            textBoxForfeitCostInput.Text = "00000000,00";
         }
         // преобразование к строке
         private string ConvertToStringDB(string text)
         {
             return "'" + text + "'";
+        }
+        //
+        private string ConvertFromRoubleToDoubleDB(string text)
+        {
+            text = text.Replace(',', '.');
+            return text;
         }
         // убирает все пустые значения, выполняет преобразования к строке или к дате
         private Dictionary<string, string> PrepareData(Dictionary<string, string> vals)
@@ -53,25 +58,33 @@ namespace Security_Agency
             var newDict = new Dictionary<string, string>();
             foreach (var key in vals.Keys)
             {
-                newDict.Add(key, ConvertToStringDB(vals[key]));
+                if (!key.ToLower().Contains("cost"))
+                {
+                    newDict.Add(key, ConvertToStringDB(vals[key]));
+                }
+                else
+                {
+                    newDict.Add(key, ConvertFromRoubleToDoubleDB(vals[key]));
+                }
             }
             return newDict;
         }
         //
-        private void AddPosition_Load(object sender, EventArgs e)
+        private void AddForfeitType_Load(object sender, EventArgs e)
         {
             if (Text == "Редактирование")
             {
-                this.buttonAddPosition.Text = "Сохранить";
-                textBoxPositionTitleInput.Text = Config.valueFromTableForEdit["Наименование должности"];
+                this.buttonAddForfeitType.Text = "Сохранить";
+                textBoxForfeitNameInput.Text = Config.valueFromTableForEdit["Наименование штрафа"];
+                textBoxForfeitCostInput.Text = Config.valueFromTableForEdit["Денежный размер"];
             }
             else
                 ClearForm();
         }
         // 
-        private void ButtonAddPosition_Click(object sender, EventArgs e)
+        private void ButtonAddForfeitType_Click(object sender, EventArgs e)
         {
-            if (textBoxPositionTitleInput.Text == "")
+            if (textBoxForfeitNameInput.Text == "" || textBoxForfeitCostInput.Text == "00000000,00")
             {
                 MessageBox.Show("Не заполнено одно из обязательных полей");
             }
@@ -79,21 +92,22 @@ namespace Security_Agency
             {
                 Dictionary<string, string> vals = new Dictionary<string, string>()
                 {
-                    ["\"Position_Title\""] = textBoxPositionTitleInput.Text
+                    ["\"Forfeit_name\""] = textBoxForfeitNameInput.Text,
+                    ["\"Cost\""] = textBoxForfeitCostInput.Text
                 };
                 vals = PrepareData(vals);
                 try
                 {
                     if (Text == "Редактирование")
                     {
-                        Authorization.DBC.Update("\"Position\"", Config.valueFromTableForEdit["ID"], vals);
+                        Authorization.DBC.Update("\"Forfeit_Type\"", Config.valueFromTableForEdit["ID"], vals);
                         MessageBox.Show("Запись успешно обновлена.");
                         ClearForm();
                     }
                     else
                     {
-                        Authorization.DBC.Insert("\"Position\"", vals);
-                        MessageBox.Show("Должность добавлена.");
+                        Authorization.DBC.Insert("\"Forfeit_Type\"", vals);
+                        MessageBox.Show("Клиент добавлен.");
                         ClearForm();
                     }
                 }
@@ -105,7 +119,7 @@ namespace Security_Agency
             }
         }
         // 
-        private void ButtonCancelAddPosition_Click(object sender, EventArgs e)
+        private void ButtonCancelAddForfeitType_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Вы уверены, что хотите отменить добавление?", "Отмена добавления",
                             MessageBoxButtons.YesNo) == DialogResult.Yes)

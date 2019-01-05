@@ -1,6 +1,6 @@
 ﻿namespace Security_Agency
 {
-    partial class AddPaymentType
+    partial class AddPayment_Type
     {
         /// <summary>
         /// Required designer variable.
@@ -39,66 +39,76 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 48);
+            this.label1.Location = new System.Drawing.Point(52, 59);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.Size = new System.Drawing.Size(110, 17);
             this.label1.TabIndex = 53;
             this.label1.Text = "Сумма платежа";
             // 
             // textBoxPaymentCostInput
             // 
-            this.textBoxPaymentCostInput.Location = new System.Drawing.Point(11, 64);
+            this.textBoxPaymentCostInput.Location = new System.Drawing.Point(15, 79);
+            this.textBoxPaymentCostInput.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPaymentCostInput.Name = "textBoxPaymentCostInput";
-            this.textBoxPaymentCostInput.Size = new System.Drawing.Size(227, 20);
+            this.textBoxPaymentCostInput.Size = new System.Drawing.Size(301, 22);
             this.textBoxPaymentCostInput.TabIndex = 52;
             // 
             // labelSurnameInput
             // 
             this.labelSurnameInput.AutoSize = true;
-            this.labelSurnameInput.Location = new System.Drawing.Point(39, 9);
+            this.labelSurnameInput.Location = new System.Drawing.Point(52, 11);
+            this.labelSurnameInput.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSurnameInput.Name = "labelSurnameInput";
-            this.labelSurnameInput.Size = new System.Drawing.Size(129, 13);
+            this.labelSurnameInput.Size = new System.Drawing.Size(166, 17);
             this.labelSurnameInput.TabIndex = 51;
             this.labelSurnameInput.Text = "Наименование платежа";
             // 
             // textBoxPaymentNameInput
             // 
-            this.textBoxPaymentNameInput.Location = new System.Drawing.Point(11, 25);
+            this.textBoxPaymentNameInput.Location = new System.Drawing.Point(15, 31);
+            this.textBoxPaymentNameInput.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPaymentNameInput.Name = "textBoxPaymentNameInput";
-            this.textBoxPaymentNameInput.Size = new System.Drawing.Size(227, 20);
+            this.textBoxPaymentNameInput.Size = new System.Drawing.Size(301, 22);
             this.textBoxPaymentNameInput.TabIndex = 50;
             // 
             // buttonCancelAddPaymentType
             // 
-            this.buttonCancelAddPaymentType.Location = new System.Drawing.Point(134, 90);
+            this.buttonCancelAddPaymentType.Location = new System.Drawing.Point(179, 111);
+            this.buttonCancelAddPaymentType.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelAddPaymentType.Name = "buttonCancelAddPaymentType";
-            this.buttonCancelAddPaymentType.Size = new System.Drawing.Size(117, 38);
+            this.buttonCancelAddPaymentType.Size = new System.Drawing.Size(156, 47);
             this.buttonCancelAddPaymentType.TabIndex = 49;
             this.buttonCancelAddPaymentType.Text = "Отмена";
             this.buttonCancelAddPaymentType.UseVisualStyleBackColor = true;
+            this.buttonCancelAddPaymentType.Click += new System.EventHandler(this.ButtonCancelAddPaymentType_Click);
             // 
             // buttonAddPaymentType
             // 
-            this.buttonAddPaymentType.Location = new System.Drawing.Point(11, 90);
+            this.buttonAddPaymentType.Location = new System.Drawing.Point(15, 111);
+            this.buttonAddPaymentType.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddPaymentType.Name = "buttonAddPaymentType";
-            this.buttonAddPaymentType.Size = new System.Drawing.Size(117, 38);
+            this.buttonAddPaymentType.Size = new System.Drawing.Size(156, 47);
             this.buttonAddPaymentType.TabIndex = 48;
             this.buttonAddPaymentType.Text = "Добавить платеж ";
             this.buttonAddPaymentType.UseVisualStyleBackColor = true;
+            this.buttonAddPaymentType.Click += new System.EventHandler(this.ButtonAddPaymentType_Click);
             // 
-            // AddPaymentType
+            // AddPayment_Type
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(279, 140);
+            this.ClientSize = new System.Drawing.Size(372, 172);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxPaymentCostInput);
             this.Controls.Add(this.labelSurnameInput);
             this.Controls.Add(this.textBoxPaymentNameInput);
             this.Controls.Add(this.buttonCancelAddPaymentType);
             this.Controls.Add(this.buttonAddPaymentType);
-            this.Name = "AddPaymentType";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "AddPayment_Type";
             this.Text = "Добавление платежа";
+            this.Load += new System.EventHandler(this.AddPaymentType_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

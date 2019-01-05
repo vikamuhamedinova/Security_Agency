@@ -94,11 +94,11 @@
     <Compile Include="AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForfeitType.cs">
+    <Compile Include="AddForfeit_Type.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForfeitType.Designer.cs">
-      <DependentUpon>AddForfeitType.cs</DependentUpon>
+    <Compile Include="AddForfeit_Type.Designer.cs">
+      <DependentUpon>AddForfeit_Type.cs</DependentUpon>
     </Compile>
     <Compile Include="AddInvoice.cs">
       <SubType>Form</SubType>
@@ -106,11 +106,11 @@
     <Compile Include="AddInvoice.Designer.cs">
       <DependentUpon>AddInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddPaymentType.cs">
+    <Compile Include="AddPayment_Type.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddPaymentType.Designer.cs">
-      <DependentUpon>AddPaymentType.cs</DependentUpon>
+    <Compile Include="AddPayment_Type.Designer.cs">
+      <DependentUpon>AddPayment_Type.cs</DependentUpon>
     </Compile>
     <Compile Include="AddPosition.cs">
       <SubType>Form</SubType>
@@ -183,14 +183,14 @@
     <EmbeddedResource Include="AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForfeitType.resx">
-      <DependentUpon>AddForfeitType.cs</DependentUpon>
+    <EmbeddedResource Include="AddForfeit_Type.resx">
+      <DependentUpon>AddForfeit_Type.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddInvoice.resx">
       <DependentUpon>AddInvoice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddPaymentType.resx">
-      <DependentUpon>AddPaymentType.cs</DependentUpon>
+    <EmbeddedResource Include="AddPayment_Type.resx">
+      <DependentUpon>AddPayment_Type.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddPosition.resx">
       <DependentUpon>AddPosition.cs</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿namespace Security_Agency
 {
-    partial class AddForfeitType
+    partial class AddForfeit_Type
     {
         /// <summary>
         /// Required designer variable.
@@ -39,66 +39,76 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 48);
+            this.label1.Location = new System.Drawing.Point(47, 59);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.Size = new System.Drawing.Size(107, 17);
             this.label1.TabIndex = 47;
             this.label1.Text = "Сумма штрафа";
             // 
             // textBoxForfeitCostInput
             // 
-            this.textBoxForfeitCostInput.Location = new System.Drawing.Point(7, 64);
+            this.textBoxForfeitCostInput.Location = new System.Drawing.Point(9, 79);
+            this.textBoxForfeitCostInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxForfeitCostInput.Name = "textBoxForfeitCostInput";
-            this.textBoxForfeitCostInput.Size = new System.Drawing.Size(227, 20);
+            this.textBoxForfeitCostInput.Size = new System.Drawing.Size(301, 22);
             this.textBoxForfeitCostInput.TabIndex = 46;
             // 
             // labelSurnameInput
             // 
             this.labelSurnameInput.AutoSize = true;
-            this.labelSurnameInput.Location = new System.Drawing.Point(35, 9);
+            this.labelSurnameInput.Location = new System.Drawing.Point(47, 11);
+            this.labelSurnameInput.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSurnameInput.Name = "labelSurnameInput";
-            this.labelSurnameInput.Size = new System.Drawing.Size(125, 13);
+            this.labelSurnameInput.Size = new System.Drawing.Size(163, 17);
             this.labelSurnameInput.TabIndex = 45;
             this.labelSurnameInput.Text = "Наименование штрафа";
             // 
             // textBoxForfeitNameInput
             // 
-            this.textBoxForfeitNameInput.Location = new System.Drawing.Point(7, 25);
+            this.textBoxForfeitNameInput.Location = new System.Drawing.Point(9, 31);
+            this.textBoxForfeitNameInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxForfeitNameInput.Name = "textBoxForfeitNameInput";
-            this.textBoxForfeitNameInput.Size = new System.Drawing.Size(227, 20);
+            this.textBoxForfeitNameInput.Size = new System.Drawing.Size(301, 22);
             this.textBoxForfeitNameInput.TabIndex = 44;
             // 
             // buttonCancelAddForfeitType
             // 
-            this.buttonCancelAddForfeitType.Location = new System.Drawing.Point(130, 90);
+            this.buttonCancelAddForfeitType.Location = new System.Drawing.Point(173, 111);
+            this.buttonCancelAddForfeitType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCancelAddForfeitType.Name = "buttonCancelAddForfeitType";
-            this.buttonCancelAddForfeitType.Size = new System.Drawing.Size(117, 38);
+            this.buttonCancelAddForfeitType.Size = new System.Drawing.Size(156, 47);
             this.buttonCancelAddForfeitType.TabIndex = 43;
             this.buttonCancelAddForfeitType.Text = "Отмена";
             this.buttonCancelAddForfeitType.UseVisualStyleBackColor = true;
+            this.buttonCancelAddForfeitType.Click += new System.EventHandler(this.ButtonCancelAddForfeitType_Click);
             // 
             // buttonAddForfeitType
             // 
-            this.buttonAddForfeitType.Location = new System.Drawing.Point(7, 90);
+            this.buttonAddForfeitType.Location = new System.Drawing.Point(9, 111);
+            this.buttonAddForfeitType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAddForfeitType.Name = "buttonAddForfeitType";
-            this.buttonAddForfeitType.Size = new System.Drawing.Size(117, 38);
+            this.buttonAddForfeitType.Size = new System.Drawing.Size(156, 47);
             this.buttonAddForfeitType.TabIndex = 42;
             this.buttonAddForfeitType.Text = "Добавить штраф";
             this.buttonAddForfeitType.UseVisualStyleBackColor = true;
+            this.buttonAddForfeitType.Click += new System.EventHandler(this.ButtonAddForfeitType_Click);
             // 
             // AddForfeitType
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(262, 143);
+            this.ClientSize = new System.Drawing.Size(349, 176);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxForfeitCostInput);
             this.Controls.Add(this.labelSurnameInput);
             this.Controls.Add(this.textBoxForfeitNameInput);
             this.Controls.Add(this.buttonCancelAddForfeitType);
             this.Controls.Add(this.buttonAddForfeitType);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddForfeitType";
             this.Text = "Добавление штрафа";
+            this.Load += new System.EventHandler(this.AddForfeitType_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
