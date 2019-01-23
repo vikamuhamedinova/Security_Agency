@@ -155,7 +155,6 @@ namespace Security_Agency
                 if (key.ToLower().Contains("date"))
                 {
                     newDict.Add(key, ConvertToDateDB(vals[key]));
-
                 }
                 else if (key.ToLower().Contains("time_call") || key.ToLower().Contains("time_arrive"))
                 {

@@ -39,16 +39,17 @@
             this.WorkWithEmployeeTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.WorkWithCallTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.WorkWithInvoicesTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.WorkTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.positionsTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.forfeitTypeTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.paymentTypeTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportsTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ChangeUserTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.ButtonDelete = new System.Windows.Forms.Button();
             this.TextBoxSearchPattern = new System.Windows.Forms.TextBox();
             this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.positionsTSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.forfeitTypeTSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.paymentTypeTSMI = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -105,7 +106,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.функционалToolStripMenuItem,
             this.справочникиToolStripMenuItem,
-            this.отчетыToolStripMenuItem,
+            this.reportsTSMI,
             this.настройкиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -120,7 +121,8 @@
             this.workWithСontractsTSMI,
             this.WorkWithEmployeeTSMI,
             this.WorkWithCallTSMI,
-            this.WorkWithInvoicesTSMI});
+            this.WorkWithInvoicesTSMI,
+            this.WorkTSMI});
             this.функционалToolStripMenuItem.Name = "функционалToolStripMenuItem";
             this.функционалToolStripMenuItem.Size = new System.Drawing.Size(107, 24);
             this.функционалToolStripMenuItem.Text = "Функционал";
@@ -160,6 +162,13 @@
             this.WorkWithInvoicesTSMI.Text = "Работа со счетами";
             this.WorkWithInvoicesTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
+            // WorkTSMI
+            // 
+            this.WorkTSMI.Name = "WorkTSMI";
+            this.WorkTSMI.Size = new System.Drawing.Size(246, 26);
+            this.WorkTSMI.Text = "Работы";
+            this.WorkTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
+            // 
             // справочникиToolStripMenuItem
             // 
             this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -170,11 +179,33 @@
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(115, 24);
             this.справочникиToolStripMenuItem.Text = "Справочники";
             // 
-            // отчетыToolStripMenuItem
+            // positionsTSMI
             // 
-            this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
-            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
-            this.отчетыToolStripMenuItem.Text = "Отчеты";
+            this.positionsTSMI.Name = "positionsTSMI";
+            this.positionsTSMI.Size = new System.Drawing.Size(192, 26);
+            this.positionsTSMI.Text = "Должности";
+            this.positionsTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
+            // 
+            // forfeitTypeTSMI
+            // 
+            this.forfeitTypeTSMI.Name = "forfeitTypeTSMI";
+            this.forfeitTypeTSMI.Size = new System.Drawing.Size(192, 26);
+            this.forfeitTypeTSMI.Text = "Типы штрафов";
+            this.forfeitTypeTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
+            // 
+            // paymentTypeTSMI
+            // 
+            this.paymentTypeTSMI.Name = "paymentTypeTSMI";
+            this.paymentTypeTSMI.Size = new System.Drawing.Size(192, 26);
+            this.paymentTypeTSMI.Text = "Типы платежей";
+            this.paymentTypeTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
+            // 
+            // reportsTSMI
+            // 
+            this.reportsTSMI.Name = "reportsTSMI";
+            this.reportsTSMI.Size = new System.Drawing.Size(71, 24);
+            this.reportsTSMI.Text = "Отчеты";
+            this.reportsTSMI.Click += new System.EventHandler(this.ReportsTSMI_Click);
             // 
             // настройкиToolStripMenuItem
             // 
@@ -220,27 +251,6 @@
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
-            // positionsTSMI
-            // 
-            this.positionsTSMI.Name = "positionsTSMI";
-            this.positionsTSMI.Size = new System.Drawing.Size(192, 26);
-            this.positionsTSMI.Text = "Должности";
-            this.positionsTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
-            // 
-            // forfeitTypeTSMI
-            // 
-            this.forfeitTypeTSMI.Name = "forfeitTypeTSMI";
-            this.forfeitTypeTSMI.Size = new System.Drawing.Size(192, 26);
-            this.forfeitTypeTSMI.Text = "Типы штрафов";
-            this.forfeitTypeTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
-            // 
-            // paymentTypeTSMI
-            // 
-            this.paymentTypeTSMI.Name = "paymentTypeTSMI";
-            this.paymentTypeTSMI.Size = new System.Drawing.Size(192, 26);
-            this.paymentTypeTSMI.Text = "Типы платежей";
-            this.paymentTypeTSMI.Click += new System.EventHandler(this.ChangeCurrentContext);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -281,7 +291,7 @@
         private System.Windows.Forms.ToolStripMenuItem workWithСontractsTSMI;
         private System.Windows.Forms.ToolStripMenuItem WorkWithEmployeeTSMI;
         private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportsTSMI;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ChangeUserTSMI;
         private System.Windows.Forms.ToolStripMenuItem WorkWithCallTSMI;
@@ -289,6 +299,7 @@
         private System.Windows.Forms.ToolStripMenuItem positionsTSMI;
         private System.Windows.Forms.ToolStripMenuItem forfeitTypeTSMI;
         private System.Windows.Forms.ToolStripMenuItem paymentTypeTSMI;
+        private System.Windows.Forms.ToolStripMenuItem WorkTSMI;
     }
 }
 

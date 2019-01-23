@@ -21,9 +21,11 @@ namespace Security_Agency
             ["Работа с сотрудниками"] = "Employees",
             ["Работа со счетами"] = "Invoices",
             ["Сигналы тревоги"] = "Calls",
+            ["Работы"] = "Work_Equipments",
             ["Должности"] = "Positions",
             ["Типы штрафов"] = "Forfeit_Types",
             ["Типы платежей"] = "Payment_Types"
+            
         };
 
         public static Dictionary<string, string> TrueFalse = new Dictionary<string, string>()
@@ -32,7 +34,21 @@ namespace Security_Agency
             ["False"] = "Нет"
         };
 
+        public static Dictionary<string, string> TrueFalseWork = new Dictionary<string, string>()
+        {
+            ["True"] = "Выполнено",
+            ["False"] = "Невыполнено"
+        };
+
+        public static Dictionary<string, string> TrueFalseInvoice = new Dictionary<string, string>()
+        {
+            ["True"] = "Оплачен",
+            ["False"] = "Неоплачен"
+        };
+
         public static Dictionary<string, string> valueFromTableForEdit = new Dictionary<string, string>();
+
+        public static Dictionary<string, string> valueForEdit = new Dictionary<string, string>();
 
         public static int CurrentIndex;
 

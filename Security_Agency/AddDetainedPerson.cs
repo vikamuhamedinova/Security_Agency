@@ -118,7 +118,7 @@ namespace Security_Agency
                     }
                     else
                     {
-                        Authorization.DBC.Insert("\"Detained_person\"", vals);
+                        Authorization.DBC.Insert("\"Detained_Person\"", vals);
                         MessageBox.Show("Задержанное лицо добавлено.");
                     }
                 }

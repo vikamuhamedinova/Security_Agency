@@ -23,7 +23,7 @@ namespace Security_Agency
         List<string> itemsForAutoComplete;
 
         public MainForm(AccessRoles role, Authorization link)
-        { 
+        {
             InitializeComponent();
             _currentRole = role;
             _link = link;
@@ -49,8 +49,67 @@ namespace Security_Agency
             this.queryInfoLabel.Text = "Клиенты";
             ClientsList();*/
         }
+        /// <summary>
+        /// Если condition false, показывает MessageBox с предупреждением
+        /// </summary>
+        /// <param name="condition">Условие, обозначющее, есть ли доступ у этого юзера</param>
+        /// <returns>true, если messagebox был показан</returns>
+        private bool NoAccessMessageBox(bool condition)
+        {
+            if (!condition)
+            {
+                MessageBox.Show("У вас нет прав для выполнения данной операции");
+                return true;
+            }
+            return false;
+        }
+        //
+        private bool CheckNoAccess()
+        {
+            bool no_access;
+            switch (_current_table)
+            {
+                case "\"Client\"":
+                    no_access = NoAccessMessageBox(_currentRole == AccessRoles.Director
+                                                || _currentRole == AccessRoles.Manager);
+                    break;
+                case "\"Contract\"":
+                    no_access = NoAccessMessageBox(_currentRole == AccessRoles.Director
+                                                || _currentRole == AccessRoles.Manager);
+                    break;
+                case "\"Employee\"":
+                    no_access = NoAccessMessageBox(_currentRole == AccessRoles.Director
+                                                || _currentRole == AccessRoles.HRManager);
+                    break;
+                case "\"Call\"":
+                    no_access = NoAccessMessageBox(_currentRole == AccessRoles.Director
+                                                || _currentRole == AccessRoles.Inspector
+                                                || _currentRole == AccessRoles.Dispatcher);
+                    break;
+                case "\"Invoice\"":
+                    no_access = NoAccessMessageBox(_currentRole == AccessRoles.Director
+                                                || _currentRole == AccessRoles.Accountant);
+                    break;
+                case "\"Work_Equipment\"":
+                    no_access = NoAccessMessageBox(_currentRole == AccessRoles.Director
+                                                || _currentRole == AccessRoles.Adjuster);
+                    break;
+                case "\"Position\"":
+                    no_access = NoAccessMessageBox(_currentRole == AccessRoles.Director);
+                    break;
+                case "\"Forfeit_Type\"":
+                    no_access = NoAccessMessageBox(_currentRole == AccessRoles.Director);
+                    break;
+                case "\"Payment_Type\"":
+                    no_access = NoAccessMessageBox(_currentRole == AccessRoles.Director);
+                    break;
+                default:
+                     no_access = false;
+                     break;
+             }
+             return no_access;
+         }
 
-        
         // список клиентов
         public void ClientsList()
         {
@@ -96,7 +155,7 @@ namespace Security_Agency
                 }
                 );
                 itWasReplaceFKtoName = true;
-                for(int i = 0; i < DataGridView.Rows.Count; i++)
+                for (int i = 0; i < DataGridView.Rows.Count; i++)
                 {
                     DataGridViewRow row = DataGridView.Rows[i];
                     row.Cells["Клиент"].Value = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Client\"", row.Cells["Клиент"].Value.ToString());
@@ -194,10 +253,10 @@ namespace Security_Agency
                 values: new Dictionary<string, string>()
                 {
                     ["\"PK_Invoice\""] = "\"ID\"",
+                    ["\"PK_Defrayal\""] = "\"Оплата\"",
                     ["\"Invoice_ID\""] = "\"Номер счета\"",
                     ["\"Date_Formation\""] = "\"Дата формирования\"",
                     ["\"Payment_State\""] = "\"Статус\"",
-                    ["\"Payment_Period\""] = "\"Период\"",
                     ["\"PK_Contract\""] = "\"Договор\"",
                     ["\"PK_Employee\""] = "\"Сотрудник\""
                 }
@@ -206,12 +265,55 @@ namespace Security_Agency
                 for (int i = 0; i < DataGridView.Rows.Count; i++)
                 {
                     DataGridViewRow row = DataGridView.Rows[i];
-                    row.Cells["Статус"].Value = Config.TrueFalse[row.Cells["Статус"].Value.ToString()];
+                    row.Cells["Статус"].Value = Config.TrueFalseInvoice[row.Cells["Статус"].Value.ToString()];
                     string idClient = Authorization.DBC.GetPKByFK("\"PK_Client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
                     string contractID = Authorization.DBC.GetPKByFK("\"Contract_ID\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
                     string client = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Client\"", idClient);
                     row.Cells["Договор"].Value = contractID + " " + client;
                     row.Cells["Сотрудник"].Value = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+                }
+                DataGridView.Columns["Оплата"].Visible = false;
+                itWasReplaceFKtoName = false;
+                _current_table = currentTable;
+                FillValuesToAutocomplete();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+        // список работ
+        public void Work_EquipmentsList()
+        {
+            try
+            {
+                string currentTable = "\"Work_Equipment\"";
+                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                values: new Dictionary<string, string>()
+                {
+                    ["\"PK_Work_Equipment\""] = "\"ID\"",
+                    ["\"PK_Contract\""] = "\"Договор\"",
+                    ["\"Name_Work\""] = "\"Наименование работы\"",
+                    ["\"Approximate_Date\""] = "\"Планируемая дата проведения работ\"",
+                    ["\"Work_Date\""] = "\"Дата выполнения\"",
+                    ["\"Execution_Fact\""] = "\"Статус\"",
+                    ["\"PK_Employee\""] = "\"Сотрудник\""
+                }
+                );
+                itWasReplaceFKtoName = true;
+                for (int i = 0; i < DataGridView.Rows.Count; i++)
+                {  
+                    DataGridViewRow row = DataGridView.Rows[i];
+                    row.Cells["Статус"].Value= Config.TrueFalseWork[row.Cells["Статус"].Value.ToString()];
+                    string idClient = Authorization.DBC.GetPKByFK("\"PK_Client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
+                    string contractID = Authorization.DBC.GetPKByFK("\"Contract_ID\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
+                    string client = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Client\"", idClient);
+                    row.Cells["Договор"].Value = contractID + " " + client;
+                    string pk = row.Cells["Сотрудник"].Value.ToString();
+                    if(pk != "")
+                    {
+                        row.Cells["Сотрудник"].Value= Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Employee\"", pk);
+                    }
                 }
                 itWasReplaceFKtoName = false;
                 _current_table = currentTable;
@@ -222,8 +324,6 @@ namespace Security_Agency
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-
-
         //
         public void PositionsList()
         {
@@ -290,69 +390,7 @@ namespace Security_Agency
             }
         }
 
-        /*  /// <summary>
-          /// Если condition false, показывает MessageBox с предупреждением
-          /// </summary>
-          /// <param name="condition">Условие, обозначющее, есть ли доступ у этого юзера</param>
-          /// <returns>true, если messagebox был показан</returns>
-          private bool NoAccessMessageBox(bool condition)
-          {
-              if (!condition)
-              {
-                  MessageBox.Show("У вас нет прав для выполнения данной операции");
-                  return true;
-              }
-              return false;
-          }*/
-
-        /* private bool CheckNoAccess()
-         {
-             bool no_access;
-             switch (_current_table)
-             {
-                 case "\"Client\"":
-                     no_access = NoAccessMessageBox(
-                         _currentRole == AccessRoles.Director
-                         || _currentRole == AccessRoles.Manager
-                     );
-                     break;
-                 case "\"Contract\"":
-                     no_access = NoAccessMessageBox(
-                         _currentRole == AccessRoles.Director
-                         || _currentRole == AccessRoles.Manager
-                     );
-                     break;
-                 case "\"Employee\"":
-                     no_access = NoAccessMessageBox(
-                         _currentRole == AccessRoles.Director
-                         || _currentRole == AccessRoles.Manager
-                     );
-                     break;
-                 case "\"Payment\"":
-                     no_access = NoAccessMessageBox(
-                         _currentRole == AccessRoles.Director
-                         || _currentRole == AccessRoles.Accountant
-                     );
-                     break;
-                 case "\"Fine\"":
-                     no_access = NoAccessMessageBox(
-                         _currentRole == AccessRoles.Director
-                         || _currentRole == AccessRoles.Accountant
-                     );
-                     break;
-                 case "\"Call\"":
-                     no_access = NoAccessMessageBox(
-                         _currentRole == AccessRoles.Director
-                         || _currentRole == AccessRoles.Inspector
-                         || _currentRole == AccessRoles.Dispatcher
-                     );
-                     break;
-                 default:
-                     no_access = false;
-                     break;
-             }
-             return no_access;
-         }*/
+        
 
         // поиск
         /* private void Search(object sender, EventArgs e)
@@ -396,8 +434,6 @@ namespace Security_Agency
              return names;
          }*/
 
-        
-
         //Обновление записи в таблице через DataGridView
        /* private void UpdateEntry()
         {
@@ -418,80 +454,6 @@ namespace Security_Agency
                 Authorization.ODBC.Update(_current_table, id, columnNames, columnValues);
                 // _currFunc(null, null);
                 MessageBox.Show("Запись успешно обновлена.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }*/
-
-       
-
-       /* public void FinesList()
-        {
-            try
-            {
-                string currentTable = "\"Fine\"";
-                Authorization.ODBC.Select(currentTable, tableView: dataGridView,
-                values: new Dictionary<string, string>()
-                {
-                    ["\"ID\""] = "\"ID\"",
-                    ["\"Date\""] = "\"Дата\"",
-                    ["\"Sum\""] = "\"Сумма\"",
-                    ["\"Contract_ID\""] = "\"Договор\"",
-                    ["\"ID_type_fine\""] = "\"Тип\"",
-                    ["\"ID_accountant\""] = "\"Сотрудник\""
-                }
-                );
-                itWasReplaceFKtoName = true;
-                foreach (DataGridViewRow row in dataGridView.Rows)
-                {
-                    row.Cells["Тип"].Value = Authorization.ODBC.getNameByFK("\"Name\"", "\"FineType\"", row.Cells["Тип"].Value.ToString());
-                    row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
-                    string id_client = Authorization.ODBC.getNameByFK("\"ID_client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
-                    row.Cells["Договор"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", id_client);
-                }
-                itWasReplaceFKtoName = false;
-                _current_table = currentTable;
-                FillValuesToAutocomplete();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }*/
-
-      
-
-        // украденные вещи
-       /* public void Stolen_stuffssList()
-        {
-            try
-            {
-                string currentTable = "\"Stolen_stuffs\"";
-                Authorization.ODBC.Select(currentTable, tableView: dataGridView,
-                values: new Dictionary<string, string>()
-                {
-                    ["\"ID\""] = "\"ID\"",
-                    ["\"Name\""] = "\"Наименование\"",
-                    ["\"Price\""] = "\"Цена\"",
-                    ["\"Amount\""] = "\"Количество\"",
-                    ["\"Call_ID\""] = "\"Сигнал тревоги\""
-                }
-                );
-                itWasReplaceFKtoName = true;
-                foreach (DataGridViewRow row in dataGridView.Rows)
-                {
-                    string contract_id_time = Authorization.ODBC.getNameByFK("\"Contract_ID\" || '_' || TO_CHAR(\"Date\", 'DD.MM.YYYY')", "\"Call\"", row.Cells["Сигнал тревоги"].Value.ToString());
-                    string contract_id = contract_id_time.Split('_')[0];
-                    string time = contract_id_time.Split('_')[1];
-                    string client_id = Authorization.ODBC.getNameByFK("\"ID_client\"", "\"Contract\"", contract_id);
-                    string fio = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", client_id);
-                    row.Cells["Сигнал тревоги"].Value = fio + " " + time;
-                }
-                itWasReplaceFKtoName = false;
-                _current_table = currentTable;
-                FillValuesToAutocomplete();
             }
             catch (Exception ex)
             {
@@ -561,11 +523,6 @@ namespace Security_Agency
             MethodInfo method = t.GetMethod(Config.methodTranslate[sender.ToString()] + "List");
             method.Invoke(this, null);
         }
-
-        /*private void отчетыToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new Reports().Show();
-        }*/
         // смена пользователя
         private void ChangeUser(object sender, EventArgs e)
         {
@@ -574,10 +531,16 @@ namespace Security_Agency
             Close();
             itWasChangeUser = false;
         }
-
+        //
+        private void ReportsTSMI_Click(object sender, EventArgs e)
+        {
+            new Reports().Show();
+        }
         //вызывает форму вида Add<formName>
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
+            if (CheckNoAccess())
+                return;
             string nameForm = "Add" + _current_table.Substring(1, _current_table.Length - 2);
             try
             {
@@ -593,6 +556,8 @@ namespace Security_Agency
         //вызывает форму вида Add<formName> для редактирования
         private void ButtonEdit_Click(object sender, EventArgs e)
         {
+            if (CheckNoAccess())
+                return;
             int curRow = GetSelectedRow();
             if (curRow == -1)
             {
@@ -621,6 +586,8 @@ namespace Security_Agency
         //
         private void ButtonDelete_Click(object sendet, EventArgs e)
         {
+            if (CheckNoAccess())
+                return;
             if (MessageBox.Show("Вы точно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 return;
@@ -648,14 +615,18 @@ namespace Security_Agency
                         Authorization.DBC.Delete("\"Employee\"", new Tuple<string, string>("\"PK_Employee\"", id));
                         EmployeesList();
                         break;
+                    case "\"Call\"":
+                        Authorization.DBC.Delete("\"Call\"", new Tuple<string, string>("\"PK_Call\"", id));
+                        CallsList();
+                        break;
                     case "\"Invoice\"":
                         Authorization.DBC.Delete("\"Invoice\"", new Tuple<string, string>("\"PK_Invoice\"", id));
                         InvoicesList();
                         break;
-                    /*case "\"Fine\"":
-                        Authorization.DBC.Delete("\"Fine\"", new Tuple<string, string>("\"ID\"", id));
-                        FinesList();
-                        break;*/
+                    case "\"Work_Equipment\"":
+                        Authorization.DBC.Delete("\"Work_Equipment\"", new Tuple<string, string>("\"PK_Work_Equipment\"", id));
+                        Work_EquipmentsList();
+                        break;
                     case "\"Position\"":
                         Authorization.DBC.Delete("\"Position\"", new Tuple<string, string>("\"PK_Position\"", id));
                         InvoicesList();
@@ -668,10 +639,6 @@ namespace Security_Agency
                         Authorization.DBC.Delete("\"Payment_Type\"", new Tuple<string, string>("\"PK_Payment_Type\"", id));
                         InvoicesList();
                         break;
-                    /*case "\"Call\"":
-                        Authorization.DBC.Delete("\"Call\"", new Tuple<string, string>("\"ID\"", id));
-                        CallsList();
-                        break;*/
                     default:
                         throw new Exception("Неправильная указана текущая таблица: " + _current_table);
                 }

@@ -32,8 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Npgsql, Version=4.0.4.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.4.0.4\lib\net451\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="Office, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Excel.14.0.4760.1000\lib\net20\Office.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -142,11 +152,11 @@
     <Compile Include="AddStolenObject.Designer.cs">
       <DependentUpon>AddStolenObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddWorkEquip.cs">
+    <Compile Include="AddWork_Equipment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddWorkEquip.Designer.cs">
-      <DependentUpon>AddWorkEquip.cs</DependentUpon>
+    <Compile Include="AddWork_Equipment.Designer.cs">
+      <DependentUpon>AddWork_Equipment.cs</DependentUpon>
     </Compile>
     <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
@@ -213,8 +223,8 @@
     <EmbeddedResource Include="AddStolenObject.resx">
       <DependentUpon>AddStolenObject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddWorkEquip.resx">
-      <DependentUpon>AddWorkEquip.cs</DependentUpon>
+    <EmbeddedResource Include="AddWork_Equipment.resx">
+      <DependentUpon>AddWork_Equipment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>

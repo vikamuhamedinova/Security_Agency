@@ -28,7 +28,8 @@ F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Sec
 F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddInvoice.resources
 F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddStolenObject.resources
 F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddCall.resources
-F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddWorkEquip.resources
 F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.Reports.resources
 F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddForfeit_Type.resources
 F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddPayment_Type.resources
+F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddDefrayal.resources
+F:\7_semester\SUBD\Security_Agency\Security_Agency\Security_Agency\obj\Debug\Security_Agency.AddWork_Equipment.resources

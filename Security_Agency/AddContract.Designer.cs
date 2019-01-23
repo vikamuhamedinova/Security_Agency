@@ -46,25 +46,33 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataGridViewResident = new System.Windows.Forms.DataGridView();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonDeleteWorkEquip = new System.Windows.Forms.Button();
+            this.buttonAddWorkEquip = new System.Windows.Forms.Button();
+            this.buttonEditWorkEquip = new System.Windows.Forms.Button();
+            this.dataGridViewWorkEquip = new System.Windows.Forms.DataGridView();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.dataGridViewResident = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProperty)).BeginInit();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResident)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkEquip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResident)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAddContract
             // 
-            this.buttonAddContract.Location = new System.Drawing.Point(605, 639);
+            this.buttonAddContract.Location = new System.Drawing.Point(17, 278);
             this.buttonAddContract.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddContract.Name = "buttonAddContract";
-            this.buttonAddContract.Size = new System.Drawing.Size(109, 42);
+            this.buttonAddContract.Size = new System.Drawing.Size(149, 47);
             this.buttonAddContract.TabIndex = 0;
             this.buttonAddContract.Text = "Добавить договор";
             this.buttonAddContract.UseVisualStyleBackColor = true;
@@ -72,7 +80,7 @@
             // 
             // buttonCancelAddContract
             // 
-            this.buttonCancelAddContract.Location = new System.Drawing.Point(722, 639);
+            this.buttonCancelAddContract.Location = new System.Drawing.Point(1124, 385);
             this.buttonCancelAddContract.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelAddContract.Name = "buttonCancelAddContract";
             this.buttonCancelAddContract.Size = new System.Drawing.Size(105, 42);
@@ -242,15 +250,6 @@
             this.tabPage1.Text = "Имущество";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewResident
-            // 
-            this.dataGridViewResident.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewResident.Location = new System.Drawing.Point(7, 11);
-            this.dataGridViewResident.Name = "dataGridViewResident";
-            this.dataGridViewResident.RowTemplate.Height = 24;
-            this.dataGridViewResident.Size = new System.Drawing.Size(789, 249);
-            this.dataGridViewResident.TabIndex = 41;
-            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(279, 266);
@@ -300,17 +299,91 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(16, 263);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(422, 11);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(811, 347);
             this.tabControl1.TabIndex = 43;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.buttonDeleteWorkEquip);
+            this.tabPage3.Controls.Add(this.buttonAddWorkEquip);
+            this.tabPage3.Controls.Add(this.buttonEditWorkEquip);
+            this.tabPage3.Controls.Add(this.dataGridViewWorkEquip);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(803, 318);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Работы";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteWorkEquip
+            // 
+            this.buttonDeleteWorkEquip.Location = new System.Drawing.Point(284, 270);
+            this.buttonDeleteWorkEquip.Name = "buttonDeleteWorkEquip";
+            this.buttonDeleteWorkEquip.Size = new System.Drawing.Size(130, 42);
+            this.buttonDeleteWorkEquip.TabIndex = 47;
+            this.buttonDeleteWorkEquip.Text = "Удалить";
+            this.buttonDeleteWorkEquip.UseVisualStyleBackColor = true;
+            this.buttonDeleteWorkEquip.Click += new System.EventHandler(this.ButtonDeleteWorkEquip_Click);
+            // 
+            // buttonAddWorkEquip
+            // 
+            this.buttonAddWorkEquip.Location = new System.Drawing.Point(12, 270);
+            this.buttonAddWorkEquip.Name = "buttonAddWorkEquip";
+            this.buttonAddWorkEquip.Size = new System.Drawing.Size(130, 42);
+            this.buttonAddWorkEquip.TabIndex = 45;
+            this.buttonAddWorkEquip.Text = "Добавить";
+            this.buttonAddWorkEquip.UseVisualStyleBackColor = true;
+            this.buttonAddWorkEquip.Click += new System.EventHandler(this.ButtonAddWorkEquip_Click);
+            // 
+            // buttonEditWorkEquip
+            // 
+            this.buttonEditWorkEquip.Location = new System.Drawing.Point(148, 270);
+            this.buttonEditWorkEquip.Name = "buttonEditWorkEquip";
+            this.buttonEditWorkEquip.Size = new System.Drawing.Size(130, 42);
+            this.buttonEditWorkEquip.TabIndex = 46;
+            this.buttonEditWorkEquip.Text = "Редактировать";
+            this.buttonEditWorkEquip.UseVisualStyleBackColor = true;
+            this.buttonEditWorkEquip.Click += new System.EventHandler(this.ButtonEditWorkEquip_Click);
+            // 
+            // dataGridViewWorkEquip
+            // 
+            this.dataGridViewWorkEquip.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWorkEquip.Location = new System.Drawing.Point(12, 15);
+            this.dataGridViewWorkEquip.Name = "dataGridViewWorkEquip";
+            this.dataGridViewWorkEquip.RowTemplate.Height = 24;
+            this.dataGridViewWorkEquip.Size = new System.Drawing.Size(777, 249);
+            this.dataGridViewWorkEquip.TabIndex = 0;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(998, 385);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(105, 42);
+            this.buttonSave.TabIndex = 44;
+            this.buttonSave.Text = "Сохранить";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
+            // 
+            // dataGridViewResident
+            // 
+            this.dataGridViewResident.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewResident.Location = new System.Drawing.Point(6, 6);
+            this.dataGridViewResident.Name = "dataGridViewResident";
+            this.dataGridViewResident.RowTemplate.Height = 24;
+            this.dataGridViewResident.Size = new System.Drawing.Size(789, 249);
+            this.dataGridViewResident.TabIndex = 45;
+            // 
             // AddContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 694);
+            this.ClientSize = new System.Drawing.Size(1245, 454);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.buttonAddApartment);
             this.Controls.Add(this.label5);
@@ -331,9 +404,11 @@
             this.Load += new System.EventHandler(this.AddContract_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProperty)).EndInit();
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResident)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkEquip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResident)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,11 +434,17 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataGridView dataGridViewResident;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button buttonDeleteWorkEquip;
+        private System.Windows.Forms.Button buttonAddWorkEquip;
+        private System.Windows.Forms.Button buttonEditWorkEquip;
+        private System.Windows.Forms.DataGridView dataGridViewWorkEquip;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.DataGridView dataGridViewResident;
     }
 }

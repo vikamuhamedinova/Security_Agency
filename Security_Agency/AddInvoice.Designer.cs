@@ -38,12 +38,30 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCancelAddInvoice = new System.Windows.Forms.Button();
             this.buttonAddInvoice = new System.Windows.Forms.Button();
-            this.maskedTextBoxInpSum = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkedListBoxForfeitType = new System.Windows.Forms.CheckedListBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.checkedListBoxPaymentType = new System.Windows.Forms.CheckedListBox();
+            this.dataGridViewPayments = new System.Windows.Forms.DataGridView();
+            this.comboBoxType = new System.Windows.Forms.ComboBox();
+            this.comboBoxAddPayment = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.buttonAddPayment = new System.Windows.Forms.Button();
+            this.groupBoxPayments = new System.Windows.Forms.GroupBox();
+            this.buttonDeletePayment = new System.Windows.Forms.Button();
+            this.labelSum = new System.Windows.Forms.Label();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.labelStatus = new System.Windows.Forms.Label();
+            this.labelDate = new System.Windows.Forms.Label();
+            this.buttonAddDefrayal = new System.Windows.Forms.Button();
+            this.buttonEditDefrayal = new System.Windows.Forms.Button();
+            this.buttonDeleteDefrayal = new System.Windows.Forms.Button();
+            this.groupBoxDefrayal = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.labelDefrayalSum = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPayments)).BeginInit();
+            this.groupBoxPayments.SuspendLayout();
+            this.groupBoxDefrayal.SuspendLayout();
             this.SuspendLayout();
             // 
             // label5
@@ -127,10 +145,10 @@
             // 
             // buttonCancelAddInvoice
             // 
-            this.buttonCancelAddInvoice.Location = new System.Drawing.Point(223, 396);
+            this.buttonCancelAddInvoice.Location = new System.Drawing.Point(1158, 409);
             this.buttonCancelAddInvoice.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelAddInvoice.Name = "buttonCancelAddInvoice";
-            this.buttonCancelAddInvoice.Size = new System.Drawing.Size(105, 42);
+            this.buttonCancelAddInvoice.Size = new System.Drawing.Size(125, 42);
             this.buttonCancelAddInvoice.TabIndex = 28;
             this.buttonCancelAddInvoice.Text = "Отмена";
             this.buttonCancelAddInvoice.UseVisualStyleBackColor = true;
@@ -138,83 +156,238 @@
             // 
             // buttonAddInvoice
             // 
-            this.buttonAddInvoice.Location = new System.Drawing.Point(11, 396);
+            this.buttonAddInvoice.Location = new System.Drawing.Point(11, 221);
             this.buttonAddInvoice.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddInvoice.Name = "buttonAddInvoice";
-            this.buttonAddInvoice.Size = new System.Drawing.Size(109, 42);
+            this.buttonAddInvoice.Size = new System.Drawing.Size(125, 42);
             this.buttonAddInvoice.TabIndex = 27;
             this.buttonAddInvoice.Text = "Добавить счет";
             this.buttonAddInvoice.UseVisualStyleBackColor = true;
             this.buttonAddInvoice.Click += new System.EventHandler(this.ButtonAddInvoice_Click);
             // 
-            // maskedTextBoxInpSum
-            // 
-            this.maskedTextBoxInpSum.Location = new System.Drawing.Point(11, 355);
-            this.maskedTextBoxInpSum.Margin = new System.Windows.Forms.Padding(4);
-            this.maskedTextBoxInpSum.Mask = "00000000000";
-            this.maskedTextBoxInpSum.Name = "maskedTextBoxInpSum";
-            this.maskedTextBoxInpSum.Size = new System.Drawing.Size(235, 22);
-            this.maskedTextBoxInpSum.TabIndex = 40;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(81, 334);
+            this.label3.Location = new System.Drawing.Point(23, 222);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 17);
             this.label3.TabIndex = 39;
-            this.label3.Text = "Сумма";
+            this.label3.Text = "Итого:";
             // 
-            // checkedListBoxForfeitType
+            // dataGridViewPayments
             // 
-            this.checkedListBoxForfeitType.FormattingEnabled = true;
-            this.checkedListBoxForfeitType.Location = new System.Drawing.Point(11, 224);
-            this.checkedListBoxForfeitType.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBoxForfeitType.Name = "checkedListBoxForfeitType";
-            this.checkedListBoxForfeitType.Size = new System.Drawing.Size(219, 106);
-            this.checkedListBoxForfeitType.TabIndex = 41;
+            this.dataGridViewPayments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPayments.Location = new System.Drawing.Point(20, 21);
+            this.dataGridViewPayments.Name = "dataGridViewPayments";
+            this.dataGridViewPayments.RowTemplate.Height = 24;
+            this.dataGridViewPayments.Size = new System.Drawing.Size(625, 178);
+            this.dataGridViewPayments.TabIndex = 45;
             // 
-            // label6
+            // comboBoxType
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 204);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 17);
-            this.label6.TabIndex = 42;
-            this.label6.Text = "Штрафы";
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Items.AddRange(new object[] {
+            "Штраф",
+            "Платеж"});
+            this.comboBoxType.Location = new System.Drawing.Point(708, 61);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(235, 24);
+            this.comboBoxType.TabIndex = 46;
+            this.comboBoxType.SelectedIndexChanged += new System.EventHandler(this.comboBoxType_SelectedIndexChanged);
             // 
-            // label7
+            // comboBoxAddPayment
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(293, 204);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 17);
-            this.label7.TabIndex = 44;
-            this.label7.Text = "Услуги";
+            this.comboBoxAddPayment.FormattingEnabled = true;
+            this.comboBoxAddPayment.Location = new System.Drawing.Point(708, 116);
+            this.comboBoxAddPayment.Name = "comboBoxAddPayment";
+            this.comboBoxAddPayment.Size = new System.Drawing.Size(235, 24);
+            this.comboBoxAddPayment.TabIndex = 47;
             // 
-            // checkedListBoxPaymentType
+            // label8
             // 
-            this.checkedListBoxPaymentType.FormattingEnabled = true;
-            this.checkedListBoxPaymentType.Location = new System.Drawing.Point(251, 224);
-            this.checkedListBoxPaymentType.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBoxPaymentType.Name = "checkedListBoxPaymentType";
-            this.checkedListBoxPaymentType.Size = new System.Drawing.Size(224, 106);
-            this.checkedListBoxPaymentType.TabIndex = 43;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(796, 41);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(33, 17);
+            this.label8.TabIndex = 48;
+            this.label8.Text = "Тип";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(796, 91);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(33, 17);
+            this.label9.TabIndex = 49;
+            this.label9.Text = "Вид";
+            // 
+            // buttonAddPayment
+            // 
+            this.buttonAddPayment.Location = new System.Drawing.Point(704, 157);
+            this.buttonAddPayment.Name = "buttonAddPayment";
+            this.buttonAddPayment.Size = new System.Drawing.Size(125, 42);
+            this.buttonAddPayment.TabIndex = 50;
+            this.buttonAddPayment.Text = "Добавить";
+            this.buttonAddPayment.UseVisualStyleBackColor = true;
+            this.buttonAddPayment.Click += new System.EventHandler(this.buttonAddPayment_Click);
+            // 
+            // groupBoxPayments
+            // 
+            this.groupBoxPayments.Controls.Add(this.buttonDeletePayment);
+            this.groupBoxPayments.Controls.Add(this.label8);
+            this.groupBoxPayments.Controls.Add(this.buttonAddPayment);
+            this.groupBoxPayments.Controls.Add(this.comboBoxType);
+            this.groupBoxPayments.Controls.Add(this.label9);
+            this.groupBoxPayments.Controls.Add(this.labelSum);
+            this.groupBoxPayments.Controls.Add(this.comboBoxAddPayment);
+            this.groupBoxPayments.Controls.Add(this.dataGridViewPayments);
+            this.groupBoxPayments.Controls.Add(this.label3);
+            this.groupBoxPayments.Location = new System.Drawing.Point(298, 12);
+            this.groupBoxPayments.Name = "groupBoxPayments";
+            this.groupBoxPayments.Size = new System.Drawing.Size(993, 258);
+            this.groupBoxPayments.TabIndex = 51;
+            this.groupBoxPayments.TabStop = false;
+            this.groupBoxPayments.Text = "Платежи";
+            // 
+            // buttonDeletePayment
+            // 
+            this.buttonDeletePayment.Location = new System.Drawing.Point(835, 157);
+            this.buttonDeletePayment.Name = "buttonDeletePayment";
+            this.buttonDeletePayment.Size = new System.Drawing.Size(125, 42);
+            this.buttonDeletePayment.TabIndex = 51;
+            this.buttonDeletePayment.Text = "Удалить";
+            this.buttonDeletePayment.UseVisualStyleBackColor = true;
+            this.buttonDeletePayment.Click += new System.EventHandler(this.buttonDeletePayment_Click);
+            // 
+            // labelSum
+            // 
+            this.labelSum.Location = new System.Drawing.Point(80, 222);
+            this.labelSum.Name = "labelSum";
+            this.labelSum.Size = new System.Drawing.Size(100, 17);
+            this.labelSum.TabIndex = 52;
+            this.labelSum.Text = "00.00";
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(1004, 409);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(125, 42);
+            this.buttonSave.TabIndex = 51;
+            this.buttonSave.Text = "Сохранить";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // labelStatus
+            // 
+            this.labelStatus.AutoSize = true;
+            this.labelStatus.Location = new System.Drawing.Point(25, 59);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(46, 17);
+            this.labelStatus.TabIndex = 53;
+            this.labelStatus.Text = "label6";
+            // 
+            // labelDate
+            // 
+            this.labelDate.AutoSize = true;
+            this.labelDate.Location = new System.Drawing.Point(150, 59);
+            this.labelDate.Name = "labelDate";
+            this.labelDate.Size = new System.Drawing.Size(46, 17);
+            this.labelDate.TabIndex = 54;
+            this.labelDate.Text = "label7";
+            // 
+            // buttonAddDefrayal
+            // 
+            this.buttonAddDefrayal.Location = new System.Drawing.Point(22, 91);
+            this.buttonAddDefrayal.Name = "buttonAddDefrayal";
+            this.buttonAddDefrayal.Size = new System.Drawing.Size(125, 42);
+            this.buttonAddDefrayal.TabIndex = 55;
+            this.buttonAddDefrayal.Text = "Добавить";
+            this.buttonAddDefrayal.UseVisualStyleBackColor = true;
+            this.buttonAddDefrayal.Click += new System.EventHandler(this.buttonAddDefrayal_Click);
+            // 
+            // buttonEditDefrayal
+            // 
+            this.buttonEditDefrayal.Location = new System.Drawing.Point(153, 91);
+            this.buttonEditDefrayal.Name = "buttonEditDefrayal";
+            this.buttonEditDefrayal.Size = new System.Drawing.Size(125, 42);
+            this.buttonEditDefrayal.TabIndex = 56;
+            this.buttonEditDefrayal.Text = "Редактировать";
+            this.buttonEditDefrayal.UseVisualStyleBackColor = true;
+            this.buttonEditDefrayal.Click += new System.EventHandler(this.buttonEditDefrayal_Click);
+            // 
+            // buttonDeleteDefrayal
+            // 
+            this.buttonDeleteDefrayal.Location = new System.Drawing.Point(284, 91);
+            this.buttonDeleteDefrayal.Name = "buttonDeleteDefrayal";
+            this.buttonDeleteDefrayal.Size = new System.Drawing.Size(125, 42);
+            this.buttonDeleteDefrayal.TabIndex = 57;
+            this.buttonDeleteDefrayal.Text = "Удалить";
+            this.buttonDeleteDefrayal.UseVisualStyleBackColor = true;
+            this.buttonDeleteDefrayal.Click += new System.EventHandler(this.buttonDeleteDefrayal_Click);
+            // 
+            // groupBoxDefrayal
+            // 
+            this.groupBoxDefrayal.Controls.Add(this.label13);
+            this.groupBoxDefrayal.Controls.Add(this.label12);
+            this.groupBoxDefrayal.Controls.Add(this.label11);
+            this.groupBoxDefrayal.Controls.Add(this.labelDefrayalSum);
+            this.groupBoxDefrayal.Controls.Add(this.buttonAddDefrayal);
+            this.groupBoxDefrayal.Controls.Add(this.labelDate);
+            this.groupBoxDefrayal.Controls.Add(this.labelStatus);
+            this.groupBoxDefrayal.Controls.Add(this.buttonDeleteDefrayal);
+            this.groupBoxDefrayal.Controls.Add(this.buttonEditDefrayal);
+            this.groupBoxDefrayal.Location = new System.Drawing.Point(12, 296);
+            this.groupBoxDefrayal.Name = "groupBoxDefrayal";
+            this.groupBoxDefrayal.Size = new System.Drawing.Size(428, 155);
+            this.groupBoxDefrayal.TabIndex = 58;
+            this.groupBoxDefrayal.TabStop = false;
+            this.groupBoxDefrayal.Text = "Оплата";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(281, 32);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(50, 17);
+            this.label13.TabIndex = 61;
+            this.label13.Text = "Сумма";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(150, 32);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(95, 17);
+            this.label12.TabIndex = 60;
+            this.label12.Text = "Дата оплаты";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(25, 32);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 17);
+            this.label11.TabIndex = 59;
+            this.label11.Text = "Статус";
+            // 
+            // labelDefrayalSum
+            // 
+            this.labelDefrayalSum.AutoSize = true;
+            this.labelDefrayalSum.Location = new System.Drawing.Point(281, 59);
+            this.labelDefrayalSum.Name = "labelDefrayalSum";
+            this.labelDefrayalSum.Size = new System.Drawing.Size(54, 17);
+            this.labelDefrayalSum.TabIndex = 58;
+            this.labelDefrayalSum.Text = "label10";
             // 
             // AddInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 475);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.checkedListBoxPaymentType);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.checkedListBoxForfeitType);
-            this.Controls.Add(this.maskedTextBoxInpSum);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(1303, 480);
+            this.Controls.Add(this.groupBoxDefrayal);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.groupBoxPayments);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dateTimeInvoiceInput);
             this.Controls.Add(this.comboBoxAddEmployee);
@@ -230,6 +403,11 @@
             this.Text = "Добавление счета";
             this.Load += new System.EventHandler(this.AddInvoice_Load);
             this.Click += new System.EventHandler(this.AddInvoice_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPayments)).EndInit();
+            this.groupBoxPayments.ResumeLayout(false);
+            this.groupBoxPayments.PerformLayout();
+            this.groupBoxDefrayal.ResumeLayout(false);
+            this.groupBoxDefrayal.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,11 +425,26 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonCancelAddInvoice;
         private System.Windows.Forms.Button buttonAddInvoice;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxInpSum;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckedListBox checkedListBoxForfeitType;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckedListBox checkedListBoxPaymentType;
+        private System.Windows.Forms.DataGridView dataGridViewPayments;
+        private System.Windows.Forms.ComboBox comboBoxType;
+        private System.Windows.Forms.ComboBox comboBoxAddPayment;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button buttonAddPayment;
+        private System.Windows.Forms.GroupBox groupBoxPayments;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonDeletePayment;
+        private System.Windows.Forms.Label labelSum;
+        private System.Windows.Forms.Label labelStatus;
+        private System.Windows.Forms.Label labelDate;
+        private System.Windows.Forms.Button buttonAddDefrayal;
+        private System.Windows.Forms.Button buttonEditDefrayal;
+        private System.Windows.Forms.Button buttonDeleteDefrayal;
+        private System.Windows.Forms.GroupBox groupBoxDefrayal;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelDefrayalSum;
     }
 }
