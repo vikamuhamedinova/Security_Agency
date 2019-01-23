@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Npgsql;
 using System.IO;
 
 namespace Security_Agency
@@ -64,14 +65,11 @@ namespace Security_Agency
         // неоплаченные платежи
         private void unpaidInvoicesButton_Click(object sender, EventArgs e)
         {
-        /*private void unpaidInvoicesButton_Click(object sender, EventArgs e)
-        {
             if (contractComboBox.SelectedIndex == -1)
             {
-                MessageBox.Show("Необходимо выбрать контракт");
+                MessageBox.Show("Необходимо выбрать договор");
                 return;
             }
-
             string selectString = String.Format(@"select distinct ""inv_type"".""Name"" as ""Тип платежа"", 
                  ""c"".""Surname"" || ' ' || ""c"".""Name"" || ' ' || ""c"".""Otch"" as ""ФИО клиента"",
                 ""table"".""Invoice_sdate"" as ""Дата выставления счета"",
@@ -88,7 +86,6 @@ namespace Security_Agency
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
             dataGridViewInvoices.DataSource = dataTable;
-        }*/
         }
         // неоплаченные штрафы
         private void unpaidFinesButton_Click(object sender, EventArgs e)
