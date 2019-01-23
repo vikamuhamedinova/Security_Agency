@@ -201,7 +201,7 @@ namespace Security_Agency
                         else
                         {
                             Authorization.DBC.Insert("\"Work_Equipment\"", vals);
-                            MessageBox.Show("Клиент добавлен.");
+                            MessageBox.Show("Работа добавлена.");
                             ClearForm();
                         }
                     }

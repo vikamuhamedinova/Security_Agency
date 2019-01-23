@@ -107,7 +107,7 @@ namespace Security_Agency
                     else
                     {
                         Authorization.DBC.Insert("\"Payment_Type\"", vals);
-                        MessageBox.Show("Клиент добавлен.");
+                        MessageBox.Show("Платеж добавлен.");
                         ClearForm();
                     }
                 }

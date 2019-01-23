@@ -353,7 +353,7 @@ namespace Security_Agency
             int curRow = GetSelectedRow(dataGridViewDetainPers);
             if (curRow == -1)
             {
-                MessageBox.Show("Сначала выберите запись для рекдатирования.");
+                MessageBox.Show("Сначала выберите запись для редактирования.");
                 return;
             }
             Config.valueFromTableForEdit.Clear();

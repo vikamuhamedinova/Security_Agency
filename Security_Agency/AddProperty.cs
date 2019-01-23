@@ -126,7 +126,7 @@ namespace Security_Agency
                                 ["\"PK_Property\""] = pkProperty
                         };                       
                         Authorization.DBC.Insert("\"Property_List\"", vals1);
-                        MessageBox.Show("Клиент добавлен.");
+                        MessageBox.Show("Имущество добавлено.");
                         ClearForm();
                     }
                 }

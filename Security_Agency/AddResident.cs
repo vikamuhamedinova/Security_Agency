@@ -139,7 +139,7 @@ namespace Security_Agency
                             ["\"PK_Resident\""] = pkProperty
                         };
                         Authorization.DBC.Insert("\"List_Resident\"", vals1);
-                        MessageBox.Show("Клиент добавлен.");
+                        MessageBox.Show("Проживающий добавлен.");
                         ClearForm();
                     }
                 }
