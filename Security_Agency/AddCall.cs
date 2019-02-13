@@ -288,7 +288,7 @@ namespace Security_Agency
                     if (Text == "Редактирование")
                     {
                         Authorization.DBC.Update("\"Call\"", Config.valueFromTableForEdit["ID"], vals);
-                        MessageBox.Show("Карточка сотрудника была обновлена.");
+                        MessageBox.Show("Информация о вызове обновлена.");
                     }
                     else
                     {
@@ -305,7 +305,7 @@ namespace Security_Agency
                         adapter.Fill(dataTable);
                         DataRow row = dataTable.Rows[0];
                         pkCall = row["ID"].ToString();
-                        MessageBox.Show("Сотрудник добавлен.");
+                        MessageBox.Show("Вызов добавлен.");
                     }
                 }
                 catch (Exception ex)

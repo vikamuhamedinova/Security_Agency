@@ -181,7 +181,7 @@ namespace Security_Agency
                         };
                         valsInvoice = PrepareDataInvoice(valsInvoice);
                         Authorization.DBC.Update("\"Invoice\"", pkInvoice, valsInvoice);
-                        MessageBox.Show("Клиент добавлен.");
+                        MessageBox.Show("Оплата добавлена.");
                     }
                 }
                 catch (Exception ex)

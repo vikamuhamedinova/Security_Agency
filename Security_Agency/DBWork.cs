@@ -38,7 +38,6 @@ namespace Security_Agency
         {
             _connection.Close();
         }
-
         //
         public NpgsqlDataAdapter Select(string table, Dictionary<string, string> values = null,
             DataGridView tableView = null)
@@ -266,6 +265,60 @@ namespace Security_Agency
             return adapter;
         }
         //
+        //
+        public NpgsqlDataAdapter Select(List<string> tables, List<string> where, Dictionary<string, string> values = null,
+            DataGridView tableView = null)
+        {
+            string selectString = "select ";
+            if (values == null)
+            {
+                selectString += "* ";
+            }
+            else
+            {
+                foreach (KeyValuePair<string, string> pair in values)
+                {
+                    selectString += String.Format("{0} as {1}, ", pair.Key, pair.Value);
+                }
+                // убираем запятую в конце
+                selectString = selectString.Substring(0, selectString.Length - 2) + " ";
+            }
+            selectString += "from ";
+            foreach (string table in tables)
+            {
+                selectString += String.Format("{0},", table);
+            }
+            selectString = selectString.Substring(0, selectString.Length - 1) + " ";
+            string _where = where[0].Substring(1, where[0].Length - 2);
+            selectString += String.Format("where {0}", where[0]);
+            for (int i = 1; i < where.Count; i++)
+            {
+                selectString += String.Format(" and {0}", where[i]);
+            }
+            NpgsqlCommand command = new NpgsqlCommand(selectString, _connection);
+            NpgsqlDataAdapter adapter = new NpgsqlDataAdapter();
+            adapter.SelectCommand = command;
+            // если DataGridView не null, загрузим выборку в нее
+            if (tableView != null)
+            {
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                //Сделаем все клетки типа string
+                DataTable dtStringed = dataTable.Clone();
+                foreach (DataColumn column in dtStringed.Columns)
+                {
+                    column.DataType = typeof(string);
+                }
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    dtStringed.ImportRow(row);
+                }
+                tableView.DataSource = dtStringed;
+                tableView.Columns["ID"].Visible = false;
+            }
+            return adapter;
+        }
+        //
         public NpgsqlDataAdapter SelectW(List<string> tables, string where, string what, Dictionary<string, string> values = null,
             DataGridView tableView = null)
         {
@@ -463,7 +516,6 @@ namespace Security_Agency
             NpgsqlCommand command = new NpgsqlCommand(updateString, _connection);
             command.ExecuteNonQuery();
         }
-
         /// <summary>
         /// Удаляет информацию из таблицы по заданным условиям в кортеже.
         /// </summary>
@@ -478,7 +530,6 @@ namespace Security_Agency
             NpgsqlCommand command = new NpgsqlCommand(deleteString, _connection);
             command.ExecuteNonQuery();
         }
-
         // 
         public string GetNameByFK(string what, string table, string id)
         {
@@ -497,7 +548,6 @@ namespace Security_Agency
             reader.Close();
             return ret;
         }
-
         //
         public string GetPKByFK(string what, string table, string id)
         {
@@ -516,61 +566,5 @@ namespace Security_Agency
             reader.Close();
             return ret;
         }
-        /// <summary>
-        /// Обновление записи в таблице.
-        /// </summary>
-        /*  public void Update(string table, string idEntry, List<string> name, List<string> value)
-          {
-              //"Update <table> set <what>=<value>, ... where ID=<idEntry>;
-              string updateString = "update " + table + " set ";
-
-
-              //На вход могут быть поданы строки с кавычками
-              for (int i = 0; i < name.Count; i++)
-              {
-                  if (name[i][0] == '\"')
-                  {
-                      name[i] = name[i].Substring(1, name[i].Length - 2);
-                  }
-                  else
-                      break;
-              }
-
-              if (value == null || name == null)
-                  return;
-
-              for (int i = 0; i < name.Count; i++)
-              {
-                  if (value[i] == "" || name[i] == "ID")
-                      continue;
-                  if (name[i].Split('_')[0] == "Date")
-                  {
-
-                      DateTime date = DateTime.ParseExact(value[i], "dd.MM.yyyy H:mm:ss",
-                                         System.Globalization.CultureInfo.InvariantCulture);
-                      value[i] = date.ToString("yyyy-MM-dd HH:mm:ss");
-
-                  }
-                  //Клеим паспорт
-                  if (name[i] == "Passport")
-                  {
-                      updateString += "\"Passport_series\" = '" + value[i].Split(' ')[0] + "' ,";
-                      updateString += "\"Passport_ID\" = '" + value[i].Split(' ')[1] + "' ,";
-                      continue;
-                  }
-                  updateString += "\"" + name[i] + "\" = '" + value[i] + "' ,";
-              }
-
-              updateString = updateString.Substring(0, updateString.Length - 2);
-              updateString += String.Format(" where \"ID\" = {0}", idEntry);
-
-              NpgsqlCommand command = new NpgsqlCommand(updateString, _connection);
-              command.ExecuteNonQuery();
-
-          }*/
-
-
-
-
     }
 }

@@ -17,8 +17,6 @@ namespace Security_Agency
         private AccessRoles _currentRole;           // уровень доступа
         private Authorization _link;
         private string _current_table = "";
-        //private delegate void CurrentFunction(object sender, EventArgs e);
-        //private CurrentFunction _currFunc = null;
         private bool itWasReplaceFKtoName = false;
         List<string> itemsForAutoComplete;
 
@@ -36,18 +34,8 @@ namespace Security_Agency
             this.ButtonEdit.Enabled = false;
             this.ButtonDelete.Enabled = false;
             this.ButtonUpdate.Enabled = false;
-            //IntPtr hMenu = GetSystemMenu(Handle, false);
-            //int menuItemCount = GetMenuItemCount(hMenu);
-            //RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
-
-            /*if (_currentRole != AccessRoles.Director)
-                this.ToogleRawEditButton.Enabled = false;
-
-            ToogleRawEditButton.Dispose();
-            this.LabelUsername.Text = "Пользователь: " + Authorization.login;
-
-            this.queryInfoLabel.Text = "Клиенты";
-            ClientsList();*/
+            listViewMessages.Enabled = false;
+            labelMessages.Text = "";
         }
         /// <summary>
         /// Если condition false, показывает MessageBox с предупреждением
@@ -104,12 +92,11 @@ namespace Security_Agency
                     no_access = NoAccessMessageBox(_currentRole == AccessRoles.Director);
                     break;
                 default:
-                     no_access = false;
-                     break;
-             }
-             return no_access;
-         }
-
+                    no_access = false;
+                    break;
+            }
+            return no_access;
+        }
         // список клиентов
         public void ClientsList()
         {
@@ -117,7 +104,7 @@ namespace Security_Agency
             try
             {
                 string currentTable = "\"Client\"";
-                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                Authorization.DBC.Select(currentTable, tableView: dataGridView,
                 values: new Dictionary<string, string>()
                 {
                     ["\"PK_Client\""] = "\"ID\"",
@@ -143,7 +130,7 @@ namespace Security_Agency
             try
             {
                 string currentTable = "\"Contract\"";
-                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                Authorization.DBC.Select(currentTable, tableView: dataGridView,
                 values: new Dictionary<string, string>()
                 {
                     ["\"PK_Contract\""] = "\"ID\"",
@@ -155,9 +142,9 @@ namespace Security_Agency
                 }
                 );
                 itWasReplaceFKtoName = true;
-                for (int i = 0; i < DataGridView.Rows.Count; i++)
+                for (int i = 0; i < dataGridView.Rows.Count; i++)
                 {
-                    DataGridViewRow row = DataGridView.Rows[i];
+                    DataGridViewRow row = dataGridView.Rows[i];
                     row.Cells["Клиент"].Value = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Client\"", row.Cells["Клиент"].Value.ToString());
                     row.Cells["Квартира"].Value = Authorization.DBC.GetNameByFK("\"Address\"", "\"Apartment\"", row.Cells["Квартира"].Value.ToString());
                     row.Cells["Сотрудник"].Value = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
@@ -178,7 +165,7 @@ namespace Security_Agency
             try
             {
                 string currentTable = "\"Employee\"";
-                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                Authorization.DBC.Select(currentTable, tableView: dataGridView,
                 values: new Dictionary<string, string>()
                 {
                     ["\"PK_Employee\""] = "\"ID\"",
@@ -191,9 +178,9 @@ namespace Security_Agency
                 }
                 );
                 itWasReplaceFKtoName = true;
-                for (int i = 0; i < DataGridView.Rows.Count; i++)
+                for (int i = 0; i < dataGridView.Rows.Count; i++)
                 {
-                    DataGridViewRow row = DataGridView.Rows[i];
+                    DataGridViewRow row = dataGridView.Rows[i];
                     row.Cells["Должность"].Value = Authorization.DBC.GetNameByFK("\"Position_Title\"", "\"Position\"", row.Cells["Должность"].Value.ToString());
                 }
                 itWasReplaceFKtoName = false;
@@ -212,7 +199,7 @@ namespace Security_Agency
             try
             {
                 string currentTable = "\"Call\"";
-                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                Authorization.DBC.Select(currentTable, tableView: dataGridView,
                 values: new Dictionary<string, string>()
                 {
                     ["\"PK_Call\""] = "\"ID\"",
@@ -226,9 +213,9 @@ namespace Security_Agency
                 }
                 );
                 itWasReplaceFKtoName = true;
-                for (int i = 0; i < DataGridView.Rows.Count; i++)
+                for (int i = 0; i < dataGridView.Rows.Count; i++)
                 {
-                    DataGridViewRow row = DataGridView.Rows[i];
+                    DataGridViewRow row = dataGridView.Rows[i];
                     row.Cells["Был взлом"].Value = Config.TrueFalse[row.Cells["Был взлом"].Value.ToString()];
                     row.Cells["Ложный вызов"].Value = Config.TrueFalse[row.Cells["Ложный вызов"].Value.ToString()];
                     row.Cells["Квартира"].Value = Authorization.DBC.GetNameByFK("\"Address\"", "\"Apartment\"", row.Cells["Квартира"].Value.ToString());
@@ -249,7 +236,7 @@ namespace Security_Agency
             try
             {
                 string currentTable = "\"Invoice\"";
-                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                Authorization.DBC.Select(currentTable, tableView: dataGridView,
                 values: new Dictionary<string, string>()
                 {
                     ["\"PK_Invoice\""] = "\"ID\"",
@@ -262,9 +249,9 @@ namespace Security_Agency
                 }
                 );
                 itWasReplaceFKtoName = true;
-                for (int i = 0; i < DataGridView.Rows.Count; i++)
+                for (int i = 0; i < dataGridView.Rows.Count; i++)
                 {
-                    DataGridViewRow row = DataGridView.Rows[i];
+                    DataGridViewRow row = dataGridView.Rows[i];
                     row.Cells["Статус"].Value = Config.TrueFalseInvoice[row.Cells["Статус"].Value.ToString()];
                     string idClient = Authorization.DBC.GetPKByFK("\"PK_Client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
                     string contractID = Authorization.DBC.GetPKByFK("\"Contract_ID\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
@@ -272,7 +259,7 @@ namespace Security_Agency
                     row.Cells["Договор"].Value = contractID + " " + client;
                     row.Cells["Сотрудник"].Value = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
                 }
-                DataGridView.Columns["Оплата"].Visible = false;
+                dataGridView.Columns["Оплата"].Visible = false;
                 itWasReplaceFKtoName = false;
                 _current_table = currentTable;
                 FillValuesToAutocomplete();
@@ -288,7 +275,7 @@ namespace Security_Agency
             try
             {
                 string currentTable = "\"Work_Equipment\"";
-                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                Authorization.DBC.Select(currentTable, tableView: dataGridView,
                 values: new Dictionary<string, string>()
                 {
                     ["\"PK_Work_Equipment\""] = "\"ID\"",
@@ -301,18 +288,18 @@ namespace Security_Agency
                 }
                 );
                 itWasReplaceFKtoName = true;
-                for (int i = 0; i < DataGridView.Rows.Count; i++)
-                {  
-                    DataGridViewRow row = DataGridView.Rows[i];
-                    row.Cells["Статус"].Value= Config.TrueFalseWork[row.Cells["Статус"].Value.ToString()];
+                for (int i = 0; i < dataGridView.Rows.Count; i++)
+                {
+                    DataGridViewRow row = dataGridView.Rows[i];
+                    row.Cells["Статус"].Value = Config.TrueFalseWork[row.Cells["Статус"].Value.ToString()];
                     string idClient = Authorization.DBC.GetPKByFK("\"PK_Client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
                     string contractID = Authorization.DBC.GetPKByFK("\"Contract_ID\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
                     string client = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Client\"", idClient);
                     row.Cells["Договор"].Value = contractID + " " + client;
                     string pk = row.Cells["Сотрудник"].Value.ToString();
-                    if(pk != "")
+                    if (pk != "")
                     {
-                        row.Cells["Сотрудник"].Value= Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Employee\"", pk);
+                        row.Cells["Сотрудник"].Value = Authorization.DBC.GetNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\"", "\"Employee\"", pk);
                     }
                 }
                 itWasReplaceFKtoName = false;
@@ -330,7 +317,7 @@ namespace Security_Agency
             try
             {
                 string currentTable = "\"Position\"";
-                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                Authorization.DBC.Select(currentTable, tableView: dataGridView,
                 values: new Dictionary<string, string>()
                 {
                     ["\"PK_Position\""] = "\"ID\"",
@@ -351,7 +338,7 @@ namespace Security_Agency
             try
             {
                 string currentTable = "\"Forfeit_Type\"";
-                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                Authorization.DBC.Select(currentTable, tableView: dataGridView,
                 values: new Dictionary<string, string>()
                 {
                     ["\"PK_Forfeit_Type\""] = "\"ID\"",
@@ -373,7 +360,7 @@ namespace Security_Agency
             try
             {
                 string currentTable = "\"Payment_Type\"";
-                Authorization.DBC.Select(currentTable, tableView: DataGridView,
+                Authorization.DBC.Select(currentTable, tableView: dataGridView,
                 values: new Dictionary<string, string>()
                 {
                     ["\"PK_Payment_Type\""] = "\"ID\"",
@@ -390,93 +377,11 @@ namespace Security_Agency
             }
         }
 
-        
-
-        // поиск
-        /* private void Search(object sender, EventArgs e)
-         {
-             if (searchPatternTextBox.Text.Length == 0)
-             {
-                 MessageBox.Show("Пустой поисковый запрос");
-                 return;
-             }
-             SearchResult search = new SearchResult();
-             search.Show();
-             search.MakeSearch(searchPatternTextBox.Text, dataGridView);
-         }*/
-
-        /*private void topLevelExit_Click(object sender, EventArgs e)
-        {
-            _link.Close();
-        }*/
-
-        /* private List<string> GetRowValues(int id)
-         {
-             List<string> values = new List<string>();
-             foreach (DataGridViewCell cell in dataGridView.Rows[id].Cells)
-             {
-                 values.Add(cell.Value.ToString());
-             }
-             return values;
-         }*/
-
-        //TODO: Добавить словари для остальных таблиц
-        /* public List<string> GetTableColumnsName(string table)
-         {
-             List<string> names = new List<string>();
-             foreach (DataGridViewColumn column in dataGridView.Columns)
-             {
-                 if (_current_table == "\"Client\"") //TODO: Добавить русские названия
-                     names.Add(Config.clientEnglishColumns[column.Name]);
-                 else
-                     names.Add(column.Name);
-             }
-             return names;
-         }*/
-
-        //Обновление записи в таблице через DataGridView
-       /* private void UpdateEntry()
-        {
-            if (CheckNoAccess())
-                return;
-            int index = GetSelectedRow();
-            if (index == -1 || _current_table == "")
-            {
-                MessageBox.Show("Необходимо выбрать запись.");
-                return;
-            }
-            try
-            {
-                string id = dataGridView["ID", index].Value.ToString();
-                //TODO: Можно объединить в словарь
-                List<string> columnNames = GetTableColumnsName(_current_table);
-                List<string> columnValues = GetRowValues(index);
-                Authorization.ODBC.Update(_current_table, id, columnNames, columnValues);
-                // _currFunc(null, null);
-                MessageBox.Show("Запись успешно обновлена.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }*/
-
-       /* private void ToogleRawEditSwitch(object sender, EventArgs e)
-        {
-            this.dataGridView.ReadOnly = !this.dataGridView.ReadOnly;
-        }*/
-
-       /* private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (!itWasReplaceFKtoName)
-                UpdateEntry();
-        }*/
-
         //??????????
         private void FillValuesToAutocomplete()
         {
             itemsForAutoComplete.Clear();
-            foreach (DataGridViewRow row in DataGridView.Rows)
+            foreach (DataGridViewRow row in dataGridView.Rows)
             {
                 foreach (DataGridViewCell cell in row.Cells)
                 {
@@ -485,7 +390,83 @@ namespace Security_Agency
             }
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
             collection.AddRange(itemsForAutoComplete.ToArray());
-            this.TextBoxSearchPattern.AutoCompleteCustomSource = collection;
+            //this.TextBoxSearchPattern.AutoCompleteCustomSource = collection;
+        }
+        //
+        void  MessagesList()
+        {
+            if(_currentRole == AccessRoles.Accountant)
+            {
+                labelMessages.Text = "Сообщения о неоплаченных счетах";
+                listViewMessages.Clear();
+                DataTable dataTable = new DataTable();
+                List<string> tables = new List<string>();
+                tables.Add("\"Invoice\"");
+                tables.Add("\"Contract\"");
+                tables.Add("\"Client\"");
+                List<string> where = new List<string>();
+                where.Add("\"Invoice\".\"PK_Contract\" = \"Contract\".\"PK_Contract\"");
+                where.Add("\"Contract\".\"PK_Client\" = \"Client\".\"PK_Client\"");
+                var adapter = Authorization.DBC.Select(tables, where,
+                values: new Dictionary<string, string>()
+                {
+                    ["\"Invoice_ID\""] = "\"Номер счета\"",
+                    ["\"Date_Formation\""] = "\"Дата формирования\"",
+                    ["\"Payment_State\""] = "\"Статус\"",
+                    ["\"Contract_ID\""] = "\"Номер договора\"",
+                    ["\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\""] = "\"Клиент\""
+                }
+                );
+                adapter.Fill(dataTable);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    DateTime date = Convert.ToDateTime(row["Дата формирования"].ToString());
+                    date = date.AddDays(3);
+                    if (Convert.ToBoolean(row["Статус"].ToString()) == false && date < DateTime.Today)
+                    {
+                        string text ="Счет №" + row["Номер счета"].ToString() + " ";
+                        text += " по договору №" + row["Номер договора"].ToString();
+                        text += " на имя " + row["Клиент"].ToString();
+                        text += " не был оплачен в срок до " + Convert.ToString(date);
+                        listViewMessages.Items.Add(text);
+                    }
+                }
+            }
+            if(_currentRole == AccessRoles.Manager)
+            {
+                labelMessages.Text = "Сообщения о невыполненых работах";
+                listViewMessages.Clear();
+                DataTable dataTable = new DataTable();
+                List <string> tables = new List<string>();
+                tables.Add("\"Work_Equipment\"");
+                tables.Add("\"Contract\"");
+                tables.Add("\"Client\"");
+                List<string> where = new List<string>();
+                where.Add("\"Work_Equipment\".\"PK_Contract\" = \"Contract\".\"PK_Contract\"");
+                where.Add("\"Contract\".\"PK_Client\" = \"Client\".\"PK_Client\"");
+                var adapter = Authorization.DBC.Select(tables, where,
+                values: new Dictionary<string, string>()
+                {
+                    ["\"Name_Work\""] = "\"Наименование работы\"",
+                    ["\"Approximate_Date\""] = "\"Планируемая дата проведения работ\"",
+                    ["\"Execution_Fact\""] = "\"Статус\"",
+                    ["\"Contract_ID\""] = "\"Номер договора\"",
+                    ["\"Surname\" || ' ' || \"Name\" || ' ' || \"Middle_Name\""] = "\"Клиент\""
+                }
+                );
+                adapter.Fill(dataTable);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    if (Convert.ToBoolean(row["Статус"].ToString()) == false && Convert.ToDateTime(row["Планируемая дата проведения работ"].ToString()) < DateTime.Today)
+                    {
+                        string text = row["Наименование работы"].ToString();
+                        text += " по договору №" + row["Номер договора"].ToString();
+                        text += " на имя " + row["Клиент"].ToString();
+                        text += " не была выполнена в срок до " + row["Планируемая дата проведения работ"].ToString();
+                        listViewMessages.Items.Add(text);
+                    }
+                }
+            }
         }
         //
         private int GetSelectedRow()
@@ -493,7 +474,7 @@ namespace Security_Agency
             int index;
             try
             {
-                index = DataGridView.CurrentCell.RowIndex;
+                index = dataGridView.CurrentCell.RowIndex;
             }
             catch (Exception)
             {
@@ -509,8 +490,6 @@ namespace Security_Agency
             MethodInfo method = t.GetMethod(str);
             method.Invoke(this, null);
         }
-
-
         //вызывает метод вида <tableName>List
         private void ChangeCurrentContext(object sender, EventArgs e)
         {
@@ -522,6 +501,7 @@ namespace Security_Agency
             Type t = this.GetType();
             MethodInfo method = t.GetMethod(Config.methodTranslate[sender.ToString()] + "List");
             method.Invoke(this, null);
+            MessagesList();
         }
         // смена пользователя
         private void ChangeUser(object sender, EventArgs e)
@@ -565,14 +545,14 @@ namespace Security_Agency
                 return;
             }
             Config.valueFromTableForEdit.Clear();
-            foreach (DataGridViewCell cell in DataGridView.Rows[curRow].Cells)
+            foreach (DataGridViewCell cell in dataGridView.Rows[curRow].Cells)
             {
                 Config.valueFromTableForEdit.Add(cell.OwningColumn.Name, cell.Value.ToString());
             }
             string nameForm = "Add" + _current_table.Substring(1, _current_table.Length - 2);
             try
             {
-                Config.CurrentIndex = Convert.ToInt32(DataGridView["ID", curRow].Value.ToString());
+                Config.CurrentIndex = Convert.ToInt32(dataGridView["ID", curRow].Value.ToString());
                 var form = Activator.CreateInstance(Type.GetType("Security_Agency." + nameForm), this) as Form;
                 form.Text = "Редактирование";
                 form.ShowDialog();
@@ -600,7 +580,7 @@ namespace Security_Agency
             }
             try
             {
-                string id = DataGridView["ID", index].Value.ToString();
+                string id = dataGridView["ID", index].Value.ToString();
                 switch (_current_table)
                 {
                     case "\"Client\"":
@@ -660,6 +640,67 @@ namespace Security_Agency
         {
             if (!itWasChangeUser)
                 _link.Close();
+        }
+        // поиск
+        private void Search(object sender, EventArgs e)
+        {
+            if (searchPatternTextBox.Text.Length == 0)
+            {
+                MessageBox.Show("Пустой поисковый запрос");
+                return;
+            }
+            string searchPattern = searchPatternTextBox.Text;
+            DataGridView table = new DataGridView();
+            foreach (DataGridViewColumn column in dataGridView.Columns)
+            {
+                table.Columns.Add(column.Clone() as DataGridViewColumn);
+            }
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                int indexT = table.Rows.Add();
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    table.Rows[indexT].Cells[i].Value = row.Cells[i].Value;
+                }
+            }
+            //вставим в таблицу те же столбцы, что в той, в которой ищем
+            int index = 0;
+            // теперь произведем поиск
+            foreach (DataGridViewRow row in table.Rows)
+            {
+                bool isGood = false;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    try
+                    {
+                        string value = cell.Value.ToString();
+                        // если хотя бы один столбцец строки соответствует паттерну,
+                        // вставим эту строку в результат поиска
+                        if (value.ToLower().Contains(searchPattern.ToLower()))
+                        {
+                            isGood = true;
+                            break;
+                        }
+                    }
+                    catch (NullReferenceException)
+                    {
+                        break;
+                    }
+                }
+                if (isGood)
+                {
+                    //int index = dataGridView.Rows.Add();
+                    for (int i = 0; i < row.Cells.Count; i++)
+                    {
+                        dataGridView.Rows[index].Cells[i].Value = row.Cells[i].Value;
+                    }
+                    index++;
+                }
+            }
+            while(index < dataGridView.Rows.Count)
+            {
+                dataGridView.Rows.Remove(dataGridView.Rows[index]);
+            }
         }
     }
 }

@@ -367,7 +367,7 @@ namespace Security_Agency
                     if (Text == "Редактирование")
                     {
                         Authorization.DBC.Update("\"Invoice\"", Config.valueFromTableForEdit["ID"], vals);
-                        MessageBox.Show("Договор была обновлена.");
+                        MessageBox.Show("Счет был обновлен.");
                     }
                     else
                     {
@@ -384,7 +384,7 @@ namespace Security_Agency
                         adapter.Fill(dataTable);
                         DataRow row = dataTable.Rows[0];
                         pkInvoice = row["ID"].ToString();
-                        MessageBox.Show("Договор добавлен.");
+                        MessageBox.Show("Счет добавлен.");
                     }
                 }
                 catch (Exception ex)
@@ -485,7 +485,7 @@ namespace Security_Agency
                     try
                     {
                         Authorization.DBC.Insert("\"Forfeit\"", vals);
-                        MessageBox.Show("Договор добавлен.");
+                        MessageBox.Show("Штраф добавлен.");
                     }
                     catch (Exception ex)
                     {
@@ -505,7 +505,7 @@ namespace Security_Agency
                     try
                     {
                         Authorization.DBC.Insert("\"Invoice_String\"", vals);
-                        MessageBox.Show("Договор добавлен.");
+                        MessageBox.Show("Платеж добавлен.");
                     }
                     catch (Exception ex)
                     {

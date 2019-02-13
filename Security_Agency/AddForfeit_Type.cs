@@ -107,7 +107,7 @@ namespace Security_Agency
                     else
                     {
                         Authorization.DBC.Insert("\"Forfeit_Type\"", vals);
-                        MessageBox.Show("Клиент добавлен.");
+                        MessageBox.Show("Штраф добавлен.");
                         ClearForm();
                     }
                 }

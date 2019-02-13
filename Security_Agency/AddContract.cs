@@ -173,6 +173,10 @@ namespace Security_Agency
                 {
                     newDict.Add(key, ConvertToDateDB(vals[key]));
                 }
+                else if(key.ToLower().Contains("pk"))
+                {
+                    newDict.Add(key, vals[key]);
+                }
                 else
                 {
                     newDict.Add(key, ConvertToStringDB(vals[key]));
